@@ -325,6 +325,31 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 /* SECTION SEPARATOR */
 .sec-sep{height:1px;background:var(--border);margin:2rem 0}
+
+/* FAVORITES */
+.fav-btn{position:absolute;bottom:9px;right:9px;z-index:4;width:28px;height:28px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.2);border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff}
+.fav-btn:hover{background:rgba(232,25,44,.5);border-color:var(--red)}
+.fav-btn.active{background:rgba(232,25,44,.85);border-color:var(--red)}
+
+/* HERO CHOOSE BUTTON (admin) */
+.hero-choose-btn{position:absolute;top:80px;right:2.5rem;z-index:10;background:rgba(14,14,28,.85);border:1px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--sans);font-weight:600;backdrop-filter:blur(8px);transition:all .2s;display:none}
+.hero-choose-btn:hover{background:rgba(245,197,24,.15)}
+
+/* HERO PICKER MODAL */
+#heroPicker{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+#heroPicker.open{display:flex}
+.hp-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;width:580px;max-width:95vw;max-height:85vh;overflow-y:auto}
+.hp-head{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:2}
+.hp-title{font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--gold)}
+.hp-list{padding:1rem 1.5rem;display:flex;flex-direction:column;gap:.6rem}
+.hp-item{display:flex;align-items:center;gap:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;cursor:pointer;transition:all .15s}
+.hp-item:hover{border-color:var(--border2);background:var(--bg4)}
+.hp-item.selected{border-color:var(--gold);background:rgba(245,197,24,.05)}
+.hp-emo{font-size:1.5rem;flex-shrink:0}
+.hp-info{flex:1}
+.hp-name{font-size:.88rem;font-weight:600;margin-bottom:2px}
+.hp-sub{font-size:.72rem;color:var(--text3)}
+.hp-check{color:var(--gold);font-size:1rem;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -336,6 +361,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="nl on" onclick="filterNav('Tout',this)">Accueil</div>
     <div class="nl" onclick="filterNav('Film',this)">Films</div>
     <div class="nl" onclick="filterNav('Série',this)">Séries</div>
+    <div class="nl" id="navFavLink" style="display:none" onclick="goFavorites(this)">❤️ Favoris</div>
   </div>
   <div class="nav-r">
     <div class="sw">
@@ -348,7 +374,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 <!-- HOME -->
 <div id="homePage" class="page on">
-  <div class="hero" id="heroSection">
+  <div id="heroSection">
+    <button class="hero-choose-btn" id="heroChooseBtn" onclick="openHeroPicker()">⭐ Choisir l'affiche</button>
+    <div class="hero" id="heroSection2">
     <div class="h-art" id="heroArt">🎬</div>
     <div class="h-grad"></div>
     <div class="h-glow"></div>
@@ -361,8 +389,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <button class="play-btn" id="heroPlayBtn" style="display:none">▶ Lire</button>
         <button class="info-btn" id="heroInfoBtn" style="display:none">ℹ Plus d'infos</button>
       </div>
-    </div>
-  </div>
+    </div><!-- end .hero -->
+  </div><!-- end #heroSection -->
 
   <div class="catalog">
     <div class="cats" id="catRow">
@@ -380,7 +408,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <span class="f-link">Confidentialité</span>
         <span class="f-link">Contact</span>
       </div>
-      <div style="font-size:.7rem;color:var(--text3)">© 2025 CINÉMAX &nbsp;·&nbsp; <span onclick="goLogin()" style="cursor:pointer;color:var(--text2);transition:color .15s" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--text2)'">🔐 Connexion admin</span></div>
+      <div style="font-size:.7rem;color:var(--text3)" id="footerRight">© 2026 CINÉMAX</div>
     </div>
   </footer>
 </div>
@@ -413,6 +441,25 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="d-tabs" id="dTabs"></div>
     <div id="dPanels"></div>
   </div>
+</div>
+
+<!-- HERO PICKER MODAL -->
+<div id="heroPicker" onclick="if(event.target===this)closeHeroPicker()">
+  <div class="hp-box">
+    <div class="hp-head">
+      <div class="hp-title">⭐ Choisir le contenu à l'affiche</div>
+      <button class="modal-close" onclick="closeHeroPicker()">✕</button>
+    </div>
+    <div class="hp-list" id="hpList"></div>
+  </div>
+</div>
+
+<!-- FAVORITES PAGE -->
+<div id="favPage" class="page">
+  <div style="padding:80px 2.5rem 0">
+    <div class="s-label">❤️ Mes Favoris</div>
+  </div>
+  <div class="s-grid" id="favGrid" style="padding:1rem 2.5rem 3rem"></div>
 </div>
 
 <!-- LOGIN / REGISTER -->
@@ -762,6 +809,9 @@ const JB_BASE = 'https://api.jsonbin.io/v3/b';
 const JB_BIN_ID = '69c9726f856a682189dccd04';
 let _saving = false;
 
+const SESSION_KEY = 'cinemax_session';
+let heroId = null; // ID du contenu à l'affiche (null = premier publié)
+
 function setCloudStatus(msg, color) {
   let el = document.getElementById('cloudStatus');
   if (!el) {
@@ -781,7 +831,7 @@ async function saveState() {
   if (_saving) return;
   _saving = true;
   setCloudStatus('\u{1F4BE} Sauvegarde…', '#f5c518');
-  const data = { DB, CATS, USERS, nid };
+  const data = { DB, CATS, USERS, nid, heroId };
   try {
     await fetch(JB_BASE + '/' + JB_BIN_ID, {
       method: 'PUT',
@@ -808,11 +858,20 @@ async function loadState() {
     if (data.DB)    DB   = data.DB;
     if (data.CATS)  CATS = data.CATS;
     if (data.nid)   nid  = data.nid;
+    if (data.heroId !== undefined) heroId = data.heroId;
     if (data.USERS) {
       const saved = data.USERS;
       const hasSA = saved.find(u => u.role === 'superadmin');
       USERS = hasSA ? saved : [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }, ...saved];
     }
+    // Restore session
+    try {
+      const sess = localStorage.getItem(SESSION_KEY);
+      if (sess) {
+        const u = USERS.find(x => x.user === sess);
+        if (u) currentUser = u;
+      }
+    } catch(e) {}
     setCloudStatus('\u2705 Donn\u00e9es charg\u00e9es', '#4caf50');
   } catch(e) {
     console.warn('Chargement impossible:', e);
@@ -840,7 +899,11 @@ function goHome() {
   show('homePage');
   document.getElementById('searchInput').value = '';
   renderHome();
-  document.querySelectorAll('.nl').forEach((n,i) => n.classList.toggle('on', i===0));
+  document.querySelectorAll('.nl').forEach((n,i) => {
+    // Only reset non-hidden links
+    if (n.id !== 'navFavLink') n.classList.toggle('on', i===0);
+    else n.classList.remove('on');
+  });
 }
 
 function filterNav(f, el) {
@@ -860,8 +923,10 @@ function isSuperAdmin(u) { return u && u.role === 'superadmin'; }
 
 function updateNavAuth() {
   const area = document.getElementById('navAuthArea');
+  const favLink = document.getElementById('navFavLink');
   if (!currentUser) {
     area.innerHTML = `<button class="btn btn-ghost" onclick="goLogin()">Connexion</button>`;
+    if (favLink) favLink.style.display = 'none';
   } else {
     const adminBtn = isAdmin(currentUser)
       ? `<button class="btn btn-red" onclick="goAdmin()" style="font-size:.75rem">⚙ Admin</button>` : '';
@@ -869,7 +934,11 @@ function updateNavAuth() {
       <span style="font-size:.78rem;color:var(--text2);white-space:nowrap">👤 ${currentUser.user}</span>
       ${adminBtn}
       <button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
+    if (favLink) favLink.style.display = 'block';
   }
+  // Show/hide admin hero button
+  const hcBtn = document.getElementById('heroChooseBtn');
+  if (hcBtn) hcBtn.style.display = isAdmin(currentUser) ? 'block' : 'none';
 }
 
 function switchAuthTab(tab) {
@@ -904,6 +973,7 @@ function doLogin() {
   if (found) {
     err.style.display = 'none';
     currentUser = found;
+    try { localStorage.setItem(SESSION_KEY, found.user); } catch(e) {}
     trackLogin(found.user);
     updateNavAuth();
     if (isAdmin(found)) {
@@ -943,6 +1013,7 @@ function doRegister() {
 
 function doLogout() {
   currentUser = null;
+  try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
   updateNavAuth();
   goHome();
 }
@@ -992,6 +1063,67 @@ function renderUsersTable() {
   });
 }
 
+// ——— FAVORITES ———
+function getFavs() {
+  if (!currentUser) return [];
+  try {
+    const raw = localStorage.getItem('cinemax_favs_' + currentUser.user);
+    return raw ? JSON.parse(raw) : [];
+  } catch(e) { return []; }
+}
+
+function saveFavs(favs) {
+  if (!currentUser) return;
+  try { localStorage.setItem('cinemax_favs_' + currentUser.user, JSON.stringify(favs)); } catch(e) {}
+}
+
+function isFav(id) {
+  return getFavs().includes(id);
+}
+
+function toggleFav(id, event) {
+  if (event) event.stopPropagation();
+  if (!currentUser) { goLogin(); return; }
+  let favs = getFavs();
+  if (favs.includes(id)) {
+    favs = favs.filter(x => x !== id);
+  } else {
+    favs.push(id);
+  }
+  saveFavs(favs);
+  // Refresh all fav buttons on page
+  document.querySelectorAll(`.fav-btn[data-id="${id}"]`).forEach(btn => {
+    btn.classList.toggle('active', favs.includes(id));
+    btn.title = favs.includes(id) ? 'Retirer des favoris' : 'Ajouter aux favoris';
+    btn.textContent = favs.includes(id) ? '❤️' : '🤍';
+  });
+  // If on favPage, refresh it
+  if (document.getElementById('favPage').classList.contains('on')) renderFavPage();
+}
+
+function goFavorites(el) {
+  document.querySelectorAll('.nl').forEach(n => n.classList.remove('on'));
+  if (el) el.classList.add('on');
+  renderFavPage();
+  show('favPage');
+}
+
+function renderFavPage() {
+  const grid = document.getElementById('favGrid');
+  grid.innerHTML = '';
+  const favs = getFavs();
+  const items = DB.filter(v => v.pub && favs.includes(v.id));
+  if (!items.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <div class="es-icon">🤍</div>
+      <h3>Aucun favori pour l'instant</h3>
+      <p>Cliquez sur le cœur d'un film ou d'une série pour l'ajouter ici.</p>
+    </div>`;
+    return;
+  }
+  items.forEach(v => { const c = mkCard(v); c.style.flex = 'none'; grid.appendChild(c); });
+}
+
 // ——— CARD ———
 function mkCard(v) {
   const d = document.createElement('div');
@@ -1001,10 +1133,15 @@ function mkCard(v) {
     : v.tag === 'hot' ? '<div class="c-tag tag-hot">🔥 HOT</div>' : '';
   const ico = v.type === 'Série' ? '📺 ' : '';
   const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
+  const favActive = isFav(v.id);
+  const favHtml = currentUser
+    ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>`
+    : '';
   d.innerHTML = `
     <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${v.emo}</span></div>
     ${tagHtml}
     <div class="c-score">★ ${v.score || '?'}</div>
+    ${favHtml}
     <div class="c-ov"><div class="p-circ">▶</div></div>
     <div class="c-body">
       <div class="c-title">${ico}${v.title}</div>
@@ -1020,9 +1157,12 @@ function renderHome(f = 'Tout') {
   const cont = document.getElementById('sections');
   cont.innerHTML = '';
 
-  // Update hero
-  if (pub.length > 0) {
-    const hero = pub[0];
+  // Update hero - use heroId if set and valid, else first published
+  const hero = (heroId !== null && heroId !== undefined)
+    ? pub.find(v => v.id === heroId) || pub[0]
+    : pub[0];
+
+  if (hero) {
     document.getElementById('heroArt').textContent = hero.emo;
     document.getElementById('heroTitle').textContent = hero.title;
     document.getElementById('heroDesc').textContent = hero.desc || 'Aucune description disponible.';
@@ -1036,6 +1176,9 @@ function renderHome(f = 'Tout') {
     document.getElementById('heroInfoBtn').style.display = 'flex';
     document.getElementById('heroPlayBtn').onclick = () => openPlayer(hero, null);
     document.getElementById('heroInfoBtn').onclick = () => openDetail(hero);
+    // Update footer with featured info
+    const fr = document.getElementById('footerRight');
+    if (fr) fr.innerHTML = `© 2026 CINÉMAX &nbsp;·&nbsp; <span style="color:var(--text2)">🎬 À l'affiche&nbsp;: <strong style="color:var(--text)">${hero.title}</strong></span>`;
   } else {
     document.getElementById('heroTitle').textContent = 'Bienvenue sur CINÉMAX';
     document.getElementById('heroDesc').textContent = 'Connectez-vous en tant qu\'admin pour ajouter vos films et séries.';
@@ -1043,6 +1186,8 @@ function renderHome(f = 'Tout') {
     document.getElementById('heroPlayBtn').style.display = 'none';
     document.getElementById('heroInfoBtn').style.display = 'none';
     document.getElementById('heroArt').textContent = '🎬';
+    const fr = document.getElementById('footerRight');
+    if (fr) fr.textContent = '© 2026 CINÉMAX';
   }
 
   // Filter
@@ -1799,6 +1944,43 @@ function renderStats() {
       </div>`
     ).join('');
   }
+}
+
+// ——— HERO PICKER ———
+function openHeroPicker() {
+  const pub = DB.filter(v => v.pub);
+  const list = document.getElementById('hpList');
+  list.innerHTML = '';
+  if (!pub.length) {
+    list.innerHTML = '<p style="padding:1rem;color:var(--text3);font-size:.85rem">Aucun contenu publié.</p>';
+  } else {
+    pub.forEach(v => {
+      const div = document.createElement('div');
+      div.className = 'hp-item' + (v.id === heroId ? ' selected' : '');
+      div.innerHTML = `
+        <div class="hp-emo">${v.emo}</div>
+        <div class="hp-info">
+          <div class="hp-name">${v.title}</div>
+          <div class="hp-sub">${v.type} · ${v.year || ''} · ${v.genre || ''}</div>
+        </div>
+        ${v.id === heroId ? '<div class="hp-check">★ Actuel</div>' : ''}`;
+      div.onclick = () => setHero(v.id);
+      list.appendChild(div);
+    });
+  }
+  document.getElementById('heroPicker').classList.add('open');
+}
+
+function closeHeroPicker() {
+  document.getElementById('heroPicker').classList.remove('open');
+}
+
+function setHero(id) {
+  heroId = id;
+  closeHeroPicker();
+  saveState();
+  renderHome();
+  setCloudStatus('⭐ Affiche mise à jour', '#f5c518');
 }
 
 // ——— INIT ———
