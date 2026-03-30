@@ -392,6 +392,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="nl" onclick="filterNav('Film',this)">Films</div>
     <div class="nl" onclick="filterNav('Série',this)">Séries</div>
     <div class="nl" id="navFavLink" style="display:none" onclick="goFavorites(this)">❤️ Favoris</div>
+    <div class="nl" id="navSugLink" style="display:none" onclick="openSuggestModal()">💡 Suggérer</div>
   </div>
   <div class="nav-r">
     <div class="sw">
@@ -1020,6 +1021,8 @@ function updateNavAuth() {
   if (!currentUser) {
     area.innerHTML = `<button class="btn btn-ghost" onclick="goLogin()">Connexion</button>`;
     if (favLink) favLink.style.display = 'none';
+    const sugLink2 = document.getElementById('navSugLink');
+    if (sugLink2) sugLink2.style.display = 'none';
     if (floatBtn) floatBtn.style.display = 'none';
   } else {
     const adminBtn = isAdmin(currentUser)
@@ -1029,6 +1032,9 @@ function updateNavAuth() {
       ${adminBtn}
       <button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
     if (favLink) favLink.style.display = 'block';
+    // Suggérer uniquement pour les non-admins
+    const sugLink = document.getElementById('navSugLink');
+    if (sugLink) sugLink.style.display = isAdmin(currentUser) ? 'none' : 'block';
     // Bouton flottant seulement pour non-admins
     if (floatBtn) floatBtn.style.display = isAdmin(currentUser) ? 'none' : 'flex';
   }
