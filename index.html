@@ -430,9 +430,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <div class="d-crumb" onclick="goHome()">← Accueil</div>
       <h1 class="d-title" id="dTitle"></h1>
       <div class="d-meta" id="dMeta"></div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
         <button class="play-btn" id="dPlay">▶ Lire</button>
         <button class="info-btn" onclick="goHome()">← Retour</button>
+        <button class="info-btn" id="dFavBtn" style="display:none;gap:.5rem" onclick="detailToggleFav()"></button>
+        <button class="info-btn" id="dHeroBtn" style="display:none;border:1px solid rgba(245,197,24,.5);color:var(--gold)" onclick="detailSetHero()">⭐ Mettre à l'affiche</button>
       </div>
     </div>
   </div>
@@ -1272,7 +1274,32 @@ function doSearch(q) {
 }
  
 // ——— DETAIL ———
+let _detailCurrentId = null;
+ 
+function updateDetailFavBtn(id) {
+  const btn = document.getElementById('dFavBtn');
+  if (!btn) return;
+  const fav = isFav(id);
+  btn.textContent = fav ? '❤️ Retirer des favoris' : '🤍 Ajouter aux favoris';
+  btn.style.color = fav ? '#ff6b6b' : '';
+}
+ 
+function detailToggleFav() {
+  if (!_detailCurrentId) return;
+  toggleFav(_detailCurrentId, null);
+  updateDetailFavBtn(_detailCurrentId);
+}
+ 
+function detailSetHero() {
+  if (!_detailCurrentId) return;
+  setHero(_detailCurrentId);
+  // Update button to show it's active
+  const btn = document.getElementById('dHeroBtn');
+  if (btn) { btn.textContent = '★ À l\'affiche !'; btn.style.color = 'var(--gold)'; }
+}
+ 
 function openDetail(v) {
+  _detailCurrentId = v.id;
   document.getElementById('dArt').textContent = v.emo;
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
@@ -1283,6 +1310,25 @@ function openDetail(v) {
     <span class="m-tag">${v.genre || ''}</span>
     <span class="m-tag">${v.type}</span>`;
   document.getElementById('dPlay').onclick = () => openPlayer(v, v.eps && v.eps.length ? v.eps[0] : null);
+ 
+  // Fav button
+  const favBtn = document.getElementById('dFavBtn');
+  if (currentUser) {
+    favBtn.style.display = 'flex';
+    updateDetailFavBtn(v.id);
+  } else {
+    favBtn.style.display = 'none';
+  }
+ 
+  // Admin hero button
+  const heroBtn = document.getElementById('dHeroBtn');
+  if (isAdmin(currentUser)) {
+    heroBtn.style.display = 'flex';
+    heroBtn.textContent = heroId === v.id ? '★ À l\'affiche !' : '⭐ Mettre à l\'affiche';
+    heroBtn.style.color = heroId === v.id ? 'var(--gold)' : '';
+  } else {
+    heroBtn.style.display = 'none';
+  }
  
   const tabs = document.getElementById('dTabs');
   const panels = document.getElementById('dPanels');
