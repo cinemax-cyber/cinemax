@@ -17,12 +17,12 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
-
+ 
 /* PAGES */
 .page{display:none!important}.page.on{display:block!important}
 #loginPage.on{display:flex!important}
 #playerPage.on{display:flex!important}
-
+ 
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:66px;display:flex;align-items:center;padding:0 2.5rem;gap:2rem;border-bottom:1px solid transparent;transition:all .3s}
 #nav.stuck{background:rgba(7,7,15,.97);border-color:var(--border);backdrop-filter:blur(14px)}
@@ -40,7 +40,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
 .btn-ghost:hover{background:rgba(255,255,255,.06)}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#c4070f}
-
+ 
 /* HERO */
 .hero{height:100vh;min-height:600px;position:relative;display:flex;align-items:flex-end;padding:0 2.5rem 5rem}
 .h-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;font-size:14rem;opacity:.12;padding-right:3rem;user-select:none}
@@ -60,7 +60,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .play-btn:hover{background:rgba(255,255,255,.85)}
 .info-btn{padding:13px 26px;background:rgba(100,100,110,.5);color:#fff;border:none;border-radius:5px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:var(--sans);transition:background .15s}
 .info-btn:hover{background:rgba(100,100,110,.3)}
-
+ 
 /* CATALOG */
 .catalog{padding:1.5rem 2.5rem 3rem;position:relative;z-index:10;margin-top:-4rem}
 .cats{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .sec-title{font-family:var(--serif);font-size:1.35rem;font-style:italic}
 .row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory}
 .row::-webkit-scrollbar{height:3px}
-
+ 
 /* CARD */
 .card{flex:0 0 168px;background:var(--bg2);border-radius:7px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;scroll-snap-align:start;border:1px solid var(--border);position:relative}
 .card:hover{transform:translateY(-7px) scale(1.025);box-shadow:0 22px 45px rgba(0,0,0,.7);border-color:rgba(255,255,255,.18);z-index:5}
@@ -99,13 +99,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .c-body{padding:10px 12px 13px}
 .c-title{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
 .c-sub{font-size:.7rem;color:var(--text3)}
-
+ 
 /* EMPTY STATE */
 .empty-state{text-align:center;padding:5rem 2rem;color:var(--text3)}
 .empty-state .es-icon{font-size:4rem;margin-bottom:1.5rem;opacity:.4}
 .empty-state h3{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--text2);margin-bottom:.75rem}
 .empty-state p{font-size:.88rem;line-height:1.7}
-
+ 
 /* DETAIL */
 #detailPage{background:var(--bg);min-height:100vh}
 .d-hero{height:55vh;min-height:360px;position:relative;display:flex;align-items:flex-end;padding:0 2.5rem 2.5rem}
@@ -131,12 +131,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .ep-sub{font-size:.74rem;color:var(--text3)}
 .ep-play{width:36px;height:36px;background:var(--red);border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:.9rem;flex-shrink:0;transition:background .15s}
 .ep-play:hover{background:#c4070f}
-
+ 
 /* SEARCH */
 #searchPage{padding-top:66px;padding:80px 2.5rem 2rem}
 .s-label{font-family:var(--serif);font-size:1.3rem;font-style:italic;margin-bottom:1.25rem;color:var(--text2)}
 .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:.9rem}
-
+ 
 /* LOGIN */
 #loginPage{min-height:100vh;align-items:center;justify-content:center;background:var(--bg);position:relative}
 .l-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 40% 60%,rgba(232,25,44,.07),transparent 55%);pointer-events:none}
@@ -152,7 +152,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .l-btn:hover{background:#c4070f}
 .l-back{display:block;text-align:center;margin-top:1.25rem;font-size:.8rem;color:var(--text3);cursor:pointer;transition:color .2s}
 .l-back:hover{color:var(--text)}
-
+ 
 /* ADMIN */
 #adminPage{background:var(--bg);min-height:100vh}
 .an{background:var(--bg2);border-bottom:2px solid var(--gold);height:62px;display:flex;align-items:center;padding:0 2rem;gap:1.5rem;position:sticky;top:0;z-index:100}
@@ -194,7 +194,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .fpub{background:var(--red);color:#fff;border:none;padding:9px 22px;border-radius:5px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:background .15s}
 .fpub:hover{background:#c4070f}
 .notice{background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.25);color:#81c784;padding:10px 16px;border-radius:6px;font-size:.82rem;margin-bottom:1rem;display:none}
-
+ 
 /* MODAL CREATE */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
 .modal-overlay.open{display:flex}
@@ -216,18 +216,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .btn-draft:hover{color:var(--text)}
 .btn-publish{background:var(--red);color:#fff;border:none;padding:10px 24px;border-radius:5px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--sans)}
 .btn-publish:hover{background:#c4070f}
-
+ 
 /* URL HELPER */
 .url-helper{font-size:.7rem;color:var(--text3);margin-top:5px;line-height:1.5}
 .url-helper a{color:var(--blue);text-decoration:none}
 .url-helper a:hover{text-decoration:underline}
-
+ 
 /* MODE BUTTONS */
 .mode-btn{background:var(--bg3);border:1px solid var(--border2);color:var(--text3);padding:6px 14px;border-radius:5px;font-size:.75rem;cursor:pointer;font-family:var(--sans);transition:all .15s}
 .mode-btn:hover{color:var(--text)}
 .mode-btn-on{background:var(--red);border-color:var(--red);color:#fff}
 .mode-btn-on:hover{background:#c4070f}
-
+ 
 /* FILE UPLOAD */
 .file-drop{border:2px dashed var(--border2);border-radius:8px;padding:1.5rem;text-align:center;cursor:pointer;transition:all .2s;position:relative}
 .file-drop:hover,.file-drop.drag{border-color:var(--red);background:rgba(232,25,44,.04)}
@@ -242,7 +242,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .file-ready .fr-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.9rem;flex-shrink:0;padding:2px;transition:color .15s}
 .file-ready .fr-del:hover{color:var(--red)}
 .ep-file-wrap{display:flex;flex-direction:column;gap:.3rem}
-
+ 
 /* STATS */
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;position:relative;overflow:hidden}
@@ -269,7 +269,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .recent-list{display:flex;flex-direction:column;gap:.4rem;max-height:220px;overflow-y:auto}
 .recent-item{font-size:.78rem;color:var(--text2);padding:.4rem .75rem;background:var(--bg3);border-radius:5px;display:flex;justify-content:space-between}
 .recent-time{font-size:.68rem;color:var(--text3)}
-
+ 
 /* EPISODE SECTION */
 .eps-section{margin-top:1rem}
 .eps-section-title{font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem;font-weight:500}
@@ -281,7 +281,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .ep-del:hover{color:var(--red)}
 .add-ep-btn{background:none;border:1px dashed var(--border2);color:var(--text3);width:100%;padding:9px;font-size:.78rem;cursor:pointer;font-family:var(--sans);transition:all .15s;border-radius:6px;margin-top:.25rem}
 .add-ep-btn:hover{color:var(--text2);border-color:var(--text3)}
-
+ 
 /* PLAYER PAGE */
 #playerPage{background:#000;min-height:100vh;display:flex;flex-direction:column}
 .player-topbar{display:flex;align-items:center;gap:1rem;padding:.9rem 1.5rem;background:rgba(7,7,15,.95);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
@@ -305,7 +305,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .p-ep-info{flex:1}
 .p-ep-title{font-size:.85rem;font-weight:600;margin-bottom:2px}
 .p-ep-sub{font-size:.72rem;color:var(--text3)}
-
+ 
 /* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5rem;margin-top:2rem}
 .f-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
@@ -313,7 +313,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .f-links{display:flex;gap:1.5rem;flex-wrap:wrap}
 .f-link{font-size:.72rem;color:var(--text3);cursor:pointer;transition:color .15s}
 .f-link:hover{color:var(--text2)}
-
+ 
 /* TYPE CHOICE MODAL */
 .type-choice{display:flex;gap:1rem;margin-bottom:1.5rem}
 .tc-btn{flex:1;padding:1.5rem 1rem;background:var(--bg3);border:2px solid var(--border);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;font-family:var(--sans)}
@@ -322,19 +322,18 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .tc-icon{font-size:2rem;margin-bottom:.5rem}
 .tc-label{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
 .tc-sub{font-size:.72rem;color:var(--text3)}
-
+ 
 /* SECTION SEPARATOR */
 .sec-sep{height:1px;background:var(--border);margin:2rem 0}
-
+ 
 /* FAVORITES */
 .fav-btn{position:absolute;bottom:9px;right:9px;z-index:4;width:28px;height:28px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.2);border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff}
 .fav-btn:hover{background:rgba(232,25,44,.5);border-color:var(--red)}
 .fav-btn.active{background:rgba(232,25,44,.85);border-color:var(--red)}
-
-/* HERO CHOOSE BUTTON (admin) */
+ 
 .hero-choose-btn{position:absolute;top:80px;right:2.5rem;z-index:10;background:rgba(14,14,28,.85);border:1px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--sans);font-weight:600;backdrop-filter:blur(8px);transition:all .2s;display:none}
 .hero-choose-btn:hover{background:rgba(245,197,24,.15)}
-
+ 
 /* HERO PICKER MODAL */
 #heroPicker{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
 #heroPicker.open{display:flex}
@@ -353,7 +352,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav id="nav">
   <div class="logo" onclick="goHome()">CINÉMAX</div>
@@ -371,34 +370,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div id="navAuthArea"><button class="btn btn-ghost" onclick="goLogin()">Connexion</button></div>
   </div>
 </nav>
-
+ 
 <!-- HOME -->
 <div id="homePage" class="page on">
-  <div id="heroSection">
+  <div id="heroSection" style="position:relative">
     <button class="hero-choose-btn" id="heroChooseBtn" onclick="openHeroPicker()">⭐ Choisir l'affiche</button>
-    <div class="hero" id="heroSection2">
-    <div class="h-art" id="heroArt">🎬</div>
-    <div class="h-grad"></div>
-    <div class="h-glow"></div>
-    <div class="h-content">
-      <div class="h-badge"><span class="h-dot"></span><span id="heroBadge">À LA UNE</span></div>
-      <h1 class="h-title" id="heroTitle">Bienvenue sur CINÉMAX</h1>
-      <div class="h-meta" id="heroMeta"></div>
-      <p class="h-desc" id="heroDesc">Votre plateforme de streaming. Ajoutez vos films et séries depuis le panneau admin pour les voir apparaître ici.</p>
-      <div class="h-btns" id="heroBtns">
-        <button class="play-btn" id="heroPlayBtn" style="display:none">▶ Lire</button>
-        <button class="info-btn" id="heroInfoBtn" style="display:none">ℹ Plus d'infos</button>
+    <div class="hero">
+      <div class="h-art" id="heroArt">🎬</div>
+      <div class="h-grad"></div>
+      <div class="h-glow"></div>
+      <div class="h-content">
+        <div class="h-badge"><span class="h-dot"></span><span id="heroBadge">À LA UNE</span></div>
+        <h1 class="h-title" id="heroTitle">Bienvenue sur CINÉMAX</h1>
+        <div class="h-meta" id="heroMeta"></div>
+        <p class="h-desc" id="heroDesc">Votre plateforme de streaming. Ajoutez vos films et séries depuis le panneau admin pour les voir apparaître ici.</p>
+        <div class="h-btns" id="heroBtns">
+          <button class="play-btn" id="heroPlayBtn" style="display:none">▶ Lire</button>
+          <button class="info-btn" id="heroInfoBtn" style="display:none">ℹ Plus d'infos</button>
+        </div>
       </div>
     </div><!-- end .hero -->
   </div><!-- end #heroSection -->
-
+ 
   <div class="catalog">
     <div class="cats" id="catRow">
       <span class="cat on" onclick="filterCat('Tout',this)">Tout</span>
     </div>
     <div id="sections"></div>
   </div>
-
+ 
   <footer>
     <div class="f-inner">
       <div class="f-logo">CINÉMAX</div>
@@ -412,7 +412,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     </div>
   </footer>
 </div>
-
+ 
 <!-- SEARCH -->
 <div id="searchPage" class="page">
   <div style="padding:80px 2.5rem 0">
@@ -420,7 +420,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
   <div class="s-grid" id="sGrid" style="padding:1rem 2.5rem 3rem"></div>
 </div>
-
+ 
 <!-- DETAIL -->
 <div id="detailPage" class="page">
   <div class="d-hero">
@@ -442,7 +442,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div id="dPanels"></div>
   </div>
 </div>
-
+ 
 <!-- HERO PICKER MODAL -->
 <div id="heroPicker" onclick="if(event.target===this)closeHeroPicker()">
   <div class="hp-box">
@@ -453,7 +453,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="hp-list" id="hpList"></div>
   </div>
 </div>
-
+ 
 <!-- FAVORITES PAGE -->
 <div id="favPage" class="page">
   <div style="padding:80px 2.5rem 0">
@@ -461,23 +461,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
   <div class="s-grid" id="favGrid" style="padding:1rem 2.5rem 3rem"></div>
 </div>
-
+ 
 <!-- LOGIN / REGISTER -->
 <div id="loginPage" class="page">
   <div class="l-glow"></div>
   <div class="l-box">
     <div class="l-logo">CINÉMAX</div>
     <div class="l-sub" id="lSubtitle">Connexion</div>
-
+ 
     <!-- Onglets -->
     <div style="display:flex;border-bottom:1px solid var(--border);margin-bottom:1.5rem">
       <button id="tabLogin" onclick="switchAuthTab('login')" style="flex:1;background:none;border:none;border-bottom:2px solid var(--red);color:var(--text);padding:9px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--sans);margin-bottom:-1px">Connexion</button>
       <button id="tabRegister" onclick="switchAuthTab('register')" style="flex:1;background:none;border:none;border-bottom:2px solid transparent;color:var(--text3);padding:9px;font-size:.82rem;font-weight:500;cursor:pointer;font-family:var(--sans);margin-bottom:-1px">Créer un compte</button>
     </div>
-
+ 
     <div class="l-err" id="lErr"></div>
     <div id="lSuccess" style="background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.25);color:#81c784;font-size:.8rem;padding:10px 14px;border-radius:6px;margin-bottom:1rem;display:none"></div>
-
+ 
     <!-- Connexion -->
     <div id="formLogin">
       <div class="fg">
@@ -488,7 +488,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
       <button class="l-btn" onclick="doLogin()">Se connecter</button>
     </div>
-
+ 
     <!-- Inscription -->
     <div id="formRegister" style="display:none">
       <div class="fg">
@@ -501,11 +501,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
       <button class="l-btn" onclick="doRegister()">Créer mon compte</button>
     </div>
-
+ 
     <span class="l-back" onclick="goHome()">← Retourner sur le site</span>
   </div>
 </div>
-
+ 
 <!-- ADMIN -->
 <div id="adminPage" class="page">
   <nav class="an">
@@ -524,9 +524,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <button class="lout" onclick="doLogout()">Déconnexion</button>
     </div>
   </nav>
-
+ 
   <div class="abody">
-
+ 
     <!-- DASHBOARD -->
     <div class="apanel on" id="ap-db">
       <div class="ph"><h2 class="ptitle">Tableau de bord</h2></div>
@@ -541,7 +541,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <table><thead><tr><th>Titre</th><th>Type</th><th>Genre</th><th>Année</th><th>Statut</th></tr></thead><tbody id="dc-list"></tbody></table>
       </div>
     </div>
-
+ 
     <!-- VIDEOS -->
     <div class="apanel" id="ap-vids">
       <div class="ph">
@@ -557,7 +557,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <tbody id="vTable"></tbody></table>
       </div>
     </div>
-
+ 
     <!-- CATEGORIES -->
     <div class="apanel" id="ap-cats">
       <div class="ph"><h2 class="ptitle">Catégories</h2></div>
@@ -575,19 +575,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <tbody id="cTable"></tbody></table>
       </div>
     </div>
-
+ 
     <!-- STATISTIQUES -->
     <div class="apanel" id="ap-stats">
       <div class="ph">
         <h2 class="ptitle">Statistiques du site</h2>
         <button class="stat-reset" onclick="resetStats()">🗑 Réinitialiser les stats</button>
       </div>
-
+ 
       <!-- Compteurs globaux -->
       <div class="stat-grid" id="statsGlobal"></div>
-
+ 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
-
+ 
         <!-- Top contenus les plus vus -->
         <div class="at">
           <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2);display:flex;justify-content:space-between">
@@ -595,41 +595,41 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           </div>
           <div style="padding:1rem" id="statsTopViews"></div>
         </div>
-
+ 
         <!-- Top contenus les plus lus -->
         <div class="at">
           <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">▶ Top contenus les plus lus</div>
           <div style="padding:1rem" id="statsTopPlays"></div>
         </div>
       </div>
-
+ 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
-
+ 
         <!-- Recherches récentes -->
         <div class="at">
           <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">🔍 Dernières recherches</div>
           <div style="padding:1rem" id="statsSearches"></div>
         </div>
-
+ 
         <!-- Activité récente -->
         <div class="at">
           <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">🕐 Activité récente</div>
           <div style="padding:1rem" id="statsActivity"></div>
         </div>
       </div>
-
+ 
       <!-- Barre de popularité par genre -->
       <div class="at" style="margin-bottom:1.5rem">
         <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">📁 Vues par genre</div>
         <div style="padding:1.25rem" id="statsGenreBar"></div>
       </div>
     </div>
-
+ 
     <!-- ACCÈS ADMIN -->
     <div class="apanel" id="ap-access">
       <div class="ph"><h2 class="ptitle">Gestion des accès admin</h2></div>
       <div class="notice" id="accessNotice"></div>
-
+ 
       <!-- Donner accès manuellement -->
       <div class="at" style="margin-bottom:1.5rem">
         <div style="padding:1.25rem 1.5rem">
@@ -640,7 +640,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           </div>
         </div>
       </div>
-
+ 
       <!-- Liste des utilisateurs -->
       <div class="at">
         <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">Tous les comptes</div>
@@ -648,10 +648,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <tbody id="usersTable"></tbody></table>
       </div>
     </div>
-
+ 
   </div>
 </div>
-
+ 
 <!-- MODAL CREATE/EDIT -->
 <div class="modal-overlay" id="createModal" onclick="closeModalOutside(event)">
   <div class="modal-box">
@@ -661,17 +661,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     </div>
     <div class="modal-body">
       <input type="hidden" id="editId" value="">
-
+ 
       <!-- Type display -->
       <div style="margin-bottom:1.25rem">
         <span id="typeDisplay" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--bg3);border:1px solid var(--border2);padding:6px 14px;border-radius:99px;font-size:.78rem;font-weight:600;color:var(--text2)">🎬 Film</span>
       </div>
-
+ 
       <div class="field">
         <label>Titre *</label>
         <input type="text" id="vTitle" placeholder="Titre du film ou de la série">
       </div>
-
+ 
       <div class="field-row">
         <div class="field">
           <label>Genre / Catégorie *</label>
@@ -682,7 +682,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           <input type="text" id="vYear" placeholder="2025">
         </div>
       </div>
-
+ 
       <div class="field-row">
         <div class="field">
           <label>Durée (film) / Saisons (série)</label>
@@ -693,12 +693,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           <input type="text" id="vScore" placeholder="4.5">
         </div>
       </div>
-
+ 
       <div class="field">
         <label>Description / Synopsis</label>
         <textarea id="vDesc" placeholder="Décrivez votre film ou série en quelques phrases…"></textarea>
       </div>
-
+ 
       <!-- VIDEO (for movies) -->
       <div id="movieUrlSection" class="field">
         <label>Vidéo</label>
@@ -725,7 +725,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           <div class="url-helper">Lien direct <strong>.mp4</strong>, stream <strong>.m3u8</strong>, ou URL embed iframe.</div>
         </div>
       </div>
-
+ 
       <!-- EPISODES (for series) -->
       <div id="serieEpsSection" style="display:none">
         <div class="field">
@@ -758,12 +758,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
           <button class="add-ep-btn" onclick="addEpisode()">+ Ajouter un épisode</button>
         </div>
       </div>
-
+ 
       <div class="field" style="margin-top:1rem">
         <label>Image de couverture (URL optionnelle)</label>
         <input type="text" id="vImg" placeholder="https://... (laissez vide pour utiliser un fond coloré)">
       </div>
-
+ 
     </div>
     <div class="modal-foot">
       <button class="btn-draft" onclick="saveContent(false)">💾 Enregistrer en brouillon</button>
@@ -771,7 +771,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     </div>
   </div>
 </div>
-
+ 
 <!-- PLAYER PAGE -->
 <div id="playerPage" class="page">
   <div class="player-topbar">
@@ -790,28 +790,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     </div>
   </div>
 </div>
-
+ 
 <script>
 // ——— CONFIG ———
 const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
 const EMO = ['🎬','🔥','🌊','🌙','🧠','💀','🚀','🩸','🎵','⚡','👁','🏔','🗡','🌑'];
-
+ 
 // ——— VARIABLES GLOBALES ———
 let USERS = [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }];
 let currentUser = null;
 let DB = [];
 let CATS = ['Action','Thriller','Drame','Comédie','Sci-fi','Horreur'];
 let nid = 1;
-
+ 
 // ——— JSONBIN (base de données cloud) ———
 const JB_KEY  = '$2a$10$/wDC/xoPtfwlRCTiiKFdI.npskPOKkLuSIvtKOkA5oEFt.hkJm9p.';
 const JB_BASE = 'https://api.jsonbin.io/v3/b';
 const JB_BIN_ID = '69c9726f856a682189dccd04';
 let _saving = false;
-
+ 
 const SESSION_KEY = 'cinemax_session';
 let heroId = null; // ID du contenu à l'affiche (null = premier publié)
-
+ 
 function setCloudStatus(msg, color) {
   let el = document.getElementById('cloudStatus');
   if (!el) {
@@ -826,7 +826,7 @@ function setCloudStatus(msg, color) {
   clearTimeout(el._t);
   el._t = setTimeout(() => { el.style.opacity = '0'; }, 3000);
 }
-
+ 
 async function saveState() {
   if (_saving) return;
   _saving = true;
@@ -845,7 +845,7 @@ async function saveState() {
   }
   _saving = false;
 }
-
+ 
 async function loadState() {
   setCloudStatus('\u23F3 Chargement…', '#5c9eff');
   try {
@@ -878,12 +878,12 @@ async function loadState() {
     setCloudStatus('\u274C Erreur chargement', '#e8192c');
   }
 }
-
+ 
 let currentType = 'Film';
 let epCount = 0;
 let pendingFiles = {};
 let fileStore = {};
-
+ 
 // ——— PAGE NAVIGATION ———
 function show(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
@@ -894,7 +894,7 @@ function show(id) {
   const hideNav = id === 'adminPage' || id === 'playerPage';
   document.getElementById('nav').style.display = hideNav ? 'none' : 'flex';
 }
-
+ 
 function goHome() {
   show('homePage');
   document.getElementById('searchInput').value = '';
@@ -905,22 +905,22 @@ function goHome() {
     else n.classList.remove('on');
   });
 }
-
+ 
 function filterNav(f, el) {
   document.querySelectorAll('.nl').forEach(n => n.classList.remove('on'));
   if(el) el.classList.add('on');
   show('homePage');
   renderHome(f);
 }
-
+ 
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('stuck', scrollY > 40);
 });
-
+ 
 // ——— AUTH ———
 function isAdmin(u) { return u && (u.role === 'admin' || u.role === 'superadmin'); }
 function isSuperAdmin(u) { return u && u.role === 'superadmin'; }
-
+ 
 function updateNavAuth() {
   const area = document.getElementById('navAuthArea');
   const favLink = document.getElementById('navFavLink');
@@ -940,7 +940,7 @@ function updateNavAuth() {
   const hcBtn = document.getElementById('heroChooseBtn');
   if (hcBtn) hcBtn.style.display = isAdmin(currentUser) ? 'block' : 'none';
 }
-
+ 
 function switchAuthTab(tab) {
   const isLogin = tab === 'login';
   document.getElementById('formLogin').style.display = isLogin ? 'block' : 'none';
@@ -952,19 +952,19 @@ function switchAuthTab(tab) {
   document.getElementById('lErr').style.display = 'none';
   document.getElementById('lSuccess').style.display = 'none';
 }
-
+ 
 function goLogin() {
   // Reset safely
   ['lu','lp','ru','rp','rp2'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
   ['lErr','lSuccess'].forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
   show('loginPage');
 }
-
+ 
 function goAdmin() {
   show('adminPage');
   renderAdmin();
 }
-
+ 
 function doLogin() {
   const u = document.getElementById('lu').value.trim();
   const p = document.getElementById('lp').value;
@@ -988,7 +988,7 @@ function doLogin() {
     document.getElementById('lp').value = '';
   }
 }
-
+ 
 function doRegister() {
   const u = document.getElementById('ru').value.trim();
   const p = document.getElementById('rp').value;
@@ -1010,14 +1010,14 @@ function doRegister() {
   document.getElementById('rp2').value = '';
   setTimeout(() => switchAuthTab('login'), 1500);
 }
-
+ 
 function doLogout() {
   currentUser = null;
   try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
   updateNavAuth();
   goHome();
 }
-
+ 
 // ——— ADMIN ACCESS MANAGEMENT ———
 function grantAdmin() {
   const u = document.getElementById('grantUser').value.trim();
@@ -1034,7 +1034,7 @@ function grantAdmin() {
   renderUsersTable();
   setTimeout(() => { err.style.display = 'none'; }, 4000);
 }
-
+ 
 function revokeAdmin(username) {
   const found = USERS.find(x => x.user === username);
   if (!found || found.role === 'superadmin') return;
@@ -1042,7 +1042,7 @@ function revokeAdmin(username) {
   saveState();
   renderUsersTable();
 }
-
+ 
 function renderUsersTable() {
   const tb = document.getElementById('usersTable');
   tb.innerHTML = '';
@@ -1062,7 +1062,7 @@ function renderUsersTable() {
     tb.appendChild(tr);
   });
 }
-
+ 
 // ——— FAVORITES ———
 function getFavs() {
   if (!currentUser) return [];
@@ -1071,16 +1071,16 @@ function getFavs() {
     return raw ? JSON.parse(raw) : [];
   } catch(e) { return []; }
 }
-
+ 
 function saveFavs(favs) {
   if (!currentUser) return;
   try { localStorage.setItem('cinemax_favs_' + currentUser.user, JSON.stringify(favs)); } catch(e) {}
 }
-
+ 
 function isFav(id) {
   return getFavs().includes(id);
 }
-
+ 
 function toggleFav(id, event) {
   if (event) event.stopPropagation();
   if (!currentUser) { goLogin(); return; }
@@ -1100,14 +1100,14 @@ function toggleFav(id, event) {
   // If on favPage, refresh it
   if (document.getElementById('favPage').classList.contains('on')) renderFavPage();
 }
-
+ 
 function goFavorites(el) {
   document.querySelectorAll('.nl').forEach(n => n.classList.remove('on'));
   if (el) el.classList.add('on');
   renderFavPage();
   show('favPage');
 }
-
+ 
 function renderFavPage() {
   const grid = document.getElementById('favGrid');
   grid.innerHTML = '';
@@ -1123,7 +1123,7 @@ function renderFavPage() {
   }
   items.forEach(v => { const c = mkCard(v); c.style.flex = 'none'; grid.appendChild(c); });
 }
-
+ 
 // ——— CARD ———
 function mkCard(v) {
   const d = document.createElement('div');
@@ -1150,18 +1150,18 @@ function mkCard(v) {
   d.onclick = () => openDetail(v);
   return d;
 }
-
+ 
 // ——— HOME ———
 function renderHome(f = 'Tout') {
   const pub = DB.filter(v => v.pub);
   const cont = document.getElementById('sections');
   cont.innerHTML = '';
-
+ 
   // Update hero - use heroId if set and valid, else first published
   const hero = (heroId !== null && heroId !== undefined)
     ? pub.find(v => v.id === heroId) || pub[0]
     : pub[0];
-
+ 
   if (hero) {
     document.getElementById('heroArt').textContent = hero.emo;
     document.getElementById('heroTitle').textContent = hero.title;
@@ -1189,14 +1189,14 @@ function renderHome(f = 'Tout') {
     const fr = document.getElementById('footerRight');
     if (fr) fr.textContent = '© 2026 CINÉMAX';
   }
-
+ 
   // Filter
   let list;
   if (f === 'Tout') list = pub;
   else if (f === 'Film') list = pub.filter(v => v.type === 'Film');
   else if (f === 'Série') list = pub.filter(v => v.type === 'Série');
   else list = pub.filter(v => v.genre === f);
-
+ 
   function sec(title, items) {
     if (!items.length) return;
     const s = document.createElement('div');
@@ -1208,7 +1208,7 @@ function renderHome(f = 'Tout') {
     s.appendChild(row);
     cont.appendChild(s);
   }
-
+ 
   if (f === 'Tout') {
     sec('Films', pub.filter(v => v.type === 'Film'));
     sec('Séries', pub.filter(v => v.type === 'Série'));
@@ -1218,7 +1218,7 @@ function renderHome(f = 'Tout') {
   } else {
     sec(`${f} — ${list.length} titre${list.length !== 1 ? 's' : ''}`, list);
   }
-
+ 
   if (!cont.children.length) {
     cont.innerHTML = `
       <div class="empty-state">
@@ -1227,11 +1227,11 @@ function renderHome(f = 'Tout') {
         <p>Connectez-vous en tant qu'admin et publiez vos premiers films ou séries.</p>
       </div>`;
   }
-
+ 
   // Rebuild category tabs
   rebuildCatRow();
 }
-
+ 
 function rebuildCatRow() {
   const row = document.getElementById('catRow');
   row.innerHTML = '<span class="cat on" onclick="filterCat(\'Tout\',this)">Tout</span>';
@@ -1243,13 +1243,13 @@ function rebuildCatRow() {
     row.appendChild(s);
   });
 }
-
+ 
 function filterCat(f, el) {
   document.querySelectorAll('.cat').forEach(c => c.classList.remove('on'));
   if (el) el.classList.add('on');
   renderHome(f);
 }
-
+ 
 // ——— SEARCH ———
 let searchTimeout;
 function doSearch(q) {
@@ -1270,7 +1270,7 @@ function doSearch(q) {
     res.forEach(v => { const c = mkCard(v); c.style.flex = 'none'; g.appendChild(c); });
   }, 200);
 }
-
+ 
 // ——— DETAIL ———
 function openDetail(v) {
   document.getElementById('dArt').textContent = v.emo;
@@ -1283,11 +1283,11 @@ function openDetail(v) {
     <span class="m-tag">${v.genre || ''}</span>
     <span class="m-tag">${v.type}</span>`;
   document.getElementById('dPlay').onclick = () => openPlayer(v, v.eps && v.eps.length ? v.eps[0] : null);
-
+ 
   const tabs = document.getElementById('dTabs');
   const panels = document.getElementById('dPanels');
   tabs.innerHTML = ''; panels.innerHTML = '';
-
+ 
   function addTab(label, html, first) {
     const tab = document.createElement('div');
     tab.className = 'd-tab' + (first ? ' on' : '');
@@ -1304,7 +1304,7 @@ function openDetail(v) {
     tabs.appendChild(tab);
     panels.appendChild(panel);
   }
-
+ 
   const isSerie = v.type === 'Série' && v.eps && v.eps.length;
   if (isSerie) {
     let h = '<div class="ep-list">';
@@ -1318,22 +1318,22 @@ function openDetail(v) {
     h += '</div>';
     addTab('Épisodes', h, true);
   }
-
+ 
   addTab('Synopsis', `<p style="color:var(--text2);line-height:1.8;font-size:.92rem;max-width:680px">${v.desc || 'Aucune description.'}</p>`, !isSerie);
   trackView(v);
   show('detailPage');
 }
-
+ 
 // ——— PLAYER PAGE ———
 let currentPlayerVideo = null;
-
+ 
 function isEmbedUrl(url) {
   if (!url) return false;
   // Detect embed/iframe URLs vs direct video files
   const directExts = /\.(mp4|webm|ogg|mkv|avi|mov|m3u8|ts)(\?.*)?$/i;
   return !directExts.test(url);
 }
-
+ 
 function openPlayer(v, ep) {
   // Priority: local file > URL
   const fileKey = (ep && ep.fileKey) ? ep.fileKey : v.fileKey;
@@ -1341,15 +1341,15 @@ function openPlayer(v, ep) {
   const url = file ? URL.createObjectURL(file) : ((ep && ep.url) ? ep.url : v.url);
   if (!url) { alert('Aucune vidéo disponible pour ce contenu.'); return; }
   const isBlob = !!file;
-
+ 
   currentPlayerVideo = v;
   trackPlay(v, ep);
-
+ 
   const title = ep ? `${v.title} — ${ep.t}` : v.title;
   document.getElementById('pTitle').textContent = title;
   document.getElementById('pMeta').innerHTML = `<span style="color:var(--gold)">★ ${v.score || '?'}</span><span>${v.year || ''}</span><span>${v.genre || ''}</span>`;
   document.getElementById('pDesc').textContent = v.desc || '';
-
+ 
   // Épisodes list for series
   const epList = document.getElementById('pEpList');
   const epItems = document.getElementById('pEpItems');
@@ -1367,16 +1367,16 @@ function openPlayer(v, ep) {
   } else {
     epList.style.display = 'none';
   }
-
+ 
   // Back button
   document.getElementById('playerBackBtn').onclick = () => {
     closePlayer();
     openDetail(v);
   };
-
+ 
   // Show page first
   show('playerPage');
-
+ 
   // Set up player based on URL type
   setTimeout(() => {
     const wrap = document.getElementById('playerVideoWrap');
@@ -1409,17 +1409,17 @@ function openPlayer(v, ep) {
     }
   }, 50);
 }
-
+ 
 function closePlayer() {
   const wrap = document.getElementById('playerVideoWrap');
   if (wrap) wrap.innerHTML = '';
 }
-
+ 
 // ——— CREATE MODAL ———
 function openCreateModal(type, editData) {
   currentType = type || 'Film';
   epCount = 0;
-
+ 
   // Reset form
   document.getElementById('editId').value = editData ? editData.id : '';
   document.getElementById('vTitle').value = editData ? editData.title : '';
@@ -1429,7 +1429,7 @@ function openCreateModal(type, editData) {
   document.getElementById('vDesc').value = editData ? editData.desc : '';
   document.getElementById('vImg').value = editData ? (editData.img || '') : '';
   document.getElementById('epsList').innerHTML = '';
-
+ 
   // Reset video inputs
   const vUrlEl = document.getElementById('vUrl');
   const vUrlSerieEl = document.getElementById('vUrlSerie');
@@ -1439,7 +1439,7 @@ function openCreateModal(type, editData) {
   clearFile('serie');
   setVideoMode('movie','file');
   setVideoMode('serie','file');
-
+ 
   // Update modal title and type display
   document.getElementById('modalTitle').textContent = editData
     ? `Modifier — ${editData.title}`
@@ -1447,38 +1447,38 @@ function openCreateModal(type, editData) {
   document.getElementById('typeDisplay').innerHTML = currentType === 'Film'
     ? '🎬 Film'
     : '📺 Série';
-
+ 
   // Show/hide sections
   document.getElementById('movieUrlSection').style.display = currentType === 'Film' ? 'block' : 'none';
   document.getElementById('serieEpsSection').style.display = currentType === 'Série' ? 'block' : 'none';
-
+ 
   // Fill genre select
   fillGenreSelect(editData ? editData.genre : '');
-
+ 
   // Restore episodes if editing
   if (editData && editData.eps) {
     editData.eps.forEach(ep => addEpisode(ep));
   }
-
+ 
   document.getElementById('createModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   document.getElementById('vTitle').focus();
 }
-
+ 
 function closeCreateModal() {
   document.getElementById('createModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-
+ 
 function closeModalOutside(e) {
   if (e.target === document.getElementById('createModal')) closeCreateModal();
 }
-
+ 
 function fillGenreSelect(selected) {
   const sel = document.getElementById('vGenre');
   sel.innerHTML = CATS.map(c => `<option${c === selected ? ' selected' : ''}>${c}</option>`).join('');
 }
-
+ 
 function addEpisode(data) {
   epCount++;
   const n = epCount;
@@ -1496,26 +1496,26 @@ function addEpisode(data) {
     <button class="ep-del" onclick="this.closest('.ep-item').remove()">✕</button>`;
   list.appendChild(d);
 }
-
+ 
 // ——— SAVE CONTENT ———
 function saveContent(publish) {
   const title = document.getElementById('vTitle').value.trim();
   if (!title) { alert('Le titre est requis.'); document.getElementById('vTitle').focus(); return; }
-
+ 
   const editId = document.getElementById('editId').value;
   const isEdit = editId !== '';
   const existingEntry = isEdit ? DB.find(x => x.id === parseInt(editId)) : null;
   const vid_id = isEdit ? parseInt(editId) : nid++;
-
+ 
   // Get video source: file takes priority over URL
   const mainFileKey = 'v-' + vid_id;
   const mainFile = currentType === 'Film' ? pendingFiles['movie'] : pendingFiles['serie'];
   if (mainFile) fileStore[mainFileKey] = mainFile;
   const hasFile = !!(fileStore[mainFileKey]);
-
+ 
   const urlEl = document.getElementById(currentType === 'Film' ? 'vUrl' : 'vUrlSerie');
   const mainUrl = urlEl ? urlEl.value.trim() : '';
-
+ 
   // Episodes
   let eps = [];
   if (currentType === 'Série') {
@@ -1534,7 +1534,7 @@ function saveContent(publish) {
       });
     });
   }
-
+ 
   const v = {
     id: vid_id,
     type: currentType,
@@ -1552,14 +1552,14 @@ function saveContent(publish) {
     bg: BG[Math.floor(Math.random() * BG.length)],
     emo: EMO[Math.floor(Math.random() * EMO.length)],
   };
-
+ 
   if (isEdit) {
     const idx = DB.findIndex(x => x.id === v.id);
     if (idx >= 0) { v.bg = DB[idx].bg; v.emo = DB[idx].emo; DB[idx] = v; }
   } else {
     DB.unshift(v);
   }
-
+ 
   closeCreateModal();
   saveState();
   renderAdmin();
@@ -1567,13 +1567,13 @@ function saveContent(publish) {
     ? `✅ "${v.title}" publié sur le site !`
     : `💾 "${v.title}" enregistré en brouillon.`);
 }
-
+ 
 // ——— FILE HANDLING ———
 function formatSize(bytes) {
   if (bytes < 1024*1024) return (bytes/1024).toFixed(0)+' Ko';
   return (bytes/(1024*1024)).toFixed(1)+' Mo';
 }
-
+ 
 function setVideoMode(key, mode) {
   const isFile = mode === 'file';
   const fileZone = document.getElementById(key+'FileZone');
@@ -1585,7 +1585,7 @@ function setVideoMode(key, mode) {
   if(btnFile)  { btnFile.classList.toggle('mode-btn-on', isFile); }
   if(btnUrl)   { btnUrl.classList.toggle('mode-btn-on', !isFile); }
 }
-
+ 
 function handleFileSelect(input, key) {
   const file = input.files[0];
   if (!file) return;
@@ -1599,7 +1599,7 @@ function handleFileSelect(input, key) {
   if(infoEl) infoEl.style.display = 'flex';
   if(dropEl) dropEl.style.display = 'none';
 }
-
+ 
 function handleFileDrop(event, key) {
   event.preventDefault();
   const dropEl = document.getElementById(key+'FileDrop');
@@ -1608,7 +1608,7 @@ function handleFileDrop(event, key) {
   if(!file) return;
   handleFileSelect({files:[file]}, key);
 }
-
+ 
 function clearFile(key) {
   delete pendingFiles[key];
   const infoEl = document.getElementById(key+'FileInfo');
@@ -1618,7 +1618,7 @@ function clearFile(key) {
   if(dropEl) dropEl.style.display = 'block';
   if(input)  input.value = '';
 }
-
+ 
 function handleEpFileSelect(input, n) {
   const file = input.files[0];
   if(!file) return;
@@ -1632,7 +1632,7 @@ function handleEpFileSelect(input, n) {
   if(nameEl) nameEl.textContent = file.name;
   if(sizeEl) sizeEl.textContent = formatSize(file.size);
 }
-
+ 
 function handleEpFileDrop(event, n) {
   event.preventDefault();
   const drop = document.getElementById('epDrop'+n);
@@ -1641,7 +1641,7 @@ function handleEpFileDrop(event, n) {
   if(!file) return;
   handleEpFileSelect({files:[file]}, n);
 }
-
+ 
 // ——— ADMIN RENDER ———
 function renderAdmin() {
   fillGenreSelect();
@@ -1654,7 +1654,7 @@ function renderAdmin() {
   // L'onglet Accès Admin n'est visible que pour le super-admin
   document.getElementById('tabAccess').style.display = isSuperAdmin(currentUser) ? 'inline-block' : 'none';
 }
-
+ 
 function renderDash() {
   const pub = DB.filter(v => v.pub);
   document.getElementById('dc-total').textContent = pub.length;
@@ -1674,7 +1674,7 @@ function renderDash() {
     list.appendChild(tr);
   });
 }
-
+ 
 function renderVidTable() {
   const tb = document.getElementById('vTable');
   tb.innerHTML = '';
@@ -1699,12 +1699,12 @@ function renderVidTable() {
     tb.appendChild(tr);
   });
 }
-
+ 
 function togglePub(id) {
   const v = DB.find(x => x.id === id);
   if (v) { v.pub = !v.pub; saveState(); renderAdmin(); renderHome(); }
 }
-
+ 
 function delVid(id) {
   if (!confirm('Supprimer définitivement ce contenu ?')) return;
   DB = DB.filter(v => v.id !== id);
@@ -1712,7 +1712,7 @@ function delVid(id) {
   renderAdmin();
   renderHome();
 }
-
+ 
 function renderCatTable() {
   const tb = document.getElementById('cTable');
   tb.innerHTML = '';
@@ -1726,7 +1726,7 @@ function renderCatTable() {
     tb.appendChild(tr);
   });
 }
-
+ 
 function addCat() {
   const n = document.getElementById('nCat').value.trim();
   if (!n || CATS.includes(n)) { alert('Nom invalide ou déjà existant.'); return; }
@@ -1737,7 +1737,7 @@ function addCat() {
   renderCatTable();
   rebuildCatRow();
 }
-
+ 
 function delCat(i) {
   if (!confirm('Supprimer cette catégorie ?')) return;
   CATS.splice(i, 1);
@@ -1746,7 +1746,7 @@ function delCat(i) {
   renderCatTable();
   rebuildCatRow();
 }
-
+ 
 // ——— ADMIN TABS ———
 function aTab(n, btn) {
   document.querySelectorAll('.apanel').forEach(p => p.classList.remove('on'));
@@ -1754,7 +1754,7 @@ function aTab(n, btn) {
   document.getElementById('ap-' + n).classList.add('on');
   btn.classList.add('on');
 }
-
+ 
 // ——— NOTICE ———
 function showNotice(id, msg) {
   const el = document.getElementById(id);
@@ -1763,17 +1763,17 @@ function showNotice(id, msg) {
   el.style.display = 'block';
   setTimeout(() => el.style.display = 'none', 5000);
 }
-
+ 
 // ——— STATS ENGINE ———
 const STATS_KEY = 'cinemax_stats';
-
+ 
 function getStats() {
   try {
     const raw = localStorage.getItem(STATS_KEY);
     return raw ? JSON.parse(raw) : initStatsObj();
   } catch(e) { return initStatsObj(); }
 }
-
+ 
 function initStatsObj() {
   return {
     pageVisits: 0,
@@ -1785,18 +1785,18 @@ function initStatsObj() {
     activity: []    // [{ msg, ts }] (max 30)
   };
 }
-
+ 
 function saveStats(s) {
   try { localStorage.setItem(STATS_KEY, JSON.stringify(s)); } catch(e) {}
 }
-
+ 
 function trackVisit() {
   const s = getStats();
   s.pageVisits = (s.pageVisits || 0) + 1;
   pushActivity(s, '🏠 Visite du site');
   saveStats(s);
 }
-
+ 
 function trackView(v) {
   const s = getStats();
   const key = String(v.id);
@@ -1804,7 +1804,7 @@ function trackView(v) {
   pushActivity(s, `👁 Vue : ${v.title}`);
   saveStats(s);
 }
-
+ 
 function trackPlay(v, ep) {
   const s = getStats();
   const key = String(v.id);
@@ -1812,7 +1812,7 @@ function trackPlay(v, ep) {
   pushActivity(s, `▶ Lecture : ${v.title}${ep ? ' — ' + ep.t : ''}`);
   saveStats(s);
 }
-
+ 
 function trackSearch(q) {
   if (!q || q.trim().length < 2) return;
   const s = getStats();
@@ -1821,43 +1821,43 @@ function trackSearch(q) {
   if (s.searches.length > 20) s.searches = s.searches.slice(0, 20);
   saveStats(s);
 }
-
+ 
 function trackLogin(user) {
   const s = getStats();
   s.logins = (s.logins || 0) + 1;
   pushActivity(s, `🔑 Connexion : ${user}`);
   saveStats(s);
 }
-
+ 
 function trackRegister(user) {
   const s = getStats();
   s.registers = (s.registers || 0) + 1;
   pushActivity(s, `✨ Inscription : ${user}`);
   saveStats(s);
 }
-
+ 
 function pushActivity(s, msg) {
   if (!s.activity) s.activity = [];
   s.activity.unshift({ msg, ts: Date.now() });
   if (s.activity.length > 30) s.activity = s.activity.slice(0, 30);
 }
-
+ 
 function resetStats() {
   if (!confirm('Réinitialiser toutes les statistiques ?')) return;
   localStorage.removeItem(STATS_KEY);
   renderStats();
 }
-
+ 
 function fmtTime(ts) {
   const d = new Date(ts);
   return d.toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit' }) + ' ' +
          d.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
 }
-
+ 
 function renderStats() {
   const s = getStats();
   const pub = DB.filter(v => v.pub);
-
+ 
   // --- Global counters ---
   const totalViews = Object.values(s.views || {}).reduce((a,b) => a+b, 0);
   const totalPlays = Object.values(s.plays || {}).reduce((a,b) => a+b, 0);
@@ -1876,7 +1876,7 @@ function renderStats() {
       <div class="stat-lbl">${c.lbl}</div>
     </div>`
   ).join('');
-
+ 
   // --- Top views ---
   function topList(dict, containerId) {
     const entries = Object.entries(dict || {})
@@ -1897,7 +1897,7 @@ function renderStats() {
   }
   topList(s.views, 'statsTopViews');
   topList(s.plays, 'statsTopPlays');
-
+ 
   // --- Searches ---
   const searchEl = document.getElementById('statsSearches');
   const searches = (s.searches || []).slice(0, 10);
@@ -1912,7 +1912,7 @@ function renderStats() {
       `<li class="top-item"><span style="font-size:.9rem">🔍</span><div class="top-name">${q}</div><div class="top-count">${cnt}×</div></li>`
     ).join('')}</ul>`;
   }
-
+ 
   // --- Activity ---
   const actEl = document.getElementById('statsActivity');
   const acts = (s.activity || []).slice(0, 10);
@@ -1923,7 +1923,7 @@ function renderStats() {
       `<div class="recent-item"><span>${a.msg}</span><span class="recent-time">${fmtTime(a.ts)}</span></div>`
     ).join('')}</div>`;
   }
-
+ 
   // --- Genre bars ---
   const genreEl = document.getElementById('statsGenreBar');
   const genreViews = {};
@@ -1945,7 +1945,7 @@ function renderStats() {
     ).join('');
   }
 }
-
+ 
 // ——— HERO PICKER ———
 function openHeroPicker() {
   const pub = DB.filter(v => v.pub);
@@ -1970,11 +1970,11 @@ function openHeroPicker() {
   }
   document.getElementById('heroPicker').classList.add('open');
 }
-
+ 
 function closeHeroPicker() {
   document.getElementById('heroPicker').classList.remove('open');
 }
-
+ 
 function setHero(id) {
   heroId = id;
   closeHeroPicker();
@@ -1982,7 +1982,7 @@ function setHero(id) {
   renderHome();
   setCloudStatus('⭐ Affiche mise à jour', '#f5c518');
 }
-
+ 
 // ——— INIT ———
 (async () => {
   await loadState();
@@ -1993,3 +1993,4 @@ function setHero(id) {
 </script>
 </body>
 </html>
+ 
