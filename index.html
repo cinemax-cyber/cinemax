@@ -354,7 +354,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .sm-field textarea{resize:vertical;min-height:90px}
 .sm-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem}
 
-/* FAVORITES */
+/* FLOATING SUGGEST BUTTON */
+#floatSugBtn{position:fixed;bottom:28px;right:28px;z-index:400;display:none;align-items:center;gap:.55rem;background:linear-gradient(135deg,#3a7bd5,#5c9eff);color:#fff;border:none;border-radius:99px;padding:13px 22px;font-size:.85rem;font-weight:700;font-family:var(--sans);cursor:pointer;box-shadow:0 8px 32px rgba(92,158,255,.35);transition:all .25s;letter-spacing:.3px}
+#floatSugBtn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 40px rgba(92,158,255,.45)}
+#floatSugBtn:active{transform:scale(.97)}
 .fav-btn{position:absolute;bottom:9px;right:9px;z-index:4;width:28px;height:28px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.2);border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff}
 .fav-btn:hover{background:rgba(232,25,44,.5);border-color:var(--red)}
 .fav-btn.active{background:rgba(232,25,44,.85);border-color:var(--red)}
@@ -389,7 +392,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="nl" onclick="filterNav('Film',this)">Films</div>
     <div class="nl" onclick="filterNav('Série',this)">Séries</div>
     <div class="nl" id="navFavLink" style="display:none" onclick="goFavorites(this)">❤️ Favoris</div>
-    <div class="nl" id="navSugLink" style="display:none" onclick="openSuggestModal()">💡 Suggérer</div>
   </div>
   <div class="nav-r">
     <div class="sw">
@@ -840,6 +842,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
 </div>
 
+<!-- FLOATING SUGGEST BUTTON -->
+<button id="floatSugBtn" onclick="openSuggestModal()">💡 Suggérer un contenu</button>
+
 <!-- SUGGEST MODAL -->
 <div id="suggestModal" onclick="if(event.target===this)closeSuggestModal()">
   <div class="sm-box">
@@ -973,6 +978,13 @@ function show(id) {
   window.scrollTo(0, 0);
   const hideNav = id === 'adminPage' || id === 'playerPage';
   document.getElementById('nav').style.display = hideNav ? 'none' : 'flex';
+  // Cache le bouton flottant sur admin/player/login
+  const floatBtn = document.getElementById('floatSugBtn');
+  if (floatBtn) {
+    const hiddenPages = ['adminPage', 'playerPage', 'loginPage'];
+    const shouldHide = hiddenPages.includes(id) || !currentUser || isAdmin(currentUser);
+    floatBtn.style.display = shouldHide ? 'none' : 'flex';
+  }
 }
 
 function goHome() {
@@ -1004,11 +1016,11 @@ function isSuperAdmin(u) { return u && u.role === 'superadmin'; }
 function updateNavAuth() {
   const area = document.getElementById('navAuthArea');
   const favLink = document.getElementById('navFavLink');
-  const sugLink = document.getElementById('navSugLink');
+  const floatBtn = document.getElementById('floatSugBtn');
   if (!currentUser) {
     area.innerHTML = `<button class="btn btn-ghost" onclick="goLogin()">Connexion</button>`;
     if (favLink) favLink.style.display = 'none';
-    if (sugLink) sugLink.style.display = 'none';
+    if (floatBtn) floatBtn.style.display = 'none';
   } else {
     const adminBtn = isAdmin(currentUser)
       ? `<button class="btn btn-red" onclick="goAdmin()" style="font-size:.75rem">⚙ Admin</button>` : '';
@@ -1017,8 +1029,8 @@ function updateNavAuth() {
       ${adminBtn}
       <button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
     if (favLink) favLink.style.display = 'block';
-    // Suggérer uniquement pour les non-admins
-    if (sugLink) sugLink.style.display = isAdmin(currentUser) ? 'none' : 'block';
+    // Bouton flottant seulement pour non-admins
+    if (floatBtn) floatBtn.style.display = isAdmin(currentUser) ? 'none' : 'flex';
   }
   // Show/hide admin hero button
   const hcBtn = document.getElementById('heroChooseBtn');
