@@ -878,7 +878,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 <script>
 // ——— CONFIG ———
 const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
-const EMO = ['🎬','🔥','🌊','🌙','🧠','💀','🚀','🩸','🎵','⚡','👁','🏔','🗡','🌑'];
+const EMO = ['🎬','🔥','🌊','🌙','🧠','🚀','🎵','⚡','👁','🏔','🎭','🌟','🎪','🎨'];
 
 // ——— VARIABLES GLOBALES ———
 let USERS = [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }];
@@ -1227,6 +1227,11 @@ function renderFavPage() {
 }
 
 // ——— CARD ———
+function safeEmo(e) {
+  const bad = ['💀','🩸','🗡','🌑'];
+  return bad.includes(e) ? '🎬' : (e || '🎬');
+}
+
 function mkCard(v) {
   const d = document.createElement('div');
   d.className = 'card';
@@ -1240,7 +1245,7 @@ function mkCard(v) {
     ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>`
     : '';
   d.innerHTML = `
-    <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${v.emo}</span></div>
+    <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${safeEmo(v.emo)}</span></div>
     ${tagHtml}
     <div class="c-score">★ ${v.score || '?'}</div>
     ${favHtml}
@@ -1265,7 +1270,10 @@ function renderHome(f = 'Tout') {
     : pub[0];
 
   if (hero) {
-    document.getElementById('heroArt').textContent = hero.emo;
+    // Remplacer emojis indésirables stockés en DB
+    const badEmos = ['💀','🩸','🗡','🌑'];
+    const safeEmo = badEmos.includes(hero.emo) ? '🎬' : hero.emo;
+    document.getElementById('heroArt').textContent = safeEmo;
     document.getElementById('heroTitle').textContent = hero.title;
     document.getElementById('heroDesc').textContent = hero.desc || 'Aucune description disponible.';
     document.getElementById('heroBadge').textContent = 'À LA UNE';
@@ -1400,7 +1408,7 @@ function detailSetHero() {
 
 function openDetail(v) {
   _detailCurrentId = v.id;
-  document.getElementById('dArt').textContent = v.emo;
+  document.getElementById('dArt').textContent = safeEmo(v.emo);
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
   document.getElementById('dMeta').innerHTML = `
