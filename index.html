@@ -13,7 +13,7 @@
   --text:#f0f0f8;--text2:#8888a8;--text3:#44445a;
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
   --sans:'DM Sans',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;
-  --hero-h: 100vh;
+  --hero-h: 58vh;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden}
@@ -41,17 +41,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#c4070f}
 
 /* ====== HERO CAROUSEL ====== */
-/* Hero wrapper — height driven by CSS variable */
 .hero-section-wrap{position:relative}
 
 .hero-carousel{
   position:relative;
   height:var(--hero-h);
-  min-height:480px;
+  min-height:380px;
   overflow:hidden;
 }
 
-.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:flex-end;padding:0 2.5rem 6rem}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:flex-end;padding:0 2.5rem 4rem}
 .hero-slide.active{opacity:1;z-index:1}
 .hero-slide.prev{opacity:0;z-index:0}
 
@@ -66,7 +65,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .h-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(232,25,44,.4);color:rgba(232,25,44,.9);font-size:.68rem;padding:5px 14px;border-radius:99px;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.25rem;font-weight:600}
 .h-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.h-title{font-family:var(--serif);font-size:3.8rem;line-height:1.05;margin-bottom:.9rem;font-style:italic;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+.h-title{font-family:var(--serif);font-size:3.2rem;line-height:1.05;margin-bottom:.9rem;font-style:italic;text-shadow:0 2px 20px rgba(0,0,0,.8)}
 .h-meta{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;font-size:.8rem;color:var(--text2)}
 .m-star{color:var(--gold);font-weight:700}
 .m-tag{background:rgba(255,255,255,.09);padding:2px 9px;border-radius:3px;font-size:.68rem;text-transform:uppercase;letter-spacing:.8px}
@@ -77,7 +76,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .info-btn{padding:13px 26px;background:rgba(100,100,110,.5);color:#fff;border:none;border-radius:5px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:var(--sans);transition:background .15s}
 .info-btn:hover{background:rgba(100,100,110,.3)}
 
-/* Carousel controls — positioned absolutely within .hero-carousel, z-index above slides */
+/* Carousel controls */
 .carousel-nav{
   position:absolute;
   bottom:1.5rem;
@@ -109,25 +108,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 #carouselPrev{left:1.5rem}
 #carouselNext{right:1.5rem}
 
-/* Thumbnail strip — inside hero, above content, bottom-left */
-.hero-thumbs{
-  position:absolute;
-  bottom:1.5rem;
-  left:2.5rem;
-  z-index:20;
-  display:flex;
-  gap:.6rem;
-}
-.h-thumb{width:56px;height:80px;border-radius:5px;border:2px solid transparent;cursor:pointer;overflow:hidden;transition:all .25s;flex-shrink:0;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
-.h-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.h-thumb.active{border-color:var(--red);transform:scale(1.08)}
-.h-thumb:hover:not(.active){border-color:rgba(255,255,255,.4)}
+/* Thumbnails CACHÉES */
+.hero-thumbs{ display: none !important; }
+.h-thumb{ display: none !important; }
 
-/* Hero size controls bar — below the carousel, above catalog */
+/* Hero size controls bar */
 .hero-size-bar{
   background:rgba(14,14,28,.96);
   border-bottom:1px solid var(--border);
-  display:none; /* shown only when admin logged in */
+  display:none;
   align-items:center;
   gap:.75rem;
   padding:.55rem 2.5rem;
@@ -167,12 +156,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .hero-choose-btn:hover{background:rgba(245,197,24,.2)}
 
 /* ====== CATALOG ====== */
-/* NO negative margin — hero ends cleanly, catalog starts after */
 .catalog{
   padding:1.5rem 2.5rem 3rem;
   position:relative;
   z-index:10;
-  /* smooth connection from hero */
   background:linear-gradient(to bottom, rgba(7,7,15,0) 0%, var(--bg) 60px);
   margin-top:0;
 }
@@ -506,33 +493,31 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 <!-- HOME -->
 <div id="homePage" class="page on">
 
-  <!-- HERO SECTION WRAPPER -->
   <div id="heroSection" class="hero-section-wrap">
-    <!-- Hero Carousel — full height, self-contained -->
     <div class="hero-carousel" id="heroCarousel">
-      <!-- slides injected by JS -->
+      <!-- slides injectées par JS -->
       <button class="carousel-arrow" id="carouselPrev" onclick="carouselMove(-1)">‹</button>
       <button class="carousel-arrow" id="carouselNext" onclick="carouselMove(1)">›</button>
-      <div class="hero-thumbs" id="heroThumbs"></div>
+      <!-- PAS de hero-thumbs ici -->
       <div class="carousel-nav" id="carouselDots"></div>
     </div>
 
-    <!-- Admin control bar — sits below hero, above catalog, visible only to admins -->
+    <!-- Barre de taille admin -->
     <div class="hero-size-bar" id="heroSizeBar">
       <span class="hsize-label">📐 Taille de l'affiche :</span>
-      <button class="hsize-btn" id="hsize-compact" onclick="setHeroSize('compact',this)" title="50vh">
+      <button class="hsize-btn" id="hsize-compact" onclick="setHeroSize('compact',this)" title="52vh">
         <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect y="2" width="14" height="6" rx="1"/></svg>
         Compact
       </button>
-      <button class="hsize-btn on" id="hsize-normal" onclick="setHeroSize('normal',this)" title="100vh">
+      <button class="hsize-btn on" id="hsize-normal" onclick="setHeroSize('normal',this)" title="58vh">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect width="14" height="14" rx="1"/></svg>
         Normal
       </button>
-      <button class="hsize-btn" id="hsize-tall" onclick="setHeroSize('tall',this)" title="110vh">
+      <button class="hsize-btn" id="hsize-tall" onclick="setHeroSize('tall',this)" title="70vh">
         <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor"><rect width="10" height="14" rx="1"/></svg>
         Grand
       </button>
-      <button class="hsize-btn" id="hsize-cinema" onclick="setHeroSize('cinema',this)" title="130vh">
+      <button class="hsize-btn" id="hsize-cinema" onclick="setHeroSize('cinema',this)" title="85vh">
         <svg width="8" height="14" viewBox="0 0 8 14" fill="currentColor"><rect width="8" height="14" rx="1"/></svg>
         Cinéma
       </button>
@@ -661,7 +646,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </nav>
 
   <div class="abody">
-    <!-- DASHBOARD -->
     <div class="apanel on" id="ap-db">
       <div class="ph"><h2 class="ptitle">Tableau de bord</h2></div>
       <div class="sg">
@@ -676,7 +660,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
     </div>
 
-    <!-- VIDEOS -->
     <div class="apanel" id="ap-vids">
       <div class="ph">
         <h2 class="ptitle">Gestion des vidéos</h2>
@@ -692,7 +675,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
     </div>
 
-    <!-- CATEGORIES -->
     <div class="apanel" id="ap-cats">
       <div class="ph"><h2 class="ptitle">Catégories</h2></div>
       <div class="at" style="margin-bottom:1.5rem">
@@ -710,7 +692,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
     </div>
 
-    <!-- STATS -->
     <div class="apanel" id="ap-stats">
       <div class="ph">
         <h2 class="ptitle">Statistiques du site</h2>
@@ -731,7 +712,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
     </div>
 
-    <!-- SUGGESTIONS -->
     <div class="apanel" id="ap-suggestions">
       <div class="ph">
         <h2 class="ptitle">💡 Suggestions des utilisateurs</h2>
@@ -747,7 +727,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <div class="sug-grid" id="sugGrid"></div>
     </div>
 
-    <!-- ACCESS -->
     <div class="apanel" id="ap-access">
       <div class="ph"><h2 class="ptitle">Gestion des accès admin</h2></div>
       <div class="notice" id="accessNotice"></div>
@@ -918,12 +897,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
 const EMO = ['🎬','🔥','🌊','🌙','🧠','🚀','🎵','⚡','👁','🏔','🎭','🌟','🎪','🎨'];
 
-// Hero size presets
+// Hero size presets — tailles compactes comme demandé
 const HERO_SIZES = {
-  compact: { h: '52vh',  minH: '380px', label: 'Compact'  },
-  normal:  { h: '100vh', minH: '480px', label: 'Normal'   },
-  tall:    { h: '110vh', minH: '600px', label: 'Grand'    },
-  cinema:  { h: '130vh', minH: '700px', label: 'Cinéma'   },
+  compact: { h: '42vh',  minH: '300px', label: 'Compact'  },
+  normal:  { h: '58vh',  minH: '380px', label: 'Normal'   },
+  tall:    { h: '70vh',  minH: '480px', label: 'Grand'    },
+  cinema:  { h: '85vh',  minH: '560px', label: 'Cinéma'   },
 };
 let currentHeroSize = 'normal';
 
@@ -935,13 +914,11 @@ function applyHeroSize(key) {
   const carousel = document.getElementById('heroCarousel');
   if (carousel) carousel.style.minHeight = s.minH;
   currentHeroSize = key;
-  // Persist
   try { localStorage.setItem(HERO_SIZE_STORAGE, key); } catch(e) {}
 }
 
 function setHeroSize(key, btn) {
   applyHeroSize(key);
-  // Update button states
   document.querySelectorAll('.hsize-btn').forEach(b => b.classList.remove('on'));
   if (btn) btn.classList.add('on');
   else {
@@ -1109,7 +1086,6 @@ function updateNavAuth() {
     const sugLink = document.getElementById('navSugLink');
     if (sugLink) sugLink.style.display = isAdmin(currentUser) ? 'none' : 'block';
     if (floatBtn) floatBtn.style.display = isAdmin(currentUser) ? 'none' : 'flex';
-    // Show size bar for admins
     if (sizeBar) sizeBar.classList.toggle('visible', isAdmin(currentUser));
   }
 }
@@ -1311,16 +1287,14 @@ function mkTop10Card(v, rank) {
   return d;
 }
 
-// ——— HERO CAROUSEL ———
+// ——— HERO CAROUSEL (sans thumbnails) ———
 function buildCarousel() {
   const pub = DB.filter(v => v.pub);
-  const slides = document.getElementById('heroCarousel');
-  const dotsEl = document.getElementById('carouselDots');
-  const thumbsEl = document.getElementById('heroThumbs');
+  const carousel = document.getElementById('heroCarousel');
 
-  slides.querySelectorAll('.hero-slide').forEach(s => s.remove());
-  dotsEl.innerHTML = '';
-  thumbsEl.innerHTML = '';
+  // Supprimer les anciennes slides
+  carousel.querySelectorAll('.hero-slide').forEach(s => s.remove());
+  document.getElementById('carouselDots').innerHTML = '';
 
   let featured = heroIds.length
     ? heroIds.map(id => pub.find(v => v.id === id)).filter(Boolean)
@@ -1340,7 +1314,7 @@ function buildCarousel() {
         <p class="h-desc">Connectez-vous en tant qu'admin pour ajouter vos premiers films et séries.</p>
         <div class="h-btns"></div>
       </div>`;
-    slides.insertBefore(slide, document.getElementById('carouselPrev'));
+    carousel.insertBefore(slide, document.getElementById('carouselPrev'));
     document.getElementById('carouselPrev').style.display = 'none';
     document.getElementById('carouselNext').style.display = 'none';
     return;
@@ -1369,28 +1343,18 @@ function buildCarousel() {
           <span class="m-tag">${v.genre || ''}</span>
           <span class="m-tag">${v.type}</span>
         </div>
-        <p class="h-desc">${(v.desc || '').substring(0, 180)}${(v.desc || '').length > 180 ? '…' : ''}</p>
+        <p class="h-desc">${(v.desc || '').substring(0, 160)}${(v.desc || '').length > 160 ? '…' : ''}</p>
         <div class="h-btns">
           <button class="play-btn" onclick="event.stopPropagation();openPlayer(DB.find(x=>x.id===${v.id}),null)">▶ Lire</button>
           <button class="info-btn" onclick="event.stopPropagation();openDetail(DB.find(x=>x.id===${v.id}))">ℹ Plus d'infos</button>
         </div>
       </div>`;
-    slides.insertBefore(slide, document.getElementById('carouselPrev'));
+    carousel.insertBefore(slide, document.getElementById('carouselPrev'));
 
     const dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
     dot.onclick = () => carouselGo(i);
-    dotsEl.appendChild(dot);
-
-    const thumb = document.createElement('div');
-    thumb.className = 'h-thumb' + (i === 0 ? ' active' : '');
-    thumb.onclick = () => carouselGo(i);
-    if (v.img) {
-      thumb.innerHTML = `<img src="${v.img}" alt="${v.title}" onerror="this.parentElement.textContent='${safeEmo(v.emo)}'">`;
-    } else {
-      thumb.textContent = safeEmo(v.emo);
-    }
-    thumbsEl.appendChild(thumb);
+    document.getElementById('carouselDots').appendChild(dot);
   });
 
   carouselIndex = 0;
@@ -1400,18 +1364,15 @@ function buildCarousel() {
 function carouselGo(idx) {
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.carousel-dot');
-  const thumbs = document.querySelectorAll('.h-thumb');
   if (!slides.length) return;
 
   slides[carouselIndex].classList.remove('active');
   if (dots[carouselIndex]) dots[carouselIndex].classList.remove('active');
-  if (thumbs[carouselIndex]) thumbs[carouselIndex].classList.remove('active');
 
   carouselIndex = ((idx % slides.length) + slides.length) % slides.length;
 
   slides[carouselIndex].classList.add('active');
   if (dots[carouselIndex]) dots[carouselIndex].classList.add('active');
-  if (thumbs[carouselIndex]) thumbs[carouselIndex].classList.add('active');
 }
 
 function carouselMove(dir) {
@@ -2163,15 +2124,17 @@ function closeHeroPicker() { document.getElementById('heroPicker').classList.rem
 
 // ——— INIT ———
 (async () => {
-  // Restore hero size preference
+  // Restaurer la taille hero sauvegardée
   try {
     const savedSize = localStorage.getItem(HERO_SIZE_STORAGE);
     if (savedSize && HERO_SIZES[savedSize]) {
       applyHeroSize(savedSize);
-      // Sync button states
       document.querySelectorAll('.hsize-btn').forEach(b => b.classList.remove('on'));
       const btn = document.getElementById('hsize-' + savedSize);
       if (btn) btn.classList.add('on');
+    } else {
+      // Par défaut : Normal (58vh)
+      applyHeroSize('normal');
     }
   } catch(e) {}
 
