@@ -76,7 +76,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .info-btn{padding:13px 26px;background:rgba(100,100,110,.5);color:#fff;border:none;border-radius:5px;font-weight:600;font-size:.95rem;cursor:pointer;font-family:var(--sans);transition:background .15s}
 .info-btn:hover{background:rgba(100,100,110,.3)}
 
-/* Carousel controls */
+/* Carousel dots */
 .carousel-nav{
   position:absolute;
   bottom:1.5rem;
@@ -89,7 +89,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0}
 .carousel-dot.active{background:#fff;width:24px;border-radius:4px}
 
-/* ===== CAROUSEL ARROWS — style bouton rond ===== */
+/* Hero carousel arrows */
 .carousel-arrow{
   position:absolute;
   top:50%;
@@ -110,10 +110,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .carousel-arrow:hover{background:rgba(40,40,60,.9);transform:translateY(-50%) scale(1.07)}
 #carouselPrev{left:1.5rem}
 #carouselNext{right:1.5rem}
-
-/* Thumbnails — COMPLÈTEMENT SUPPRIMÉES */
-.hero-thumbs{ display:none!important; visibility:hidden!important; }
-.h-thumb{ display:none!important; visibility:hidden!important; }
 
 /* Hero size controls bar */
 .hero-size-bar{
@@ -170,15 +166,47 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .cat{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:6px 18px;border-radius:99px;font-size:.75rem;cursor:pointer;transition:all .15s;font-weight:500}
 .cat:hover{border-color:var(--border2);color:var(--text)}
 .cat.on{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ====== SECTION avec flèches ====== */
 .sec{margin-bottom:2.5rem}
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
 .sec-title{font-family:var(--serif);font-size:1.35rem;font-style:italic}
-.row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory}
-.row::-webkit-scrollbar{height:3px}
+
+/* Conteneur row avec flèches */
+.row-wrap{position:relative}
+.row-wrap:hover .row-arrow{opacity:1}
+.row-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:10;
+  width:46px;height:46px;
+  background:rgba(14,14,28,.92);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+  color:#fff;
+  font-size:1.3rem;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+  backdrop-filter:blur(10px);
+  box-shadow:0 4px 20px rgba(0,0,0,.6);
+  opacity:0;
+}
+.row-arrow:hover{background:rgba(232,25,44,.85);border-color:var(--red);transform:translateY(-50%) scale(1.1)}
+.row-arrow.left{left:-16px}
+.row-arrow.right{right:-16px}
+.row-arrow.hidden{display:none!important}
+
+.row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
 
 /* ====== TOP 10 ====== */
-.top10-row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory}
-.top10-row::-webkit-scrollbar{height:3px}
+.top10-row-wrap{position:relative}
+.top10-row-wrap:hover .row-arrow{opacity:1}
+.top10-row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem;scroll-snap-type:x mandatory;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none}
+.top10-row::-webkit-scrollbar{display:none}
+
 .top10-card{flex:0 0 220px;position:relative;cursor:pointer;scroll-snap-align:start;transition:transform .25s}
 .top10-card:hover{transform:translateY(-5px)}
 .top10-num{position:absolute;bottom:-10px;left:-8px;font-family:var(--serif);font-size:7rem;font-weight:700;font-style:italic;line-height:1;color:var(--bg);-webkit-text-stroke:2px rgba(255,255,255,.18);z-index:3;user-select:none;transition:all .25s}
@@ -463,13 +491,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .hp-check{color:var(--gold);font-size:1rem;flex-shrink:0}
 
 #favPage{min-height:100vh}
-.tc-btn{flex:1;padding:1.5rem 1rem;background:var(--bg3);border:2px solid var(--border);border-radius:10px;cursor:pointer;text-align:center;transition:all .2s;font-family:var(--sans)}
-.tc-btn:hover{border-color:var(--border2)}
-.tc-btn.on{border-color:var(--red);background:rgba(232,25,44,.05)}
-.tc-icon{font-size:2rem;margin-bottom:.5rem}
-.tc-label{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
-.tc-sub{font-size:.72rem;color:var(--text3)}
-
 .tabAccess-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;width:100%;margin-bottom:1.5rem}
 </style>
 </head>
@@ -498,30 +519,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
   <div id="heroSection" class="hero-section-wrap">
     <div class="hero-carousel" id="heroCarousel">
-      <!-- slides injectées par JS -->
       <button class="carousel-arrow" id="carouselPrev" onclick="carouselMove(-1)">‹</button>
       <button class="carousel-arrow" id="carouselNext" onclick="carouselMove(1)">›</button>
       <div class="carousel-nav" id="carouselDots"></div>
     </div>
 
-    <!-- Barre de taille admin -->
     <div class="hero-size-bar" id="heroSizeBar">
       <span class="hsize-label">📐 Taille de l'affiche :</span>
-      <button class="hsize-btn" id="hsize-compact" onclick="setHeroSize('compact',this)" title="42vh">
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect y="2" width="14" height="6" rx="1"/></svg>
-        Compact
+      <button class="hsize-btn" id="hsize-compact" onclick="setHeroSize('compact',this)">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><rect y="2" width="14" height="6" rx="1"/></svg>Compact
       </button>
-      <button class="hsize-btn on" id="hsize-normal" onclick="setHeroSize('normal',this)" title="58vh">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect width="14" height="14" rx="1"/></svg>
-        Normal
+      <button class="hsize-btn on" id="hsize-normal" onclick="setHeroSize('normal',this)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect width="14" height="14" rx="1"/></svg>Normal
       </button>
-      <button class="hsize-btn" id="hsize-tall" onclick="setHeroSize('tall',this)" title="70vh">
-        <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor"><rect width="10" height="14" rx="1"/></svg>
-        Grand
+      <button class="hsize-btn" id="hsize-tall" onclick="setHeroSize('tall',this)">
+        <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor"><rect width="10" height="14" rx="1"/></svg>Grand
       </button>
-      <button class="hsize-btn" id="hsize-cinema" onclick="setHeroSize('cinema',this)" title="85vh">
-        <svg width="8" height="14" viewBox="0 0 8 14" fill="currentColor"><rect width="8" height="14" rx="1"/></svg>
-        Cinéma
+      <button class="hsize-btn" id="hsize-cinema" onclick="setHeroSize('cinema',this)">
+        <svg width="8" height="14" viewBox="0 0 8 14" fill="currentColor"><rect width="8" height="14" rx="1"/></svg>Cinéma
       </button>
       <div style="width:1px;height:20px;background:var(--border2);margin:0 .25rem"></div>
       <button class="hero-choose-btn" id="heroChooseBtn" onclick="openHeroPicker()">⭐ Gérer l'affiche</button>
@@ -900,10 +915,10 @@ const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
 const EMO = ['🎬','🔥','🌊','🌙','🧠','🚀','🎵','⚡','👁','🏔','🎭','🌟','🎪','🎨'];
 
 const HERO_SIZES = {
-  compact: { h: '42vh',  minH: '300px' },
-  normal:  { h: '58vh',  minH: '380px' },
-  tall:    { h: '70vh',  minH: '480px' },
-  cinema:  { h: '85vh',  minH: '560px' },
+  compact: { h: '42vh', minH: '300px' },
+  normal:  { h: '58vh', minH: '380px' },
+  tall:    { h: '70vh', minH: '480px' },
+  cinema:  { h: '85vh', minH: '560px' },
 };
 let currentHeroSize = 'normal';
 const HERO_SIZE_STORAGE = 'cinemax_hero_size';
@@ -921,10 +936,7 @@ function setHeroSize(key, btn) {
   applyHeroSize(key);
   document.querySelectorAll('.hsize-btn').forEach(b => b.classList.remove('on'));
   if (btn) btn.classList.add('on');
-  else {
-    const b = document.getElementById('hsize-' + key);
-    if (b) b.classList.add('on');
-  }
+  else { const b = document.getElementById('hsize-' + key); if (b) b.classList.add('on'); }
 }
 
 let USERS = [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }];
@@ -953,9 +965,7 @@ function setCloudStatus(msg, color) {
     el.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(14,14,28,.95);border:1px solid rgba(255,255,255,.13);color:#fff;font-size:.75rem;padding:8px 16px;border-radius:99px;font-family:var(--sans);transition:opacity .5s;pointer-events:none';
     document.body.appendChild(el);
   }
-  el.textContent = msg;
-  el.style.color = color || '#fff';
-  el.style.opacity = '1';
+  el.textContent = msg; el.style.color = color || '#fff'; el.style.opacity = '1';
   clearTimeout(el._t);
   el._t = setTimeout(() => { el.style.opacity = '0'; }, 3000);
 }
@@ -972,9 +982,7 @@ async function saveState() {
       body: JSON.stringify(data)
     });
     setCloudStatus('✅ Sauvegardé', '#4caf50');
-  } catch(e) {
-    setCloudStatus('❌ Erreur sauvegarde', '#e8192c');
-  }
+  } catch(e) { setCloudStatus('❌ Erreur sauvegarde', '#e8192c'); }
   _saving = false;
 }
 
@@ -991,13 +999,8 @@ async function loadState() {
     if (data.CATS)  CATS = data.CATS;
     if (data.nid)   nid  = data.nid;
     if (data.SUGGESTIONS) SUGGESTIONS = data.SUGGESTIONS;
-
-    if (data.heroIds && Array.isArray(data.heroIds)) {
-      heroIds = data.heroIds;
-    } else if (data.heroId !== undefined && data.heroId !== null) {
-      heroIds = [data.heroId];
-    }
-
+    if (data.heroIds && Array.isArray(data.heroIds)) heroIds = data.heroIds;
+    else if (data.heroId !== undefined && data.heroId !== null) heroIds = [data.heroId];
     if (data.USERS) {
       const saved = data.USERS;
       const hasSA = saved.find(u => u.role === 'superadmin');
@@ -1005,15 +1008,10 @@ async function loadState() {
     }
     try {
       const sess = localStorage.getItem(SESSION_KEY);
-      if (sess) {
-        const u = USERS.find(x => x.user === sess);
-        if (u) currentUser = u;
-      }
+      if (sess) { const u = USERS.find(x => x.user === sess); if (u) currentUser = u; }
     } catch(e) {}
     setCloudStatus('✅ Données chargées', '#4caf50');
-  } catch(e) {
-    setCloudStatus('❌ Erreur chargement', '#e8192c');
-  }
+  } catch(e) { setCloudStatus('❌ Erreur chargement', '#e8192c'); }
 }
 
 let currentType = 'Film';
@@ -1067,7 +1065,6 @@ function updateNavAuth() {
   const favLink = document.getElementById('navFavLink');
   const floatBtn = document.getElementById('floatSugBtn');
   const sizeBar = document.getElementById('heroSizeBar');
-
   if (!currentUser) {
     area.innerHTML = `<button class="btn btn-ghost" onclick="goLogin()">Connexion</button>`;
     if (favLink) favLink.style.display = 'none';
@@ -1078,10 +1075,7 @@ function updateNavAuth() {
   } else {
     const adminBtn = isAdmin(currentUser)
       ? `<button class="btn btn-red" onclick="goAdmin()" style="font-size:.75rem">⚙ Admin</button>` : '';
-    area.innerHTML = `
-      <span style="font-size:.78rem;color:var(--text2);white-space:nowrap">👤 ${currentUser.user}</span>
-      ${adminBtn}
-      <button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
+    area.innerHTML = `<span style="font-size:.78rem;color:var(--text2);white-space:nowrap">👤 ${currentUser.user}</span>${adminBtn}<button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
     if (favLink) favLink.style.display = 'block';
     const sugLink = document.getElementById('navSugLink');
     if (sugLink) sugLink.style.display = isAdmin(currentUser) ? 'none' : 'block';
@@ -1116,15 +1110,12 @@ function doLogin() {
   const err = document.getElementById('lErr');
   const found = USERS.find(x => x.user === u && x.pass === p);
   if (found) {
-    err.style.display = 'none';
-    currentUser = found;
+    err.style.display = 'none'; currentUser = found;
     try { localStorage.setItem(SESSION_KEY, found.user); } catch(e) {}
-    trackLogin(found.user);
-    updateNavAuth();
+    trackLogin(found.user); updateNavAuth();
     if (isAdmin(found)) { show('adminPage'); renderAdmin(); } else { goHome(); }
   } else {
-    err.textContent = 'Identifiant ou mot de passe incorrect.';
-    err.style.display = 'block';
+    err.textContent = 'Identifiant ou mot de passe incorrect.'; err.style.display = 'block';
     document.getElementById('lp').value = '';
   }
 }
@@ -1141,21 +1132,16 @@ function doRegister() {
   if (p.length < 6) { err.textContent = 'Le mot de passe doit faire au moins 6 caractères.'; err.style.display = 'block'; return; }
   if (p !== p2) { err.textContent = 'Les mots de passe ne correspondent pas.'; err.style.display = 'block'; return; }
   USERS.push({ user: u, pass: p, role: 'user' });
-  trackRegister(u);
-  saveState();
-  ok.textContent = `✅ Compte "${u}" créé ! Vous pouvez maintenant vous connecter.`;
-  ok.style.display = 'block';
-  document.getElementById('ru').value = '';
-  document.getElementById('rp').value = '';
-  document.getElementById('rp2').value = '';
+  trackRegister(u); saveState();
+  ok.textContent = `✅ Compte "${u}" créé ! Vous pouvez maintenant vous connecter.`; ok.style.display = 'block';
+  document.getElementById('ru').value = ''; document.getElementById('rp').value = ''; document.getElementById('rp2').value = '';
   setTimeout(() => switchAuthTab('login'), 1500);
 }
 
 function doLogout() {
   currentUser = null;
   try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
-  updateNavAuth();
-  goHome();
+  updateNavAuth(); goHome();
 }
 
 function grantAdmin() {
@@ -1166,8 +1152,7 @@ function grantAdmin() {
   if (found.role === 'superadmin') { err.textContent = '⚠️ Déjà super-admin.'; err.style.display = 'block'; err.style.color = '#ffb74d'; return; }
   found.role = 'admin';
   document.getElementById('grantUser').value = '';
-  err.textContent = `✅ Accès admin accordé à "${u}".`;
-  err.style.color = '#81c784'; err.style.display = 'block';
+  err.textContent = `✅ Accès admin accordé à "${u}".`; err.style.color = '#81c784'; err.style.display = 'block';
   saveState(); renderUsersTable();
   setTimeout(() => { err.style.display = 'none'; }, 4000);
 }
@@ -1175,8 +1160,7 @@ function grantAdmin() {
 function revokeAdmin(username) {
   const found = USERS.find(x => x.user === username);
   if (!found || found.role === 'superadmin') return;
-  found.role = 'user';
-  saveState(); renderUsersTable();
+  found.role = 'user'; saveState(); renderUsersTable();
 }
 
 function renderUsersTable() {
@@ -1184,12 +1168,8 @@ function renderUsersTable() {
   tb.innerHTML = '';
   USERS.forEach(u => {
     const tr = document.createElement('tr');
-    const roleBadge = u.role === 'superadmin' ? '<span class="pill pm">Super-admin</span>'
-      : u.role === 'admin' ? '<span class="pill pp">Admin</span>'
-      : '<span class="pill pfilm">Utilisateur</span>';
-    const actions = u.role === 'superadmin' ? '<span style="font-size:.72rem;color:var(--text3)">—</span>'
-      : u.role === 'admin' ? `<button class="ab dl" onclick="revokeAdmin('${u.user}')">Révoquer</button>`
-      : `<button class="ab" onclick="document.getElementById('grantUser').value='${u.user}';grantAdmin()">Accorder admin</button>`;
+    const roleBadge = u.role === 'superadmin' ? '<span class="pill pm">Super-admin</span>' : u.role === 'admin' ? '<span class="pill pp">Admin</span>' : '<span class="pill pfilm">Utilisateur</span>';
+    const actions = u.role === 'superadmin' ? '<span style="font-size:.72rem;color:var(--text3)">—</span>' : u.role === 'admin' ? `<button class="ab dl" onclick="revokeAdmin('${u.user}')">Révoquer</button>` : `<button class="ab" onclick="document.getElementById('grantUser').value='${u.user}';grantAdmin()">Accorder admin</button>`;
     tr.innerHTML = `<td style="font-weight:600">${u.user}</td><td>${roleBadge}</td><td>${actions}</td>`;
     tb.appendChild(tr);
   });
@@ -1200,17 +1180,13 @@ function getFavs() {
   if (!currentUser) return [];
   try { const raw = localStorage.getItem('cinemax_favs_' + currentUser.user); return raw ? JSON.parse(raw) : []; } catch(e) { return []; }
 }
-function saveFavs(favs) {
-  if (!currentUser) return;
-  try { localStorage.setItem('cinemax_favs_' + currentUser.user, JSON.stringify(favs)); } catch(e) {}
-}
+function saveFavs(favs) { if (!currentUser) return; try { localStorage.setItem('cinemax_favs_' + currentUser.user, JSON.stringify(favs)); } catch(e) {} }
 function isFav(id) { return getFavs().includes(id); }
 function toggleFav(id, event) {
   if (event) event.stopPropagation();
   if (!currentUser) { goLogin(); return; }
   let favs = getFavs();
-  if (favs.includes(id)) favs = favs.filter(x => x !== id);
-  else favs.push(id);
+  if (favs.includes(id)) favs = favs.filter(x => x !== id); else favs.push(id);
   saveFavs(favs);
   document.querySelectorAll(`.fav-btn[data-id="${id}"]`).forEach(btn => {
     btn.classList.toggle('active', favs.includes(id));
@@ -1219,20 +1195,12 @@ function toggleFav(id, event) {
   });
   if (document.getElementById('favPage').classList.contains('on')) renderFavPage();
 }
-function goFavorites(el) {
-  document.querySelectorAll('.nl').forEach(n => n.classList.remove('on'));
-  if (el) el.classList.add('on');
-  renderFavPage(); show('favPage');
-}
+function goFavorites(el) { document.querySelectorAll('.nl').forEach(n => n.classList.remove('on')); if (el) el.classList.add('on'); renderFavPage(); show('favPage'); }
 function renderFavPage() {
-  const grid = document.getElementById('favGrid');
-  grid.innerHTML = '';
+  const grid = document.getElementById('favGrid'); grid.innerHTML = '';
   const favs = getFavs();
   const items = DB.filter(v => v.pub && favs.includes(v.id));
-  if (!items.length) {
-    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">🤍</div><h3>Aucun favori pour l'instant</h3><p>Cliquez sur le cœur d'un film ou d'une série pour l'ajouter ici.</p></div>`;
-    return;
-  }
+  if (!items.length) { grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="es-icon">🤍</div><h3>Aucun favori pour l'instant</h3><p>Cliquez sur le cœur d'un film ou d'une série pour l'ajouter ici.</p></div>`; return; }
   items.forEach(v => { const c = mkCard(v); c.style.flex = 'none'; grid.appendChild(c); });
 }
 
@@ -1242,15 +1210,11 @@ function safeEmo(e) { return ['💀','🩸','🗡','🌑'].includes(e) ? '🎬' 
 function mkCard(v) {
   const d = document.createElement('div');
   d.className = 'card';
-  const tagHtml = v.tag === 'n' ? '<div class="c-tag tag-n">NOUVEAU</div>'
-    : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>'
-    : v.tag === 'hot' ? '<div class="c-tag tag-hot">🔥 HOT</div>' : '';
+  const tagHtml = v.tag === 'n' ? '<div class="c-tag tag-n">NOUVEAU</div>' : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>' : v.tag === 'hot' ? '<div class="c-tag tag-hot">🔥 HOT</div>' : '';
   const ico = v.type === 'Série' ? '📺 ' : '';
   const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
   const favActive = isFav(v.id);
-  const favHtml = currentUser
-    ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>`
-    : '';
+  const favHtml = currentUser ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>` : '';
   d.innerHTML = `
     <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${safeEmo(v.emo)}</span></div>
     ${tagHtml}
@@ -1269,9 +1233,7 @@ function mkCard(v) {
 function mkTop10Card(v, rank) {
   const d = document.createElement('div');
   d.className = 'top10-card';
-  const imgHtml = v.img
-    ? `<img src="${v.img}" alt="${v.title}" onerror="this.parentElement.style.fontSize='4rem'">`
-    : '';
+  const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.parentElement.style.fontSize='4rem'">` : '';
   d.innerHTML = `
     <div class="top10-num">${rank}</div>
     <div class="top10-img ${v.bg}">
@@ -1287,14 +1249,54 @@ function mkTop10Card(v, rank) {
   return d;
 }
 
-// ——— HERO CAROUSEL (sans thumbnails) ———
+// ——— ROW WITH ARROWS ———
+// Crée un conteneur row avec flèches gauche/droite
+function mkRowWithArrows(items, renderFn, isTop10 = false) {
+  const wrap = document.createElement('div');
+  wrap.className = isTop10 ? 'top10-row-wrap' : 'row-wrap';
+  wrap.style.position = 'relative';
+
+  const btnL = document.createElement('button');
+  btnL.className = 'row-arrow left';
+  btnL.innerHTML = '‹';
+
+  const btnR = document.createElement('button');
+  btnR.className = 'row-arrow right';
+  btnR.innerHTML = '›';
+
+  const row = document.createElement('div');
+  row.className = isTop10 ? 'top10-row' : 'row';
+
+  items.forEach((v, i) => row.appendChild(renderFn(v, i + 1)));
+
+  const scrollAmt = isTop10 ? 240 : 190;
+
+  btnL.onclick = () => { row.scrollBy({ left: -scrollAmt * 3, behavior: 'smooth' }); };
+  btnR.onclick = () => { row.scrollBy({ left: scrollAmt * 3, behavior: 'smooth' }); };
+
+  // Mise à jour visibilité des flèches
+  function updateArrows() {
+    const atStart = row.scrollLeft <= 10;
+    const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 10;
+    btnL.classList.toggle('hidden', atStart);
+    btnR.classList.toggle('hidden', atEnd);
+  }
+
+  row.addEventListener('scroll', updateArrows);
+  // Délai pour laisser le DOM se rendre
+  setTimeout(updateArrows, 100);
+
+  wrap.appendChild(btnL);
+  wrap.appendChild(row);
+  wrap.appendChild(btnR);
+  return wrap;
+}
+
+// ——— HERO CAROUSEL ———
 function buildCarousel() {
   const pub = DB.filter(v => v.pub);
   const carousel = document.getElementById('heroCarousel');
-
-  Array.from(carousel.children).forEach(child => {
-    if (child.classList.contains('hero-slide')) child.remove();
-  });
+  Array.from(carousel.children).forEach(child => { if (child.classList.contains('hero-slide')) child.remove(); });
   document.getElementById('carouselDots').innerHTML = '';
 
   let featured = heroIds.length
@@ -1304,10 +1306,7 @@ function buildCarousel() {
   if (!featured.length) {
     const slide = document.createElement('div');
     slide.className = 'hero-slide active';
-    slide.innerHTML = `
-      <div class="h-art">🎬</div>
-      <div class="h-grad"></div>
-      <div class="h-glow"></div>
+    slide.innerHTML = `<div class="h-art">🎬</div><div class="h-grad"></div><div class="h-glow"></div>
       <div class="h-content">
         <div class="h-badge"><span class="h-dot"></span>À LA UNE</div>
         <h1 class="h-title">Bienvenue sur CINÉMAX</h1>
@@ -1328,13 +1327,11 @@ function buildCarousel() {
     const slide = document.createElement('div');
     slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
     slide.dataset.idx = i;
-
     const bgStyle = v.img ? `background-image:url('${v.img}')` : '';
     slide.innerHTML = `
       <div class="h-bg-img" style="${bgStyle}"></div>
       <div class="h-art">${safeEmo(v.emo)}</div>
-      <div class="h-grad"></div>
-      <div class="h-glow"></div>
+      <div class="h-grad"></div><div class="h-glow"></div>
       <div class="h-content">
         <div class="h-badge"><span class="h-dot"></span>À LA UNE</div>
         <h1 class="h-title">${v.title}</h1>
@@ -1366,20 +1363,14 @@ function carouselGo(idx) {
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.carousel-dot');
   if (!slides.length) return;
-
   slides[carouselIndex].classList.remove('active');
   if (dots[carouselIndex]) dots[carouselIndex].classList.remove('active');
-
   carouselIndex = ((idx % slides.length) + slides.length) % slides.length;
-
   slides[carouselIndex].classList.add('active');
   if (dots[carouselIndex]) dots[carouselIndex].classList.add('active');
 }
 
-function carouselMove(dir) {
-  carouselGo(carouselIndex + dir);
-  resetCarouselAuto();
-}
+function carouselMove(dir) { carouselGo(carouselIndex + dir); resetCarouselAuto(); }
 
 function startCarouselAuto(count) {
   if (carouselTimer) clearInterval(carouselTimer);
@@ -1410,24 +1401,27 @@ function renderHome(f = 'Tout') {
     if (!items.length) return;
     const s = document.createElement('div');
     s.className = 'sec';
+
+    // En-tête section
+    const head = document.createElement('div');
+    head.className = 'sec-head';
     if (isTop10) {
-      const row = document.createElement('div');
-      row.className = 'top10-row';
-      items.slice(0, 10).forEach((v, i) => row.appendChild(mkTop10Card(v, i + 1)));
-      s.innerHTML = `<div class="sec-head">
-        <div class="sec-title" style="display:flex;align-items:center;gap:.75rem">
-          <span style="background:var(--red);color:#fff;font-family:var(--sans);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px">TOP 10</span>
-          ${title}
-        </div>
+      head.innerHTML = `<div class="sec-title" style="display:flex;align-items:center;gap:.75rem">
+        <span style="background:var(--red);color:#fff;font-family:var(--sans);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:1px">TOP 10</span>
+        ${title}
       </div>`;
-      s.appendChild(row);
     } else {
-      const row = document.createElement('div');
-      row.className = 'row';
-      items.forEach(v => row.appendChild(mkCard(v)));
-      s.innerHTML = `<div class="sec-head"><div class="sec-title">${title}</div></div>`;
-      s.appendChild(row);
+      head.innerHTML = `<div class="sec-title">${title}</div>`;
     }
+    s.appendChild(head);
+
+    // Row avec flèches
+    const rowWrap = mkRowWithArrows(
+      isTop10 ? items.slice(0, 10) : items,
+      isTop10 ? (v, i) => mkTop10Card(v, i) : (v) => mkCard(v),
+      isTop10
+    );
+    s.appendChild(rowWrap);
     cont.appendChild(s);
   }
 
@@ -1463,8 +1457,7 @@ function rebuildCatRow() {
   row.innerHTML = '<span class="cat on" onclick="filterCat(\'Tout\',this)">Tout</span>';
   CATS.forEach(c => {
     const s = document.createElement('span');
-    s.className = 'cat';
-    s.textContent = c;
+    s.className = 'cat'; s.textContent = c;
     s.onclick = () => filterCat(c, s);
     row.appendChild(s);
   });
@@ -1508,18 +1501,11 @@ function updateDetailFavBtn(id) {
   btn.style.color = fav ? '#ff6b6b' : '';
 }
 
-function detailToggleFav() {
-  if (!_detailCurrentId) return;
-  toggleFav(_detailCurrentId, null);
-  updateDetailFavBtn(_detailCurrentId);
-}
+function detailToggleFav() { if (!_detailCurrentId) return; toggleFav(_detailCurrentId, null); updateDetailFavBtn(_detailCurrentId); }
 
 function detailSetHero() {
   if (!_detailCurrentId) return;
-  if (!heroIds.includes(_detailCurrentId)) {
-    if (heroIds.length >= 5) heroIds.shift();
-    heroIds.push(_detailCurrentId);
-  }
+  if (!heroIds.includes(_detailCurrentId)) { if (heroIds.length >= 5) heroIds.shift(); heroIds.push(_detailCurrentId); }
   saveState();
   const btn = document.getElementById('dHeroBtn');
   if (btn) btn.textContent = '★ Ajouté à l\'affiche !';
@@ -1528,22 +1514,15 @@ function detailSetHero() {
 function openDetail(v) {
   _detailCurrentId = v.id;
   const dBgImg = document.getElementById('dBgImg');
-  if (v.img) {
-    dBgImg.style.backgroundImage = `url('${v.img}')`;
-    dBgImg.style.display = 'block';
-  } else {
-    dBgImg.style.display = 'none';
-  }
+  if (v.img) { dBgImg.style.backgroundImage = `url('${v.img}')`; dBgImg.style.display = 'block'; } else { dBgImg.style.display = 'none'; }
   document.getElementById('dArt').textContent = safeEmo(v.emo);
   document.getElementById('dArt').style.opacity = v.img ? '0.05' : '0.12';
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
   document.getElementById('dMeta').innerHTML = `
     <span style="color:var(--gold);font-weight:700">★ ${v.score || '?'}</span>
-    <span>${v.year || ''}</span>
-    <span>${v.dur || ''}</span>
-    <span class="m-tag">${v.genre || ''}</span>
-    <span class="m-tag">${v.type}</span>`;
+    <span>${v.year || ''}</span><span>${v.dur || ''}</span>
+    <span class="m-tag">${v.genre || ''}</span><span class="m-tag">${v.type}</span>`;
   document.getElementById('dPlay').onclick = () => openPlayer(v, v.eps && v.eps.length ? v.eps[0] : null);
 
   const favBtn = document.getElementById('dFavBtn');
@@ -1590,7 +1569,6 @@ function openDetail(v) {
     h += '</div>';
     addTab('Épisodes', h, true);
   }
-
   addTab('Synopsis', `<p style="color:var(--text2);line-height:1.8;font-size:.92rem;max-width:680px">${v.desc || 'Aucune description.'}</p>`, !isSerie);
   trackView(v);
   show('detailPage');
@@ -1609,9 +1587,7 @@ function openPlayer(v, ep) {
   const url = file ? URL.createObjectURL(file) : ((ep && ep.url) ? ep.url : v.url);
   if (!url) { alert('Aucune vidéo disponible pour ce contenu.'); return; }
   const isBlob = !!file;
-
   trackPlay(v, ep);
-
   const title = ep ? `${v.title} — ${ep.t}` : v.title;
   document.getElementById('pTitle').textContent = title;
   document.getElementById('pMeta').innerHTML = `<span style="color:var(--gold)">★ ${v.score || '?'}</span><span>${v.year || ''}</span><span>${v.genre || ''}</span>`;
@@ -1640,12 +1616,10 @@ function openPlayer(v, ep) {
     wrap.innerHTML = '';
     if (!isBlob && isEmbedUrl(url)) {
       const iframe = document.createElement('iframe');
-      iframe.src = url;
-      iframe.allowFullscreen = true;
+      iframe.src = url; iframe.allowFullscreen = true;
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
       iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none';
-      wrap.style.position = 'relative';
-      wrap.appendChild(iframe);
+      wrap.style.position = 'relative'; wrap.appendChild(iframe);
     } else {
       const vid = document.createElement('video');
       vid.controls = true; vid.autoplay = true;
@@ -1657,21 +1631,16 @@ function openPlayer(v, ep) {
           <a href="${url}" target="_blank" style="color:var(--blue);font-size:.8rem">Ouvrir dans un nouvel onglet</a>
         </div>`;
       };
-      wrap.style.position = '';
-      wrap.appendChild(vid);
+      wrap.style.position = ''; wrap.appendChild(vid);
     }
   }, 50);
 }
 
-function closePlayer() {
-  const wrap = document.getElementById('playerVideoWrap');
-  if (wrap) wrap.innerHTML = '';
-}
+function closePlayer() { const wrap = document.getElementById('playerVideoWrap'); if (wrap) wrap.innerHTML = ''; }
 
 // ——— CREATE MODAL ———
 function openCreateModal(type, editData) {
-  currentType = type || 'Film';
-  epCount = 0;
+  currentType = type || 'Film'; epCount = 0;
   document.getElementById('editId').value = editData ? editData.id : '';
   document.getElementById('vTitle').value = editData ? editData.title : '';
   document.getElementById('vYear').value = editData ? editData.year : '';
@@ -1697,14 +1666,8 @@ function openCreateModal(type, editData) {
   document.getElementById('vTitle').focus();
 }
 
-function closeCreateModal() {
-  document.getElementById('createModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('createModal')) closeCreateModal();
-}
+function closeCreateModal() { document.getElementById('createModal').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalOutside(e) { if (e.target === document.getElementById('createModal')) closeCreateModal(); }
 
 function fillGenreSelect(selected) {
   const sel = document.getElementById('vGenre');
@@ -1716,8 +1679,7 @@ function addEpisode(data) {
   const n = epCount;
   const list = document.getElementById('epsList');
   const d = document.createElement('div');
-  d.className = 'ep-item';
-  d.id = `epItem${n}`;
+  d.className = 'ep-item'; d.id = `epItem${n}`;
   d.style.cssText = 'display:grid;grid-template-columns:auto 1fr 2fr auto;gap:.5rem;align-items:center;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.6rem .75rem;margin-bottom:.5rem';
   d.innerHTML = `
     <div class="ep-num-badge">${n}</div>
@@ -1745,17 +1707,12 @@ function saveContent(publish) {
   if (currentType === 'Série') {
     document.querySelectorAll('.ep-item').forEach((row, i) => {
       const inputs = row.querySelectorAll('input[type=text]');
-      const tEl = inputs[0];
-      const urlEpEl = inputs[1];
+      const tEl = inputs[0]; const urlEpEl = inputs[1];
       const epId = row.id.replace('epItem','');
       const epFile = pendingFiles['ep-'+epId];
       const epKey = 'ep-'+vid_id+'-'+i;
       if (epFile) fileStore[epKey] = epFile;
-      eps.push({
-        t: tEl ? tEl.value.trim() || ('Épisode '+(i+1)) : ('Épisode '+(i+1)),
-        url: urlEpEl ? urlEpEl.value.trim() : '',
-        fileKey: fileStore[epKey] ? epKey : '',
-      });
+      eps.push({ t: tEl ? tEl.value.trim() || ('Épisode '+(i+1)) : ('Épisode '+(i+1)), url: urlEpEl ? urlEpEl.value.trim() : '', fileKey: fileStore[epKey] ? epKey : '' });
     });
   }
   const v = {
@@ -1768,31 +1725,20 @@ function saveContent(publish) {
     score: document.getElementById('vScore').value || '?',
     desc: document.getElementById('vDesc').value || '',
     img: document.getElementById('vImg').value.trim() || '',
-    pub: publish,
-    eps: currentType === 'Série' ? eps : undefined,
+    pub: publish, eps: currentType === 'Série' ? eps : undefined,
     bg: BG[Math.floor(Math.random() * BG.length)],
     emo: EMO[Math.floor(Math.random() * EMO.length)],
   };
-  if (isEdit) {
-    const idx = DB.findIndex(x => x.id === v.id);
-    if (idx >= 0) { v.bg = DB[idx].bg; v.emo = DB[idx].emo; DB[idx] = v; }
-  } else { DB.unshift(v); }
-  closeCreateModal();
-  saveState(); renderAdmin();
+  if (isEdit) { const idx = DB.findIndex(x => x.id === v.id); if (idx >= 0) { v.bg = DB[idx].bg; v.emo = DB[idx].emo; DB[idx] = v; } } else { DB.unshift(v); }
+  closeCreateModal(); saveState(); renderAdmin();
   showNotice('vNotice', publish ? `✅ "${v.title}" publié sur le site !` : `💾 "${v.title}" enregistré en brouillon.`);
 }
 
 // ——— FILE HANDLING ———
-function formatSize(bytes) {
-  if (bytes < 1024*1024) return (bytes/1024).toFixed(0)+' Ko';
-  return (bytes/(1024*1024)).toFixed(1)+' Mo';
-}
+function formatSize(bytes) { if (bytes < 1024*1024) return (bytes/1024).toFixed(0)+' Ko'; return (bytes/(1024*1024)).toFixed(1)+' Mo'; }
 function setVideoMode(key, mode) {
   const isFile = mode === 'file';
-  ['FileZone','UrlZone'].forEach((s, i) => {
-    const el = document.getElementById(key + s);
-    if (el) el.style.display = (i===0 ? isFile : !isFile) ? 'block' : 'none';
-  });
+  ['FileZone','UrlZone'].forEach((s, i) => { const el = document.getElementById(key + s); if (el) el.style.display = (i===0 ? isFile : !isFile) ? 'block' : 'none'; });
   const btnFile = document.getElementById(key+'ModeFile');
   const btnUrl  = document.getElementById(key+'ModeUrl');
   if(btnFile) { btnFile.classList.toggle('mode-btn-on', isFile); }
@@ -1830,8 +1776,7 @@ function clearFile(key) {
 
 // ——— ADMIN ———
 function renderAdmin() {
-  fillGenreSelect();
-  renderVidTable(); renderCatTable(); renderDash(); renderUsersTable(); renderStats();
+  fillGenreSelect(); renderVidTable(); renderCatTable(); renderDash(); renderUsersTable(); renderStats();
   document.getElementById('adminWelcome').textContent = currentUser ? `Connecté : ${currentUser.user}` : '';
   document.getElementById('tabAccess').style.display = isSuperAdmin(currentUser) ? 'inline-block' : 'none';
   updateSugNotif();
@@ -1843,8 +1788,7 @@ function renderDash() {
   document.getElementById('dc-films').textContent = pub.filter(v => v.type === 'Film').length;
   document.getElementById('dc-series').textContent = pub.filter(v => v.type === 'Série').length;
   document.getElementById('dc-cats').textContent = CATS.length;
-  const list = document.getElementById('dc-list');
-  list.innerHTML = '';
+  const list = document.getElementById('dc-list'); list.innerHTML = '';
   DB.forEach(v => {
     const tr = document.createElement('tr');
     tr.innerHTML = `<td style="font-weight:600">${v.title}</td><td><span class="pill ${v.type==='Série'?'pserie':'pfilm'}">${v.type}</span></td><td>${v.genre}</td><td>${v.year}</td><td>${v.pub?'<span class="pill pp">Publié</span>':'<span class="pill pd">Brouillon</span>'}</td>`;
@@ -1853,12 +1797,8 @@ function renderDash() {
 }
 
 function renderVidTable() {
-  const tb = document.getElementById('vTable');
-  tb.innerHTML = '';
-  if (!DB.length) {
-    tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:2rem">Aucun contenu. Créez votre premier film ou série !</td></tr>';
-    return;
-  }
+  const tb = document.getElementById('vTable'); tb.innerHTML = '';
+  if (!DB.length) { tb.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:2rem">Aucun contenu. Créez votre premier film ou série !</td></tr>'; return; }
   DB.forEach(v => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -1876,21 +1816,15 @@ function renderVidTable() {
   });
 }
 
-function togglePub(id) {
-  const v = DB.find(x => x.id === id);
-  if (v) { v.pub = !v.pub; saveState(); renderAdmin(); renderHome(); }
-}
-
+function togglePub(id) { const v = DB.find(x => x.id === id); if (v) { v.pub = !v.pub; saveState(); renderAdmin(); renderHome(); } }
 function delVid(id) {
   if (!confirm('Supprimer définitivement ce contenu ?')) return;
-  DB = DB.filter(v => v.id !== id);
-  heroIds = heroIds.filter(x => x !== id);
+  DB = DB.filter(v => v.id !== id); heroIds = heroIds.filter(x => x !== id);
   saveState(); renderAdmin(); renderHome();
 }
 
 function renderCatTable() {
-  const tb = document.getElementById('cTable');
-  tb.innerHTML = '';
+  const tb = document.getElementById('cTable'); tb.innerHTML = '';
   CATS.forEach((c, i) => {
     const count = DB.filter(v => v.genre === c).length;
     const tr = document.createElement('tr');
@@ -1902,36 +1836,30 @@ function renderCatTable() {
 function addCat() {
   const n = document.getElementById('nCat').value.trim();
   if (!n || CATS.includes(n)) { alert('Nom invalide ou déjà existant.'); return; }
-  CATS.push(n);
-  document.getElementById('nCat').value = '';
+  CATS.push(n); document.getElementById('nCat').value = '';
   saveState(); fillGenreSelect(); renderCatTable(); rebuildCatRow();
 }
 
 function delCat(i) {
   if (!confirm('Supprimer cette catégorie ?')) return;
-  CATS.splice(i, 1);
-  saveState(); fillGenreSelect(); renderCatTable(); rebuildCatRow();
+  CATS.splice(i, 1); saveState(); fillGenreSelect(); renderCatTable(); rebuildCatRow();
 }
 
 function aTab(n, btn) {
   document.querySelectorAll('.apanel').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.atab').forEach(t => t.classList.remove('on'));
-  document.getElementById('ap-' + n).classList.add('on');
-  btn.classList.add('on');
+  document.getElementById('ap-' + n).classList.add('on'); btn.classList.add('on');
 }
 
 function showNotice(id, msg) {
-  const el = document.getElementById(id);
-  if (!el) return;
+  const el = document.getElementById(id); if (!el) return;
   el.textContent = msg; el.style.display = 'block';
   setTimeout(() => el.style.display = 'none', 5000);
 }
 
 // ——— STATS ———
 const STATS_KEY = 'cinemax_stats';
-function getStats() {
-  try { const raw = localStorage.getItem(STATS_KEY); return raw ? JSON.parse(raw) : initStatsObj(); } catch(e) { return initStatsObj(); }
-}
+function getStats() { try { const raw = localStorage.getItem(STATS_KEY); return raw ? JSON.parse(raw) : initStatsObj(); } catch(e) { return initStatsObj(); } }
 function initStatsObj() { return { pageVisits:0, views:{}, plays:{}, searches:[], logins:0, registers:0, activity:[] }; }
 function saveStats(s) { try { localStorage.setItem(STATS_KEY, JSON.stringify(s)); } catch(e) {} }
 function trackVisit() { const s=getStats(); s.pageVisits=(s.pageVisits||0)+1; pushActivity(s,'🏠 Visite du site'); saveStats(s); }
@@ -1963,15 +1891,11 @@ function renderStats() {
   ).join('');
 
   function topList(dict, containerId) {
-    const entries = Object.entries(dict||{})
-      .map(([id,cnt])=>({v:pub.find(x=>String(x.id)===id),cnt}))
-      .filter(e=>e.v).sort((a,b)=>b.cnt-a.cnt).slice(0,5);
+    const entries = Object.entries(dict||{}).map(([id,cnt])=>({v:pub.find(x=>String(x.id)===id),cnt})).filter(e=>e.v).sort((a,b)=>b.cnt-a.cnt).slice(0,5);
     const el = document.getElementById(containerId);
     if (!entries.length) { el.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune donnée.</p>'; return; }
     const rankClass = i => i===0?'gold':i===1?'silver':i===2?'bronze':'';
-    el.innerHTML = `<ul class="top-list">${entries.map((e,i)=>
-      `<li class="top-item"><div class="top-rank ${rankClass(i)}">${i+1}</div><div class="top-name">${e.v.emo} ${e.v.title}</div><div class="top-count">${e.cnt} fois</div></li>`
-    ).join('')}</ul>`;
+    el.innerHTML = `<ul class="top-list">${entries.map((e,i)=>`<li class="top-item"><div class="top-rank ${rankClass(i)}">${i+1}</div><div class="top-name">${e.v.emo} ${e.v.title}</div><div class="top-count">${e.cnt} fois</div></li>`).join('')}</ul>`;
   }
   topList(s.views,'statsTopViews'); topList(s.plays,'statsTopPlays');
 
@@ -2001,40 +1925,24 @@ function renderStats() {
 
 // ——— SUGGESTIONS ———
 let _sugFilter = 'all';
-
-function openSuggestModal() {
-  if (!currentUser) { goLogin(); return; }
-  document.getElementById('sugTitle').value = '';
-  document.getElementById('sugMsg').value = '';
-  document.getElementById('sugErr').style.display = 'none';
-  document.getElementById('sugOk').style.display = 'none';
-  document.getElementById('suggestModal').classList.add('open');
-}
+function openSuggestModal() { if (!currentUser) { goLogin(); return; } document.getElementById('sugTitle').value=''; document.getElementById('sugMsg').value=''; document.getElementById('sugErr').style.display='none'; document.getElementById('sugOk').style.display='none'; document.getElementById('suggestModal').classList.add('open'); }
 function closeSuggestModal() { document.getElementById('suggestModal').classList.remove('open'); }
 function submitSuggestion() {
-  const title = document.getElementById('sugTitle').value.trim();
-  const type  = document.getElementById('sugType').value;
-  const msg   = document.getElementById('sugMsg').value.trim();
-  const err   = document.getElementById('sugErr');
-  const ok    = document.getElementById('sugOk');
+  const title=document.getElementById('sugTitle').value.trim();
+  const type=document.getElementById('sugType').value;
+  const msg=document.getElementById('sugMsg').value.trim();
+  const err=document.getElementById('sugErr'); const ok=document.getElementById('sugOk');
   err.style.display='none'; ok.style.display='none';
   if (!title) { err.textContent='Le titre est requis.'; err.style.display='block'; return; }
   SUGGESTIONS.unshift({ id:Date.now(), user:currentUser.user, title, type, msg, status:'new', ts:Date.now(), reply:'' });
   saveState();
   ok.textContent='✅ Suggestion envoyée !'; ok.style.display='block';
-  document.getElementById('sugTitle').value='';
-  document.getElementById('sugMsg').value='';
+  document.getElementById('sugTitle').value=''; document.getElementById('sugMsg').value='';
   setTimeout(() => closeSuggestModal(), 1800);
 }
-function filterSug(f, el) {
-  _sugFilter=f;
-  document.querySelectorAll('#sugFilterRow .cat').forEach(c=>c.classList.remove('on'));
-  if(el) el.classList.add('on');
-  renderSuggestions();
-}
+function filterSug(f, el) { _sugFilter=f; document.querySelectorAll('#sugFilterRow .cat').forEach(c=>c.classList.remove('on')); if(el) el.classList.add('on'); renderSuggestions(); }
 function renderSuggestions() {
-  const grid=document.getElementById('sugGrid');
-  if(!grid) return;
+  const grid=document.getElementById('sugGrid'); if(!grid) return;
   let list=SUGGESTIONS;
   if(_sugFilter==='new') list=SUGGESTIONS.filter(s=>s.status==='new');
   if(_sugFilter==='done') list=SUGGESTIONS.filter(s=>s.status==='done');
@@ -2042,8 +1950,7 @@ function renderSuggestions() {
   if(!list.length){grid.innerHTML=`<div class="sug-empty">Aucune suggestion pour l'instant.</div>`;return;}
   grid.innerHTML='';
   list.forEach(s=>{
-    const card=document.createElement('div');
-    card.className='sug-card';
+    const card=document.createElement('div'); card.className='sug-card';
     const statusBadge=s.status==='new'?'<span class="sug-status sug-new">🔵 Nouvelle</span>':s.status==='done'?'<span class="sug-status sug-done">✅ Acceptée</span>':'<span class="sug-status sug-rej">❌ Refusée</span>';
     const replyHtml=s.reply?`<div style="font-size:.75rem;color:var(--text3);margin-top:.25rem;padding:.4rem .75rem;border-left:2px solid var(--border2)">💬 ${s.reply}</div>`:'';
     card.innerHTML=`<div class="sug-header"><div class="sug-avatar">${s.user.charAt(0).toUpperCase()}</div><div class="sug-user">${s.user}</div><div class="sug-date">${fmtTime(s.ts)}</div></div>
@@ -2067,15 +1974,12 @@ function updateSugNotif(){const dot=document.getElementById('sugNotif');if(!dot)
 
 // ——— HERO PICKER ———
 let _pickerSelection = [];
-
 function openHeroPicker() {
   _pickerSelection = [...heroIds];
   const pub = DB.filter(v => v.pub);
-  const list = document.getElementById('hpList');
-  list.innerHTML = '';
-  if (!pub.length) {
-    list.innerHTML = '<p style="padding:1rem;color:var(--text3);font-size:.85rem">Aucun contenu publié.</p>';
-  } else {
+  const list = document.getElementById('hpList'); list.innerHTML = '';
+  if (!pub.length) { list.innerHTML = '<p style="padding:1rem;color:var(--text3);font-size:.85rem">Aucun contenu publié.</p>'; }
+  else {
     pub.forEach(v => {
       const div = document.createElement('div');
       const sel = _pickerSelection.includes(v.id);
@@ -2096,31 +2000,11 @@ function openHeroPicker() {
   }
   document.getElementById('heroPicker').classList.add('open');
 }
-
 function togglePickerItem(id, div) {
-  if (_pickerSelection.includes(id)) {
-    _pickerSelection = _pickerSelection.filter(x => x !== id);
-    div.classList.remove('selected');
-    div.querySelector('.hp-check').style.opacity = '0';
-  } else {
-    if (_pickerSelection.length >= 5) {
-      alert('Maximum 5 affiches à la une.');
-      return;
-    }
-    _pickerSelection.push(id);
-    div.classList.add('selected');
-    div.querySelector('.hp-check').style.opacity = '1';
-  }
+  if (_pickerSelection.includes(id)) { _pickerSelection = _pickerSelection.filter(x => x !== id); div.classList.remove('selected'); div.querySelector('.hp-check').style.opacity = '0'; }
+  else { if (_pickerSelection.length >= 5) { alert('Maximum 5 affiches à la une.'); return; } _pickerSelection.push(id); div.classList.add('selected'); div.querySelector('.hp-check').style.opacity = '1'; }
 }
-
-function saveHeroPicker() {
-  heroIds = [..._pickerSelection];
-  closeHeroPicker();
-  saveState();
-  renderHome();
-  setCloudStatus('⭐ Affiches mises à jour', '#f5c518');
-}
-
+function saveHeroPicker() { heroIds = [..._pickerSelection]; closeHeroPicker(); saveState(); renderHome(); setCloudStatus('⭐ Affiches mises à jour', '#f5c518'); }
 function closeHeroPicker() { document.getElementById('heroPicker').classList.remove('open'); }
 
 // ——— INIT ———
@@ -2132,11 +2016,8 @@ function closeHeroPicker() { document.getElementById('heroPicker').classList.rem
       document.querySelectorAll('.hsize-btn').forEach(b => b.classList.remove('on'));
       const btn = document.getElementById('hsize-' + savedSize);
       if (btn) btn.classList.add('on');
-    } else {
-      applyHeroSize('normal');
-    }
+    } else { applyHeroSize('normal'); }
   } catch(e) {}
-
   await loadState();
   trackVisit();
   updateNavAuth();
