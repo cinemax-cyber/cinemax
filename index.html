@@ -871,10 +871,6 @@ function applyData(data) {
 }
 
 function saveLocal(data) {
-  try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch(e) {}
-}
-
-function loadLocal() {
   try {
     const raw = localStorage.getItem(LS_KEY);
     return raw ? JSON.parse(raw) : null;
