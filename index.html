@@ -138,7 +138,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:.9rem}
 
 /* LOGIN */
-#loginPage{min-height:100vh;align-items:center;justify-content:center;background:var(--bg);position:relative}
+#loginPage{min-height:100vh;align-items:center;justify-content:center;background:var(--bg);position:relative;padding-top:66px}
 .l-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 40% 60%,rgba(232,25,44,.07),transparent 55%);pointer-events:none}
 .l-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:2.5rem 2.25rem;width:400px;position:relative;z-index:2}
 .l-logo{font-family:var(--serif);font-size:2rem;color:var(--red);text-align:center;font-style:italic;letter-spacing:3px;margin-bottom:.2rem}
@@ -323,45 +323,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .tc-label{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
 .tc-sub{font-size:.72rem;color:var(--text3)}
 
-/* SUGGESTIONS */
-.sug-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .15s}
-.sug-card:hover{border-color:var(--border2)}
-.sug-header{display:flex;align-items:center;gap:.75rem}
-.sug-avatar{width:34px;height:34px;background:var(--bg4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:var(--text2);flex-shrink:0}
-.sug-user{font-size:.8rem;font-weight:600;flex:1}
-.sug-date{font-size:.68rem;color:var(--text3)}
-.sug-title{font-size:.95rem;font-weight:700;color:var(--text)}
-.sug-type{font-size:.72rem;color:var(--text3)}
-.sug-msg{font-size:.82rem;color:var(--text2);line-height:1.6;background:var(--bg3);border-radius:6px;padding:.6rem .85rem}
-.sug-actions{display:flex;gap:.5rem;margin-top:.25rem}
-.sug-status{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px}
-.sug-new{background:rgba(92,158,255,.15);color:#5c9eff;border:1px solid rgba(92,158,255,.25)}
-.sug-done{background:rgba(76,175,80,.12);color:#81c784;border:1px solid rgba(76,175,80,.22)}
-.sug-rej{background:rgba(232,25,44,.1);color:#ff8888;border:1px solid rgba(232,25,44,.2)}
-.sug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
-.sug-empty{text-align:center;padding:3rem;color:var(--text3);font-size:.88rem}
-.sug-notif{position:absolute;top:-5px;right:-5px;width:8px;height:8px;background:var(--red);border-radius:50%;display:none}
+/* SECTION SEPARATOR */
+.sec-sep{height:1px;background:var(--border);margin:2rem 0}
 
-/* SUGGEST MODAL */
-#suggestModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
-#suggestModal.open{display:flex}
-.sm-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;width:480px;max-width:95vw;padding:2rem}
-.sm-title{font-family:var(--serif);font-size:1.3rem;font-style:italic;margin-bottom:1.5rem;color:var(--text)}
-.sm-field{margin-bottom:1rem}
-.sm-field label{display:block;font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-.sm-field input,.sm-field select,.sm-field textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:10px 13px;border-radius:6px;font-size:.88rem;font-family:var(--sans);outline:none;transition:border-color .2s}
-.sm-field input:focus,.sm-field select:focus,.sm-field textarea:focus{border-color:rgba(232,25,44,.5)}
-.sm-field textarea{resize:vertical;min-height:90px}
-.sm-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem}
-
-/* FLOATING SUGGEST BUTTON */
-#floatSugBtn{position:fixed;bottom:28px;right:28px;z-index:400;display:none;align-items:center;gap:.55rem;background:linear-gradient(135deg,#3a7bd5,#5c9eff);color:#fff;border:none;border-radius:99px;padding:13px 22px;font-size:.85rem;font-weight:700;font-family:var(--sans);cursor:pointer;box-shadow:0 8px 32px rgba(92,158,255,.35);transition:all .25s;letter-spacing:.3px}
-#floatSugBtn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 40px rgba(92,158,255,.45)}
-#floatSugBtn:active{transform:scale(.97)}
+/* FAVORITES */
 .fav-btn{position:absolute;bottom:9px;right:9px;z-index:4;width:28px;height:28px;background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.2);border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff}
 .fav-btn:hover{background:rgba(232,25,44,.5);border-color:var(--red)}
 .fav-btn.active{background:rgba(232,25,44,.85);border-color:var(--red)}
 
+/* HERO CHOOSE BUTTON (admin) */
 .hero-choose-btn{position:absolute;top:80px;right:2.5rem;z-index:10;background:rgba(14,14,28,.85);border:1px solid var(--gold);color:var(--gold);padding:8px 16px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:var(--sans);font-weight:600;backdrop-filter:blur(8px);transition:all .2s;display:none}
 .hero-choose-btn:hover{background:rgba(245,197,24,.15)}
 
@@ -392,7 +362,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="nl" onclick="filterNav('Film',this)">Films</div>
     <div class="nl" onclick="filterNav('Série',this)">Séries</div>
     <div class="nl" id="navFavLink" style="display:none" onclick="goFavorites(this)">❤️ Favoris</div>
-    <div class="nl" id="navSugLink" style="display:none" onclick="openSuggestModal()">💡 Suggérer</div>
   </div>
   <div class="nav-r">
     <div class="sw">
@@ -405,9 +374,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 <!-- HOME -->
 <div id="homePage" class="page on">
-  <div id="heroSection" style="position:relative">
+  <div id="heroSection">
     <button class="hero-choose-btn" id="heroChooseBtn" onclick="openHeroPicker()">⭐ Choisir l'affiche</button>
-    <div class="hero">
+    <div class="hero" id="heroSection2">
       <div class="h-art" id="heroArt">🎬</div>
       <div class="h-grad"></div>
       <div class="h-glow"></div>
@@ -443,7 +412,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <div style="font-size:.7rem;color:var(--text3)" id="footerRight">© 2026 CINÉMAX</div>
     </div>
   </footer>
-</div>
+</div><!-- end #homePage -->
 
 <!-- SEARCH -->
 <div id="searchPage" class="page">
@@ -462,12 +431,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <div class="d-crumb" onclick="goHome()">← Accueil</div>
       <h1 class="d-title" id="dTitle"></h1>
       <div class="d-meta" id="dMeta"></div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
         <button class="play-btn" id="dPlay">▶ Lire</button>
         <button class="info-btn" onclick="goHome()">← Retour</button>
-        <button class="info-btn" id="dFavBtn" style="display:none;gap:.5rem" onclick="detailToggleFav()"></button>
-        <button class="info-btn" id="dHeroBtn" style="display:none;border:1px solid rgba(245,197,24,.5);color:var(--gold)" onclick="detailSetHero()">⭐ Mettre à l'affiche</button>
-        <button class="info-btn" id="dSuggestBtn" style="display:none;border:1px solid rgba(92,158,255,.4);color:#5c9eff" onclick="openSuggestModal()">💡 Suggérer</button>
       </div>
     </div>
   </div>
@@ -550,8 +516,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <button class="atab on" onclick="aTab('db',this)">📊 Tableau de bord</button>
       <button class="atab" onclick="aTab('vids',this)">🎬 Vidéos</button>
       <button class="atab" onclick="aTab('cats',this)">📁 Catégories</button>
+      <button class="atab" onclick="aTab('top10',this);renderTop10Admin()">🏆 Top 10</button>
       <button class="atab" onclick="aTab('stats',this);renderStats()">📈 Statistiques</button>
-      <button class="atab" id="tabSuggestions" onclick="aTab('suggestions',this);renderSuggestions()" style="position:relative">💡 Suggestions<span class="sug-notif" id="sugNotif"></span></button>
       <button class="atab" id="tabAccess" onclick="aTab('access',this)">🔑 Accès Admin</button>
     </div>
     <div class="a-r">
@@ -612,6 +578,31 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       </div>
     </div>
 
+    <!-- TOP 10 -->
+    <div class="apanel" id="ap-top10">
+      <div class="ph">
+        <h2 class="ptitle">🏆 Top 10 personnalisé</h2>
+        <div style="font-size:.8rem;color:var(--text3)">Glissez pour réordonner · apparaît sur la page d'accueil</div>
+      </div>
+      <div class="notice" id="top10Notice"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <!-- Sélecteur -->
+        <div>
+          <div style="font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem">Contenus publiés — cliquez pour ajouter</div>
+          <div id="top10Pool" style="display:flex;flex-direction:column;gap:.4rem;max-height:520px;overflow-y:auto;padding-right:.25rem"></div>
+        </div>
+        <!-- Liste ordonnée -->
+        <div>
+          <div style="font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem">Votre Top 10 (<span id="top10Count">0</span>/10) — glissez pour réordonner</div>
+          <div id="top10List" style="display:flex;flex-direction:column;gap:.4rem;min-height:100px"></div>
+          <div style="margin-top:1rem;display:flex;gap:.75rem">
+            <button class="fpub" style="background:var(--bg3);border:1px solid var(--border2);color:var(--text)" onclick="clearTop10()">🗑 Vider</button>
+            <button class="fpub" onclick="saveTop10()">💾 Sauvegarder le Top 10</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- STATISTIQUES -->
     <div class="apanel" id="ap-stats">
       <div class="ph">
@@ -659,22 +650,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">📁 Vues par genre</div>
         <div style="padding:1.25rem" id="statsGenreBar"></div>
       </div>
-    </div>
-
-    <!-- SUGGESTIONS -->
-    <div class="apanel" id="ap-suggestions">
-      <div class="ph">
-        <h2 class="ptitle">💡 Suggestions des utilisateurs</h2>
-        <button class="stat-reset" onclick="clearDoneSuggestions()">🗑 Supprimer les traitées</button>
-      </div>
-      <div class="notice" id="sugNotice"></div>
-      <div id="sugFilterRow" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem">
-        <span class="cat on" onclick="filterSug('all',this)">Toutes</span>
-        <span class="cat" onclick="filterSug('new',this)">🔵 Nouvelles</span>
-        <span class="cat" onclick="filterSug('done',this)">✅ Acceptées</span>
-        <span class="cat" onclick="filterSug('rej',this)">❌ Refusées</span>
-      </div>
-      <div class="sug-grid" id="sugGrid"></div>
     </div>
 
     <!-- ACCÈS ADMIN -->
@@ -726,8 +701,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
       <div class="field-row">
         <div class="field">
-          <label>Genre / Catégorie *</label>
-          <select id="vGenre"></select>
+          <label>Genres / Catégories * <span style="font-size:.62rem;color:var(--text3);font-weight:400;letter-spacing:0">(plusieurs possibles)</span></label>
+          <div id="vGenreList" style="display:flex;flex-wrap:wrap;gap:.4rem .5rem;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:8px 10px;min-height:38px"></div>
         </div>
         <div class="field">
           <label>Année</label>
@@ -843,49 +818,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
 </div>
 
-<!-- FLOATING SUGGEST BUTTON -->
-<button id="floatSugBtn" onclick="openSuggestModal()">💡 Suggérer un contenu</button>
-
-<!-- SUGGEST MODAL -->
-<div id="suggestModal" onclick="if(event.target===this)closeSuggestModal()">
-  <div class="sm-box">
-    <div class="sm-title">💡 Suggérer un contenu</div>
-    <div class="sm-field">
-      <label>Titre du film / de la série *</label>
-      <input type="text" id="sugTitle" placeholder="Ex: Inception, Breaking Bad…">
-    </div>
-    <div class="sm-field">
-      <label>Type</label>
-      <select id="sugType">
-        <option value="Film">🎬 Film</option>
-        <option value="Série">📺 Série</option>
-        <option value="Autre">❓ Autre</option>
-      </select>
-    </div>
-    <div class="sm-field">
-      <label>Message (optionnel)</label>
-      <textarea id="sugMsg" placeholder="Pourquoi tu recommandes ce contenu ? Où le trouver ?"></textarea>
-    </div>
-    <div id="sugErr" style="background:rgba(232,25,44,.1);border:1px solid rgba(232,25,44,.3);color:#ff8888;font-size:.8rem;padding:10px 14px;border-radius:6px;margin-bottom:.75rem;display:none"></div>
-    <div id="sugOk" style="background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.25);color:#81c784;font-size:.8rem;padding:10px 14px;border-radius:6px;margin-bottom:.75rem;display:none"></div>
-    <div class="sm-foot">
-      <button class="btn-draft" onclick="closeSuggestModal()">Annuler</button>
-      <button class="btn-publish" onclick="submitSuggestion()" style="background:#5c9eff">📨 Envoyer</button>
-    </div>
-  </div>
-</div>
-
 <script>
 // ——— CONFIG ———
 const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
-const EMO = ['🎬','🔥','🌊','🌙','🧠','🚀','🎵','⚡','👁','🏔','🎭','🌟','🎪','🎨'];
+const EMO = ['🎬','🔥','🌊','🌙','🧠','💀','🚀','🩸','🎵','⚡','👁','🏔','🗡','🌑'];
 
 // ——— VARIABLES GLOBALES ———
 let USERS = [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }];
 let currentUser = null;
-let DB = [];
 let CATS = ['Action','Thriller','Drame','Comédie','Sci-fi','Horreur'];
-let SUGGESTIONS = [];
+let TOP10 = []; // IDs ordonnés pour le Top 10 personnalisé
 let nid = 1;
 
 // ——— JSONBIN (base de données cloud) ———
@@ -912,57 +854,97 @@ function setCloudStatus(msg, color) {
   el._t = setTimeout(() => { el.style.opacity = '0'; }, 3000);
 }
 
+const LS_KEY = 'cinemax_data';
+
+function applyData(data) {
+  if (!data) return;
+  if (data.DB)    DB    = data.DB;
+  if (data.CATS)  CATS  = data.CATS;
+  if (data.TOP10) TOP10 = data.TOP10;
+  if (data.nid)   nid   = data.nid;
+  if (data.heroId !== undefined) heroId = data.heroId;
+  if (data.USERS) {
+    const saved = data.USERS;
+    const hasSA = saved.find(u => u.role === 'superadmin');
+    USERS = hasSA ? saved : [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }, ...saved];
+  }
+}
+
+function saveLocal(data) {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
 async function saveState() {
   if (_saving) return;
   _saving = true;
-  setCloudStatus('\u{1F4BE} Sauvegarde…', '#f5c518');
-  const data = { DB, CATS, USERS, nid, heroId, SUGGESTIONS };
+  const data = { DB, CATS, USERS, nid, heroId, TOP10 };
+
+  // 1. Sauvegarde locale immédiate (toujours)
+  saveLocal(data);
+  setCloudStatus('💾 Sauvegarde…', '#f5c518');
+
+  // 2. Sync JSONBin en arrière-plan (optionnel)
   try {
-    await fetch(JB_BASE + '/' + JB_BIN_ID, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'X-Master-Key': JB_KEY },
-      body: JSON.stringify(data)
-    });
-    setCloudStatus('\u2705 Sauvegard\u00e9', '#4caf50');
+    const res = await Promise.race([
+      fetch(JB_BASE + '/' + JB_BIN_ID, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-Master-Key': JB_KEY },
+        body: JSON.stringify(data)
+      }),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 6000))
+    ]);
+    if (res.ok) setCloudStatus('✅ Sauvegardé (local + cloud)', '#4caf50');
+    else setCloudStatus('💾 Sauvegardé localement', '#f5c518');
   } catch(e) {
-    console.warn('Sauvegarde impossible:', e);
-    setCloudStatus('\u274C Erreur sauvegarde', '#e8192c');
+    console.warn('JSONBin indisponible:', e.message);
+    setCloudStatus('💾 Sauvegardé localement', '#f5c518');
   }
   _saving = false;
 }
 
 async function loadState() {
-  setCloudStatus('\u23F3 Chargement…', '#5c9eff');
-  try {
-    const res = await fetch(JB_BASE + '/' + JB_BIN_ID + '/latest', {
-      headers: { 'X-Master-Key': JB_KEY }
-    });
-    const json = await res.json();
-    const data = json.record;
-    if (!data) return;
-    if (data.DB)    DB   = data.DB;
-    if (data.CATS)  CATS = data.CATS;
-    if (data.nid)   nid  = data.nid;
-    if (data.heroId !== undefined) heroId = data.heroId;
-    if (data.SUGGESTIONS) SUGGESTIONS = data.SUGGESTIONS;
-    if (data.USERS) {
-      const saved = data.USERS;
-      const hasSA = saved.find(u => u.role === 'superadmin');
-      USERS = hasSA ? saved : [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }, ...saved];
-    }
-    // Restore session
-    try {
-      const sess = localStorage.getItem(SESSION_KEY);
-      if (sess) {
-        const u = USERS.find(x => x.user === sess);
-        if (u) currentUser = u;
-      }
-    } catch(e) {}
-    setCloudStatus('\u2705 Donn\u00e9es charg\u00e9es', '#4caf50');
-  } catch(e) {
-    console.warn('Chargement impossible:', e);
-    setCloudStatus('\u274C Erreur chargement', '#e8192c');
+  setCloudStatus('⏳ Chargement…', '#5c9eff');
+
+  // 1. Charger depuis localStorage en premier (instantané)
+  const local = loadLocal();
+  if (local) {
+    applyData(local);
+    setCloudStatus('✅ Données chargées (local)', '#4caf50');
   }
+
+  // 2. Tenter de synchroniser depuis JSONBin (si plus récent)
+  try {
+    const res = await Promise.race([
+      fetch(JB_BASE + '/' + JB_BIN_ID + '/latest', {
+        headers: { 'X-Master-Key': JB_KEY }
+      }),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 6000))
+    ]);
+    if (res.ok) {
+      const json = await res.json();
+      const data = json.record;
+      if (data && data.nid >= (local ? (local.nid || 0) : 0)) {
+        applyData(data);
+        saveLocal(data);
+        setCloudStatus('✅ Données chargées (cloud)', '#4caf50');
+      }
+    }
+  } catch(e) {
+    console.warn('JSONBin indisponible, utilisation des données locales:', e.message);
+    if (!local) setCloudStatus('⚠️ Hors-ligne — aucune donnée locale', '#ffb74d');
+  }
+
+  // 3. Restaurer la session
+  try {
+    const sess = localStorage.getItem(SESSION_KEY);
+    if (sess) {
+      const u = USERS.find(x => x.user === sess);
+      if (u) currentUser = u;
+    }
+  } catch(e) {}
 }
 
 let currentType = 'Film';
@@ -979,13 +961,6 @@ function show(id) {
   window.scrollTo(0, 0);
   const hideNav = id === 'adminPage' || id === 'playerPage';
   document.getElementById('nav').style.display = hideNav ? 'none' : 'flex';
-  // Cache le bouton flottant sur admin/player/login
-  const floatBtn = document.getElementById('floatSugBtn');
-  if (floatBtn) {
-    const hiddenPages = ['adminPage', 'playerPage', 'loginPage'];
-    const shouldHide = hiddenPages.includes(id) || !currentUser || isAdmin(currentUser);
-    floatBtn.style.display = shouldHide ? 'none' : 'flex';
-  }
 }
 
 function goHome() {
@@ -1017,13 +992,9 @@ function isSuperAdmin(u) { return u && u.role === 'superadmin'; }
 function updateNavAuth() {
   const area = document.getElementById('navAuthArea');
   const favLink = document.getElementById('navFavLink');
-  const floatBtn = document.getElementById('floatSugBtn');
   if (!currentUser) {
     area.innerHTML = `<button class="btn btn-ghost" onclick="goLogin()">Connexion</button>`;
     if (favLink) favLink.style.display = 'none';
-    const sugLink2 = document.getElementById('navSugLink');
-    if (sugLink2) sugLink2.style.display = 'none';
-    if (floatBtn) floatBtn.style.display = 'none';
   } else {
     const adminBtn = isAdmin(currentUser)
       ? `<button class="btn btn-red" onclick="goAdmin()" style="font-size:.75rem">⚙ Admin</button>` : '';
@@ -1032,11 +1003,6 @@ function updateNavAuth() {
       ${adminBtn}
       <button class="btn btn-ghost" onclick="doLogout()">Déconnexion</button>`;
     if (favLink) favLink.style.display = 'block';
-    // Suggérer uniquement pour les non-admins
-    const sugLink = document.getElementById('navSugLink');
-    if (sugLink) sugLink.style.display = isAdmin(currentUser) ? 'none' : 'block';
-    // Bouton flottant seulement pour non-admins
-    if (floatBtn) floatBtn.style.display = isAdmin(currentUser) ? 'none' : 'flex';
   }
   // Show/hide admin hero button
   const hcBtn = document.getElementById('heroChooseBtn');
@@ -1071,6 +1037,14 @@ function doLogin() {
   const u = document.getElementById('lu').value.trim();
   const p = document.getElementById('lp').value;
   const err = document.getElementById('lErr');
+
+  // Diagnostic : si USERS ne contient que le superadmin par défaut et qu'on n'a pas chargé depuis le cloud
+  if (USERS.length === 0) {
+    err.textContent = '⚠️ Données non chargées. Rafraîchissez la page.';
+    err.style.display = 'block';
+    return;
+  }
+
   const found = USERS.find(x => x.user === u && x.pass === p);
   if (found) {
     err.style.display = 'none';
@@ -1085,7 +1059,9 @@ function doLogin() {
       goHome();
     }
   } else {
-    err.textContent = 'Identifiant ou mot de passe incorrect.';
+    // Afficher les users disponibles en console pour debug
+    console.log('USERS chargés:', USERS.map(x => x.user));
+    err.textContent = `Identifiant ou mot de passe incorrect. (${USERS.length} compte${USERS.length>1?'s':''} chargé${USERS.length>1?'s':''})`;
     err.style.display = 'block';
     document.getElementById('lp').value = '';
   }
@@ -1227,11 +1203,6 @@ function renderFavPage() {
 }
 
 // ——— CARD ———
-function safeEmo(e) {
-  const bad = ['💀','🩸','🗡','🌑'];
-  return bad.includes(e) ? '🎬' : (e || '🎬');
-}
-
 function mkCard(v) {
   const d = document.createElement('div');
   d.className = 'card';
@@ -1239,20 +1210,21 @@ function mkCard(v) {
     : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>'
     : v.tag === 'hot' ? '<div class="c-tag tag-hot">🔥 HOT</div>' : '';
   const ico = v.type === 'Série' ? '📺 ' : '';
+  const genreDisplay = (v.genres && v.genres.length > 1) ? v.genres.join(', ') : (v.genre || '');
   const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
   const favActive = isFav(v.id);
   const favHtml = currentUser
     ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>`
     : '';
   d.innerHTML = `
-    <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${safeEmo(v.emo)}</span></div>
+    <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${v.emo}</span></div>
     ${tagHtml}
     <div class="c-score">★ ${v.score || '?'}</div>
     ${favHtml}
     <div class="c-ov"><div class="p-circ">▶</div></div>
     <div class="c-body">
       <div class="c-title">${ico}${v.title}</div>
-      <div class="c-sub">${v.year || ''} · ${v.genre || ''}</div>
+      <div class="c-sub">${v.year || ''} · ${genreDisplay}</div>
     </div>`;
   d.onclick = () => openDetail(v);
   return d;
@@ -1270,10 +1242,7 @@ function renderHome(f = 'Tout') {
     : pub[0];
 
   if (hero) {
-    // Remplacer emojis indésirables stockés en DB
-    const badEmos = ['💀','🩸','🗡','🌑'];
-    const safeEmo = badEmos.includes(hero.emo) ? '🎬' : hero.emo;
-    document.getElementById('heroArt').textContent = safeEmo;
+    document.getElementById('heroArt').textContent = hero.emo;
     document.getElementById('heroTitle').textContent = hero.title;
     document.getElementById('heroDesc').textContent = hero.desc || 'Aucune description disponible.';
     document.getElementById('heroBadge').textContent = 'À LA UNE';
@@ -1300,12 +1269,12 @@ function renderHome(f = 'Tout') {
     if (fr) fr.textContent = '© 2026 CINÉMAX';
   }
 
-  // Filter
+  // Filter — multi-genre aware
   let list;
   if (f === 'Tout') list = pub;
   else if (f === 'Film') list = pub.filter(v => v.type === 'Film');
   else if (f === 'Série') list = pub.filter(v => v.type === 'Série');
-  else list = pub.filter(v => v.genre === f);
+  else list = pub.filter(v => (v.genres && v.genres.includes(f)) || v.genre === f);
 
   function sec(title, items) {
     if (!items.length) return;
@@ -1320,10 +1289,19 @@ function renderHome(f = 'Tout') {
   }
 
   if (f === 'Tout') {
+    // Top 10 personnalisé en premier si défini
+    if (TOP10 && TOP10.length > 0) {
+      const top10Items = TOP10.map(id => pub.find(v => v.id === id)).filter(Boolean);
+      if (top10Items.length > 0) sec('🏆 Top ' + top10Items.length, top10Items);
+    }
     sec('Films', pub.filter(v => v.type === 'Film'));
     sec('Séries', pub.filter(v => v.type === 'Série'));
+    // Par genre — multi-genre aware
     const byGenre = {};
-    pub.forEach(v => { if (!byGenre[v.genre]) byGenre[v.genre] = []; byGenre[v.genre].push(v); });
+    pub.forEach(v => {
+      const gs = (v.genres && v.genres.length) ? v.genres : [v.genre];
+      gs.forEach(g => { if (g) { if (!byGenre[g]) byGenre[g] = []; if (!byGenre[g].find(x => x.id === v.id)) byGenre[g].push(v); } });
+    });
     Object.entries(byGenre).forEach(([g, items]) => { if (items.length > 0) sec(g, items); });
   } else {
     sec(`${f} — ${list.length} titre${list.length !== 1 ? 's' : ''}`, list);
@@ -1382,69 +1360,17 @@ function doSearch(q) {
 }
 
 // ——— DETAIL ———
-let _detailCurrentId = null;
-
-function updateDetailFavBtn(id) {
-  const btn = document.getElementById('dFavBtn');
-  if (!btn) return;
-  const fav = isFav(id);
-  btn.textContent = fav ? '❤️ Retirer des favoris' : '🤍 Ajouter aux favoris';
-  btn.style.color = fav ? '#ff6b6b' : '';
-}
-
-function detailToggleFav() {
-  if (!_detailCurrentId) return;
-  toggleFav(_detailCurrentId, null);
-  updateDetailFavBtn(_detailCurrentId);
-}
-
-function detailSetHero() {
-  if (!_detailCurrentId) return;
-  setHero(_detailCurrentId);
-  // Update button to show it's active
-  const btn = document.getElementById('dHeroBtn');
-  if (btn) { btn.textContent = '★ À l\'affiche !'; btn.style.color = 'var(--gold)'; }
-}
-
 function openDetail(v) {
-  _detailCurrentId = v.id;
-  document.getElementById('dArt').textContent = safeEmo(v.emo);
+  document.getElementById('dArt').textContent = v.emo;
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
   document.getElementById('dMeta').innerHTML = `
     <span style="color:var(--gold);font-weight:700">★ ${v.score || '?'}</span>
     <span>${v.year || ''}</span>
     <span>${v.dur || ''}</span>
-    <span class="m-tag">${v.genre || ''}</span>
+    <span class="m-tag">${(v.genres && v.genres.length > 1) ? v.genres.join(' · ') : (v.genre || '')}</span>
     <span class="m-tag">${v.type}</span>`;
   document.getElementById('dPlay').onclick = () => openPlayer(v, v.eps && v.eps.length ? v.eps[0] : null);
-
-  // Fav button
-  const favBtn = document.getElementById('dFavBtn');
-  if (currentUser) {
-    favBtn.style.display = 'flex';
-    updateDetailFavBtn(v.id);
-  } else {
-    favBtn.style.display = 'none';
-  }
-
-  // Admin hero button
-  const heroBtn = document.getElementById('dHeroBtn');
-  if (isAdmin(currentUser)) {
-    heroBtn.style.display = 'flex';
-    heroBtn.textContent = heroId === v.id ? '★ À l\'affiche !' : '⭐ Mettre à l\'affiche';
-    heroBtn.style.color = heroId === v.id ? 'var(--gold)' : '';
-  } else {
-    heroBtn.style.display = 'none';
-  }
-
-  // Suggest button (connected non-admin users)
-  const sugBtn = document.getElementById('dSuggestBtn');
-  if (currentUser && !isAdmin(currentUser)) {
-    sugBtn.style.display = 'flex';
-  } else {
-    sugBtn.style.display = 'none';
-  }
 
   const tabs = document.getElementById('dTabs');
   const panels = document.getElementById('dPanels');
@@ -1614,8 +1540,8 @@ function openCreateModal(type, editData) {
   document.getElementById('movieUrlSection').style.display = currentType === 'Film' ? 'block' : 'none';
   document.getElementById('serieEpsSection').style.display = currentType === 'Série' ? 'block' : 'none';
 
-  // Fill genre select
-  fillGenreSelect(editData ? editData.genre : '');
+  // Fill genre checkboxes
+  fillGenreCheckboxes(editData ? (editData.genres || (editData.genre ? [editData.genre] : [])) : []);
 
   // Restore episodes if editing
   if (editData && editData.eps) {
@@ -1636,10 +1562,33 @@ function closeModalOutside(e) {
   if (e.target === document.getElementById('createModal')) closeCreateModal();
 }
 
-function fillGenreSelect(selected) {
-  const sel = document.getElementById('vGenre');
-  sel.innerHTML = CATS.map(c => `<option${c === selected ? ' selected' : ''}>${c}</option>`).join('');
+function fillGenreCheckboxes(selected) {
+  // selected can be a string (legacy) or array
+  const sel = Array.isArray(selected) ? selected : (selected ? [selected] : []);
+  const container = document.getElementById('vGenreList');
+  if (!container) return;
+  container.innerHTML = '';
+  CATS.forEach(c => {
+    const checked = sel.includes(c);
+    const lbl = document.createElement('label');
+    lbl.style.cssText = 'display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:.78rem;padding:4px 10px;border-radius:99px;border:1px solid '+(checked?'var(--red)':'var(--border2)')+';background:'+(checked?'rgba(232,25,44,.12)':'transparent')+';transition:all .15s;user-select:none;white-space:nowrap';
+    const chk = document.createElement('input');
+    chk.type = 'checkbox';
+    chk.value = c;
+    chk.checked = checked;
+    chk.style.cssText = 'accent-color:var(--red);cursor:pointer';
+    chk.onchange = () => {
+      lbl.style.borderColor = chk.checked ? 'var(--red)' : 'var(--border2)';
+      lbl.style.background = chk.checked ? 'rgba(232,25,44,.12)' : 'transparent';
+    };
+    lbl.appendChild(chk);
+    lbl.appendChild(document.createTextNode(c));
+    container.appendChild(lbl);
+  });
 }
+
+// Legacy alias kept for any existing calls
+function fillGenreSelect(selected) { fillGenreCheckboxes(selected); }
 
 function addEpisode(data) {
   epCount++;
@@ -1664,6 +1613,10 @@ function saveContent(publish) {
   const title = document.getElementById('vTitle').value.trim();
   if (!title) { alert('Le titre est requis.'); document.getElementById('vTitle').focus(); return; }
 
+  // Get selected genres (multi)
+  const genreChecks = document.querySelectorAll('#vGenreList input[type=checkbox]:checked');
+  const genres = Array.from(genreChecks).map(c => c.value);
+  if (!genres.length) { alert('Sélectionnez au moins une catégorie.'); return; }
   const editId = document.getElementById('editId').value;
   const isEdit = editId !== '';
   const existingEntry = isEdit ? DB.find(x => x.id === parseInt(editId)) : null;
@@ -1701,7 +1654,8 @@ function saveContent(publish) {
     id: vid_id,
     type: currentType,
     title,
-    genre: document.getElementById('vGenre').value,
+    genre: genres[0],    // premier genre (rétrocompat)
+    genres: genres,      // tableau complet
     url: mainUrl || (existingEntry ? existingEntry.url || '' : ''),
     fileKey: hasFile ? mainFileKey : (existingEntry ? existingEntry.fileKey || '' : ''),
     year: document.getElementById('vYear').value || new Date().getFullYear().toString(),
@@ -1815,7 +1769,6 @@ function renderAdmin() {
   document.getElementById('adminWelcome').textContent = currentUser ? `Connecté : ${currentUser.user}` : '';
   // L'onglet Accès Admin n'est visible que pour le super-admin
   document.getElementById('tabAccess').style.display = isSuperAdmin(currentUser) ? 'inline-block' : 'none';
-  updateSugNotif();
 }
 
 function renderDash() {
@@ -1831,7 +1784,7 @@ function renderDash() {
     tr.innerHTML = `
       <td style="font-weight:600">${v.title}</td>
       <td><span class="pill ${v.type === 'Série' ? 'pserie' : 'pfilm'}">${v.type}</span></td>
-      <td>${v.genre}</td>
+      <td>${(v.genres && v.genres.length > 1) ? v.genres.join(', ') : (v.genre || '')}</td>
       <td>${v.year}</td>
       <td>${v.pub ? '<span class="pill pp">Publié</span>' : '<span class="pill pd">Brouillon</span>'}</td>`;
     list.appendChild(tr);
@@ -1850,7 +1803,7 @@ function renderVidTable() {
     tr.innerHTML = `
       <td style="font-weight:600">${v.title}</td>
       <td><span class="pill ${v.type === 'Série' ? 'pserie' : 'pfilm'}">${v.type}</span></td>
-      <td>${v.genre}</td>
+      <td>${(v.genres && v.genres.length > 1) ? v.genres.join(', ') : (v.genre || '')}</td>
       <td>${v.year}</td>
       <td>${v.pub ? '<span class="pill pp">Publié</span>' : '<span class="pill pd">Brouillon</span>'}</td>
       <td><span style="font-size:.7rem;color:${v.url ? 'var(--green)' : 'var(--text3)'}">${v.url ? '✅ URL' : '⚠ Sans URL'}</span></td>
@@ -1880,7 +1833,7 @@ function renderCatTable() {
   const tb = document.getElementById('cTable');
   tb.innerHTML = '';
   CATS.forEach((c, i) => {
-    const count = DB.filter(v => v.genre === c).length;
+    const count = DB.filter(v => (v.genres && v.genres.includes(c)) || v.genre === c).length;
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><span class="cat on" style="display:inline-flex">${c}</span></td>
@@ -2092,7 +2045,8 @@ function renderStats() {
   const genreViews = {};
   pub.forEach(v => {
     const cnt = (s.views || {})[String(v.id)] || 0;
-    genreViews[v.genre] = (genreViews[v.genre] || 0) + cnt;
+    const gs = (v.genres && v.genres.length) ? v.genres : [v.genre];
+    gs.forEach(g => { if (g) genreViews[g] = (genreViews[g] || 0) + cnt; });
   });
   const genreEntries = Object.entries(genreViews).sort((a,b) => b[1]-a[1]);
   const maxVal = genreEntries.length ? genreEntries[0][1] : 1;
@@ -2107,146 +2061,6 @@ function renderStats() {
       </div>`
     ).join('');
   }
-}
-
-// ——— SUGGESTIONS ———
-let _sugCurrentTitle = '';
-let _sugFilter = 'all';
-
-function openSuggestModal(prefill) {
-  if (!currentUser) { goLogin(); return; }
-  _sugCurrentTitle = prefill || (document.getElementById('dTitle') ? document.getElementById('dTitle').textContent : '');
-  document.getElementById('sugTitle').value = _sugCurrentTitle;
-  document.getElementById('sugMsg').value = '';
-  document.getElementById('sugErr').style.display = 'none';
-  document.getElementById('sugOk').style.display = 'none';
-  document.getElementById('suggestModal').classList.add('open');
-}
-
-function closeSuggestModal() {
-  document.getElementById('suggestModal').classList.remove('open');
-}
-
-function submitSuggestion() {
-  const title = document.getElementById('sugTitle').value.trim();
-  const type  = document.getElementById('sugType').value;
-  const msg   = document.getElementById('sugMsg').value.trim();
-  const err   = document.getElementById('sugErr');
-  const ok    = document.getElementById('sugOk');
-  err.style.display = 'none'; ok.style.display = 'none';
-  if (!title) { err.textContent = 'Le titre est requis.'; err.style.display = 'block'; return; }
-  const sug = {
-    id: Date.now(),
-    user: currentUser.user,
-    title,
-    type,
-    msg,
-    status: 'new', // new | done | rej
-    ts: Date.now(),
-    reply: ''
-  };
-  SUGGESTIONS.unshift(sug);
-  saveState();
-  ok.textContent = `✅ Suggestion envoyée ! Les admins vont la voir.`;
-  ok.style.display = 'block';
-  document.getElementById('sugTitle').value = '';
-  document.getElementById('sugMsg').value = '';
-  setTimeout(() => closeSuggestModal(), 1800);
-}
-
-function filterSug(f, el) {
-  _sugFilter = f;
-  document.querySelectorAll('#sugFilterRow .cat').forEach(c => c.classList.remove('on'));
-  if (el) el.classList.add('on');
-  renderSuggestions();
-}
-
-function renderSuggestions() {
-  const grid = document.getElementById('sugGrid');
-  if (!grid) return;
-  let list = SUGGESTIONS;
-  if (_sugFilter === 'new')  list = SUGGESTIONS.filter(s => s.status === 'new');
-  if (_sugFilter === 'done') list = SUGGESTIONS.filter(s => s.status === 'done');
-  if (_sugFilter === 'rej')  list = SUGGESTIONS.filter(s => s.status === 'rej');
-  if (!list.length) {
-    grid.innerHTML = `<div class="sug-empty">Aucune suggestion pour l'instant.</div>`;
-    return;
-  }
-  grid.innerHTML = '';
-  list.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'sug-card';
-    const statusBadge = s.status === 'new'
-      ? '<span class="sug-status sug-new">🔵 Nouvelle</span>'
-      : s.status === 'done'
-      ? '<span class="sug-status sug-done">✅ Acceptée</span>'
-      : '<span class="sug-status sug-rej">❌ Refusée</span>';
-    const replyHtml = s.reply
-      ? `<div style="font-size:.75rem;color:var(--text3);margin-top:.25rem;padding:.4rem .75rem;border-left:2px solid var(--border2)">💬 Réponse admin : ${s.reply}</div>`
-      : '';
-    card.innerHTML = `
-      <div class="sug-header">
-        <div class="sug-avatar">${s.user.charAt(0).toUpperCase()}</div>
-        <div class="sug-user">${s.user}</div>
-        <div class="sug-date">${fmtTime(s.ts)}</div>
-      </div>
-      <div>
-        <div class="sug-title">${s.title}</div>
-        <div class="sug-type">${s.type}</div>
-      </div>
-      ${s.msg ? `<div class="sug-msg">${s.msg}</div>` : ''}
-      ${replyHtml}
-      <div class="sug-actions">
-        ${statusBadge}
-        ${s.status !== 'done' ? `<button class="ab" onclick="setSugStatus(${s.id},'done')">✅ Accepter</button>` : ''}
-        ${s.status !== 'rej'  ? `<button class="ab dl" onclick="setSugStatus(${s.id},'rej')">❌ Refuser</button>` : ''}
-        <button class="ab" onclick="replyToSug(${s.id})">💬 Répondre</button>
-        <button class="ab dl" onclick="deleteSug(${s.id})">🗑</button>
-      </div>`;
-    grid.appendChild(card);
-  });
-  // update notif dot
-  updateSugNotif();
-}
-
-function setSugStatus(id, status) {
-  const s = SUGGESTIONS.find(x => x.id === id);
-  if (!s) return;
-  s.status = status;
-  saveState();
-  renderSuggestions();
-  showNotice('sugNotice', status === 'done' ? '✅ Suggestion acceptée.' : '❌ Suggestion refusée.');
-}
-
-function replyToSug(id) {
-  const s = SUGGESTIONS.find(x => x.id === id);
-  if (!s) return;
-  const reply = prompt('Répondre à cette suggestion (visible par l\'utilisateur) :', s.reply || '');
-  if (reply === null) return;
-  s.reply = reply.trim();
-  saveState();
-  renderSuggestions();
-}
-
-function deleteSug(id) {
-  if (!confirm('Supprimer cette suggestion ?')) return;
-  SUGGESTIONS = SUGGESTIONS.filter(x => x.id !== id);
-  saveState();
-  renderSuggestions();
-}
-
-function clearDoneSuggestions() {
-  if (!confirm('Supprimer toutes les suggestions acceptées et refusées ?')) return;
-  SUGGESTIONS = SUGGESTIONS.filter(s => s.status === 'new');
-  saveState();
-  renderSuggestions();
-}
-
-function updateSugNotif() {
-  const dot = document.getElementById('sugNotif');
-  if (!dot) return;
-  const hasNew = SUGGESTIONS.some(s => s.status === 'new');
-  dot.style.display = hasNew ? 'block' : 'none';
 }
 
 // ——— HERO PICKER ———
@@ -2284,6 +2098,95 @@ function setHero(id) {
   saveState();
   renderHome();
   setCloudStatus('⭐ Affiche mise à jour', '#f5c518');
+}
+
+// ——— TOP 10 ADMIN ———
+let top10DragSrc = null;
+
+function renderTop10Admin() {
+  const pub = DB.filter(v => v.pub);
+  const pool = document.getElementById('top10Pool');
+  const listEl = document.getElementById('top10List');
+  if (!pool || !listEl) return;
+
+  // Pool: tous les publiés pas encore dans le top10
+  pool.innerHTML = '';
+  pub.forEach(v => {
+    const inTop = TOP10.includes(v.id);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;border-radius:7px;border:1px solid var(--border);background:var(--bg2);cursor:pointer;transition:all .15s;font-size:.82rem;' + (inTop ? 'opacity:.35;pointer-events:none;' : '');
+    row.innerHTML = `<span style="font-size:1.1rem">${v.emo}</span><div style="flex:1"><div style="font-weight:600">${v.title}</div><div style="font-size:.7rem;color:var(--text3)">${v.type} · ${v.year || ''}</div></div><span style="font-size:.72rem;color:${inTop ? 'var(--text3)' : 'var(--green)'}">` + (inTop ? '✓ Déjà dedans' : '+ Ajouter') + `</span>`;
+    if (!inTop) row.onclick = () => addToTop10(v.id);
+    pool.appendChild(row);
+  });
+
+  renderTop10List();
+}
+
+function renderTop10List() {
+  const listEl = document.getElementById('top10List');
+  const countEl = document.getElementById('top10Count');
+  if (!listEl) return;
+  listEl.innerHTML = '';
+  if (!TOP10.length) {
+    listEl.innerHTML = '<div style="padding:1.5rem;text-align:center;color:var(--text3);font-size:.82rem;border:1px dashed var(--border);border-radius:7px">Aucun contenu dans le Top 10.<br>Cliquez sur un contenu à gauche pour l\'ajouter.</div>';
+    if (countEl) countEl.textContent = '0';
+    return;
+  }
+  if (countEl) countEl.textContent = TOP10.length;
+  TOP10.forEach((id, i) => {
+    const v = DB.find(x => x.id === id);
+    if (!v) return;
+    const row = document.createElement('div');
+    row.dataset.id = id;
+    row.draggable = true;
+    row.style.cssText = 'display:flex;align-items:center;gap:.75rem;padding:.55rem .9rem;border-radius:7px;border:1px solid var(--border2);background:var(--bg3);cursor:grab;font-size:.82rem;transition:opacity .15s;user-select:none';
+    row.innerHTML = `
+      <span style="font-size:.7rem;font-weight:700;color:var(--gold);min-width:18px;text-align:center">${i+1}</span>
+      <span style="font-size:1rem">${v.emo}</span>
+      <div style="flex:1"><div style="font-weight:600">${v.title}</div><div style="font-size:.7rem;color:var(--text3)">${v.type} · ${(v.genres||[v.genre]).join(', ')}</div></div>
+      <span style="font-size:.68rem;color:var(--text3);cursor:pointer;padding:4px 8px;border-radius:4px;border:1px solid var(--border)" onclick="removeFromTop10(${id})">✕</span>
+      <span style="color:var(--text3);font-size:.85rem;cursor:grab">⠿</span>`;
+    // Drag events
+    row.addEventListener('dragstart', e => { top10DragSrc = row; row.style.opacity = '.4'; e.dataTransfer.effectAllowed = 'move'; });
+    row.addEventListener('dragend', () => { row.style.opacity = '1'; top10DragSrc = null; });
+    row.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; });
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      if (!top10DragSrc || top10DragSrc === row) return;
+      const srcId = parseInt(top10DragSrc.dataset.id);
+      const tgtId = parseInt(row.dataset.id);
+      const si = TOP10.indexOf(srcId), ti = TOP10.indexOf(tgtId);
+      if (si < 0 || ti < 0) return;
+      TOP10.splice(si, 1);
+      TOP10.splice(ti, 0, srcId);
+      renderTop10List();
+    });
+    listEl.appendChild(row);
+  });
+}
+
+function addToTop10(id) {
+  if (TOP10.length >= 10) { showNotice('top10Notice', '⚠️ Le Top 10 est plein. Retirez un contenu d\'abord.'); return; }
+  if (!TOP10.includes(id)) TOP10.push(id);
+  renderTop10Admin();
+}
+
+function removeFromTop10(id) {
+  TOP10 = TOP10.filter(x => x !== id);
+  renderTop10Admin();
+}
+
+function clearTop10() {
+  if (!confirm('Vider le Top 10 ?')) return;
+  TOP10 = [];
+  renderTop10Admin();
+}
+
+function saveTop10() {
+  saveState();
+  renderHome();
+  showNotice('top10Notice', '✅ Top 10 sauvegardé et mis en ligne !');
 }
 
 // ——— INIT ———
