@@ -874,7 +874,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
 </div>
 
-<!-- HERO PICKER MODAL -->
+<!-- HERO PICKER MODAL — limite 15 -->
 <div id="heroPicker" onclick="if(event.target===this)closeHeroPicker()">
   <div class="hp-box">
     <div class="hp-head">
@@ -882,7 +882,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
       <button class="modal-close" onclick="closeHeroPicker()">✕</button>
     </div>
     <div style="padding:.75rem 1.5rem;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--text3)">
-      Sélectionnez jusqu'à <strong style="color:var(--gold)">5 contenus</strong> à afficher dans le carousel de l'accueil.
+      Sélectionnez jusqu'à <strong style="color:var(--gold)">15 contenus</strong> à afficher dans le carousel de l'accueil.
     </div>
     <div class="hp-list" id="hpList"></div>
     <div style="padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.75rem">
@@ -1250,7 +1250,6 @@ function mkTop10Card(v, rank) {
 }
 
 // ——— ROW WITH ARROWS ———
-// Crée un conteneur row avec flèches gauche/droite
 function mkRowWithArrows(items, renderFn, isTop10 = false) {
   const wrap = document.createElement('div');
   wrap.className = isTop10 ? 'top10-row-wrap' : 'row-wrap';
@@ -1274,7 +1273,6 @@ function mkRowWithArrows(items, renderFn, isTop10 = false) {
   btnL.onclick = () => { row.scrollBy({ left: -scrollAmt * 3, behavior: 'smooth' }); };
   btnR.onclick = () => { row.scrollBy({ left: scrollAmt * 3, behavior: 'smooth' }); };
 
-  // Mise à jour visibilité des flèches
   function updateArrows() {
     const atStart = row.scrollLeft <= 10;
     const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 10;
@@ -1283,7 +1281,6 @@ function mkRowWithArrows(items, renderFn, isTop10 = false) {
   }
 
   row.addEventListener('scroll', updateArrows);
-  // Délai pour laisser le DOM se rendre
   setTimeout(updateArrows, 100);
 
   wrap.appendChild(btnL);
@@ -1402,7 +1399,6 @@ function renderHome(f = 'Tout') {
     const s = document.createElement('div');
     s.className = 'sec';
 
-    // En-tête section
     const head = document.createElement('div');
     head.className = 'sec-head';
     if (isTop10) {
@@ -1415,7 +1411,6 @@ function renderHome(f = 'Tout') {
     }
     s.appendChild(head);
 
-    // Row avec flèches
     const rowWrap = mkRowWithArrows(
       isTop10 ? items.slice(0, 10) : items,
       isTop10 ? (v, i) => mkTop10Card(v, i) : (v) => mkCard(v),
@@ -1505,7 +1500,11 @@ function detailToggleFav() { if (!_detailCurrentId) return; toggleFav(_detailCur
 
 function detailSetHero() {
   if (!_detailCurrentId) return;
-  if (!heroIds.includes(_detailCurrentId)) { if (heroIds.length >= 5) heroIds.shift(); heroIds.push(_detailCurrentId); }
+  if (!heroIds.includes(_detailCurrentId)) {
+    // ——— LIMITE 15 ———
+    if (heroIds.length >= 15) heroIds.shift();
+    heroIds.push(_detailCurrentId);
+  }
   saveState();
   const btn = document.getElementById('dHeroBtn');
   if (btn) btn.textContent = '★ Ajouté à l\'affiche !';
@@ -1972,7 +1971,7 @@ function deleteSug(id){if(!confirm('Supprimer cette suggestion ?'))return;SUGGES
 function clearDoneSuggestions(){if(!confirm('Supprimer toutes les suggestions acceptées et refusées ?'))return;SUGGESTIONS=SUGGESTIONS.filter(s=>s.status==='new');saveState();renderSuggestions();}
 function updateSugNotif(){const dot=document.getElementById('sugNotif');if(!dot)return;dot.style.display=SUGGESTIONS.some(s=>s.status==='new')?'block':'none';}
 
-// ——— HERO PICKER ———
+// ——— HERO PICKER — limite 15 ———
 let _pickerSelection = [];
 function openHeroPicker() {
   _pickerSelection = [...heroIds];
@@ -2001,8 +2000,17 @@ function openHeroPicker() {
   document.getElementById('heroPicker').classList.add('open');
 }
 function togglePickerItem(id, div) {
-  if (_pickerSelection.includes(id)) { _pickerSelection = _pickerSelection.filter(x => x !== id); div.classList.remove('selected'); div.querySelector('.hp-check').style.opacity = '0'; }
-  else { if (_pickerSelection.length >= 5) { alert('Maximum 5 affiches à la une.'); return; } _pickerSelection.push(id); div.classList.add('selected'); div.querySelector('.hp-check').style.opacity = '1'; }
+  if (_pickerSelection.includes(id)) {
+    _pickerSelection = _pickerSelection.filter(x => x !== id);
+    div.classList.remove('selected');
+    div.querySelector('.hp-check').style.opacity = '0';
+  } else {
+    // ——— LIMITE 15 ———
+    if (_pickerSelection.length >= 15) { alert('Maximum 15 affiches à la une.'); return; }
+    _pickerSelection.push(id);
+    div.classList.add('selected');
+    div.querySelector('.hp-check').style.opacity = '1';
+  }
 }
 function saveHeroPicker() { heroIds = [..._pickerSelection]; closeHeroPicker(); saveState(); renderHome(); setCloudStatus('⭐ Affiches mises à jour', '#f5c518'); }
 function closeHeroPicker() { document.getElementById('heroPicker').classList.remove('open'); }
