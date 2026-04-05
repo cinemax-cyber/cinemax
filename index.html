@@ -379,7 +379,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .sm-field textarea{resize:vertical;min-height:90px}
 .sm-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem}
 
-/* ====== REPORT MODAL ====== */
 #reportModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
 #reportModal.open{display:flex}
 .rp-box{background:var(--bg2);border:1px solid rgba(251,146,60,.25);border-radius:14px;width:500px;max-width:95vw;padding:0;overflow:hidden}
@@ -402,7 +401,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .btn-report-send{background:var(--orange);color:#fff;border:none;padding:10px 24px;border-radius:5px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:background .15s}
 .btn-report-send:hover{background:#ea6c0a}
 
-/* Report card in admin */
 .report-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:10px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;transition:border-color .15s}
 .report-card.urgent{border-left-color:var(--red)}
 .report-card.resolved{border-left-color:var(--green);opacity:.7}
@@ -416,10 +414,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 .report-desc{font-size:.82rem;color:var(--text2);line-height:1.6;background:var(--bg3);border-radius:6px;padding:.6rem .85rem}
 .report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
 
-#floatSugBtn{position:fixed;bottom:28px;right:28px;z-index:400;display:none;align-items:center;gap:.55rem;background:linear-gradient(135deg,#3a7bd5,#5c9eff);color:#fff;border:none;border-radius:99px;padding:13px 22px;font-size:.85rem;font-weight:700;font-family:var(--sans);cursor:pointer;box-shadow:0 8px 32px rgba(92,158,255,.35);transition:all .25s;letter-spacing:.3px}
-#floatSugBtn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 40px rgba(92,158,255,.45)}
-
-/* ====== Float buttons group ====== */
 #floatBtns{position:fixed;bottom:28px;right:28px;z-index:400;display:none;flex-direction:column;gap:.65rem;align-items:flex-end}
 #floatBtns.visible{display:flex}
 .float-btn-sug{display:flex;align-items:center;gap:.55rem;background:linear-gradient(135deg,#3a7bd5,#5c9eff);color:#fff;border:none;border-radius:99px;padding:11px 20px;font-size:.82rem;font-weight:700;font-family:var(--sans);cursor:pointer;box-shadow:0 6px 24px rgba(92,158,255,.35);transition:all .25s;letter-spacing:.3px;white-space:nowrap}
@@ -444,13 +438,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 #favPage{min-height:100vh}
 
-/* ====== FOUNDERS BADGE ====== */
 .founders-bar{background:linear-gradient(135deg,rgba(245,197,24,.06),rgba(232,25,44,.06));border-bottom:1px solid rgba(245,197,24,.15);padding:.5rem 2.5rem;display:flex;align-items:center;gap:.75rem;font-size:.7rem;color:var(--text3);}
 .founders-label{display:flex;align-items:center;gap:.5rem;font-size:.62rem;text-transform:uppercase;letter-spacing:2px;color:rgba(245,197,24,.6);font-weight:600;flex-shrink:0;}
 .founder-chip{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.22);color:var(--gold);padding:3px 12px 3px 8px;border-radius:99px;font-size:.7rem;font-weight:600;letter-spacing:.3px;}
 .founder-chip .fc-avatar{width:18px;height:18px;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;color:#000;flex-shrink:0;}
 
-/* ====== STATS CLOUD BADGE ====== */
 .live-stat-bar{background:rgba(7,7,15,.9);border-bottom:1px solid var(--border);padding:.4rem 2.5rem;display:flex;align-items:center;gap:1.5rem;font-size:.72rem;color:var(--text3)}
 .live-stat-item{display:flex;align-items:center;gap:.4rem}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse-green 2.5s infinite}
@@ -639,7 +631,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <div class="sc sb"><div class="sv b" id="dc-series">0</div><div class="sl">Séries</div></div>
         <div class="sc sn"><div class="sv n" id="dc-cats">0</div><div class="sl">Catégories</div></div>
       </div>
-      <!-- Stats rapides cloud -->
       <div class="sg" id="dashCloudStats"></div>
       <div class="at">
         <div style="padding:12px 15px;border-bottom:1px solid var(--border);font-size:.73rem;color:var(--text2)">Tous les contenus</div>
@@ -886,7 +877,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
   </div>
 </div>
 
-<!-- ====== REPORT MODAL ====== -->
+<!-- REPORT MODAL -->
 <div id="reportModal" onclick="if(event.target===this)closeReportModal()">
   <div class="rp-box">
     <div class="rp-head">
@@ -953,7 +944,6 @@ function setHeroSize(key,btn){
   if(btn)btn.classList.add('on');else{const b=document.getElementById('hsize-'+key);if(b)b.classList.add('on');}
 }
 
-// ——— FONDATEURS ———
 let USERS=[
   {user:'Nitox',pass:'Nitox2013@**',role:'superadmin'},
   {user:'Matou_dp',pass:'Matou_dp2013@**',role:'superadmin'},
@@ -965,17 +955,11 @@ let SUGGESTIONS=[];
 let REPORTS=[];
 let nid=1;
 
-// ——— JSONBIN ———
 const JB_KEY='$2a$10$/wDC/xoPtfwlRCTiiKFdI.npskPOKkLuSIvtKOkA5oEFt.hkJm9p.';
 const JB_BASE='https://api.jsonbin.io/v3/b';
 const JB_BIN_ID='69c9726f856a682189dccd04';
 
-// ——— BIN SÉPARÉ POUR LES STATS (vraies visites partagées entre tous les users) ———
-// On stocke les stats globales dans le même bin, dans un objet STATS_CLOUD
-// Cela permet à tous les visiteurs de contribuer au même compteur.
-
 let _saving=false;
-let _statsQueue=null;
 let _statsSaveTimer=null;
 
 const SESSION_KEY='cinemax_session';
@@ -983,11 +967,6 @@ let heroIds=[];
 let carouselIndex=0;
 let carouselTimer=null;
 
-// ==============================
-// CLOUD STATS (vraies visites)
-// ==============================
-// STATS_CLOUD est sauvegardé dans le bin principal, sous la clé "STATS_CLOUD"
-// Structure : { pageVisits, views:{id:n}, plays:{id:n}, searches:[{q,ts}], logins, registers, activity:[{msg,ts}] }
 let STATS_CLOUD = {pageVisits:0,views:{},plays:{},searches:[],logins:0,registers:0,activity:[]};
 
 function setCloudStatus(msg,color){
@@ -1009,7 +988,6 @@ async function saveState(){
   _saving=false;
 }
 
-// Sauvegarde rapide des stats uniquement (debounced 4s)
 function saveStatsDebounced(){
   clearTimeout(_statsSaveTimer);
   _statsSaveTimer=setTimeout(()=>saveState(),4000);
@@ -1029,7 +1007,6 @@ async function loadState(){
     if(data.REPORTS)REPORTS=data.REPORTS;
     if(data.heroIds&&Array.isArray(data.heroIds))heroIds=data.heroIds;
     else if(data.heroId!==undefined&&data.heroId!==null)heroIds=[data.heroId];
-    // Charger les stats cloud
     if(data.STATS_CLOUD){
       STATS_CLOUD=data.STATS_CLOUD;
       if(!STATS_CLOUD.pageVisits)STATS_CLOUD.pageVisits=0;
@@ -1057,7 +1034,6 @@ let epCount=0;
 let pendingFiles={};
 let fileStore={};
 
-// ——— NAVIGATION ———
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   const target=document.getElementById(id);
@@ -1091,7 +1067,6 @@ function filterNav(f,el){
 
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('stuck',scrollY>40);});
 
-// ——— AUTH ———
 function isAdmin(u){return u&&(u.role==='admin'||u.role==='superadmin');}
 function isSuperAdmin(u){return u&&u.role==='superadmin';}
 
@@ -1121,7 +1096,6 @@ function updateLiveVisitsBar(){
   const bar=document.getElementById('liveVisitsBar');
   const count=document.getElementById('liveVisitsCount');
   if(!bar||!count)return;
-  // Afficher à tous
   bar.style.display='flex';
   count.textContent=STATS_CLOUD.pageVisits||0;
 }
@@ -1210,7 +1184,6 @@ function renderUsersTable(){
   });
 }
 
-// ——— FAVORITES ———
 function getFavs(){if(!currentUser)return[];try{const raw=localStorage.getItem('cinemax_favs_'+currentUser.user);return raw?JSON.parse(raw):[];}catch(e){return[];}}
 function saveFavs(favs){if(!currentUser)return;try{localStorage.setItem('cinemax_favs_'+currentUser.user,JSON.stringify(favs));}catch(e){}}
 function isFav(id){return getFavs().includes(id);}
@@ -1236,7 +1209,6 @@ function renderFavPage(){
   items.forEach(v=>{const c=mkCard(v);c.style.flex='none';grid.appendChild(c);});
 }
 
-// ——— CARDS ———
 function mkCard(v){
   const d=document.createElement('div');d.className='card';
   const tagHtml=v.tag==='n'?'<div class="c-tag tag-n">NOUVEAU</div>':v.tag==='h'?'<div class="c-tag tag-h">4K HD</div>':v.tag==='hot'?'<div class="c-tag tag-hot">HOT</div>':'';
@@ -1275,7 +1247,6 @@ function mkRowWithArrows(items,renderFn,isTop10=false){
   return wrap;
 }
 
-// ——— HERO CAROUSEL ———
 function buildCarousel(){
   const pub=DB.filter(v=>v.pub);
   const carousel=document.getElementById('heroCarousel');
@@ -1311,7 +1282,6 @@ function carouselMove(dir){carouselGo(carouselIndex+dir);resetCarouselAuto();}
 function startCarouselAuto(count){if(carouselTimer)clearInterval(carouselTimer);if(count<=1)return;carouselTimer=setInterval(()=>{carouselGo(carouselIndex+1);},6000);}
 function resetCarouselAuto(){const count=document.querySelectorAll('.hero-slide').length;startCarouselAuto(count);}
 
-// ——— HOME ———
 function renderHome(f='Tout'){
   const pub=DB.filter(v=>v.pub);
   buildCarousel();
@@ -1361,7 +1331,6 @@ function rebuildCatRow(){
 }
 function filterCat(f,el){document.querySelectorAll('.cat').forEach(c=>c.classList.remove('on'));if(el)el.classList.add('on');renderHome(f);}
 
-// ——— SEARCH ———
 let searchTimeout;
 function doSearch(q){
   clearTimeout(searchTimeout);
@@ -1376,7 +1345,6 @@ function doSearch(q){
   },200);
 }
 
-// ——— DETAIL ———
 let _detailCurrentId=null;
 function updateDetailFavBtn(id){const btn=document.getElementById('dFavBtn');if(!btn)return;const fav=isFav(id);btn.textContent=fav?'❤️ Retirer des favoris':'🤍 Ajouter aux favoris';btn.style.color=fav?'#ff6b6b':'';}
 function detailToggleFav(){if(!_detailCurrentId)return;toggleFav(_detailCurrentId,null);updateDetailFavBtn(_detailCurrentId);}
@@ -1417,7 +1385,6 @@ function openDetail(v){
   trackView(v);show('detailPage');
 }
 
-// ——— PLAYER ———
 function isEmbedUrl(url){if(!url)return false;return!/\.(mp4|webm|ogg|mkv|avi|mov|m3u8|ts)(\?.*)?$/i.test(url);}
 function openPlayer(v,ep){
   if(!v)return;
@@ -1455,7 +1422,6 @@ function openPlayer(v,ep){
 }
 function closePlayer(){const wrap=document.getElementById('playerVideoWrap');if(wrap)wrap.innerHTML='';}
 
-// ——— CREATE MODAL ———
 function openCreateModal(type,editData){
   currentType=type||'Film';epCount=0;
   document.getElementById('editId').value=editData?editData.id:'';
@@ -1489,7 +1455,6 @@ function addEpisode(data){
   list.appendChild(d);
 }
 
-// ——— SAVE CONTENT ———
 function saveContent(publish){
   const title=document.getElementById('vTitle').value.trim();
   if(!title){alert('Le titre est requis.');document.getElementById('vTitle').focus();return;}
@@ -1516,7 +1481,6 @@ function saveContent(publish){
   showNotice('vNotice',publish?`✅ "${v.title}" publié !`:`💾 "${v.title}" en brouillon.`);
 }
 
-// ——— FILE HANDLING ———
 function formatSize(bytes){if(bytes<1024*1024)return(bytes/1024).toFixed(0)+' Ko';return(bytes/(1024*1024)).toFixed(1)+' Mo';}
 function setVideoMode(key,mode){
   const isFile=mode==='file';
@@ -1533,13 +1497,13 @@ function handleFileSelect(input,key){
 function handleFileDrop(event,key){event.preventDefault();const dropEl=document.getElementById(key+'FileDrop');if(dropEl)dropEl.classList.remove('drag');const file=event.dataTransfer.files[0];if(!file)return;handleFileSelect({files:[file]},key);}
 function clearFile(key){delete pendingFiles[key];const infoEl=document.getElementById(key+'FileInfo');const dropEl=document.getElementById(key+'FileDrop');const input=document.getElementById(key==='movie'?'vFile':'vFileSerie');if(infoEl)infoEl.style.display='none';if(dropEl)dropEl.style.display='block';if(input)input.value='';}
 
-// ——— ADMIN ———
 function renderAdmin(){
-  fillGenreSelect();renderVidTable();renderCatTable();renderDash();renderUsersTable();renderStats();
+  fillGenreSelect();renderVidTable();renderCatTable();renderDash();renderUsersTable();
+  // ✅ CORRECTION : renderStats() appelé directement au chargement de l'admin
+  renderStats();
   document.getElementById('adminWelcome').textContent=currentUser?`Connecté : ${currentUser.user}`:'';
   document.getElementById('tabAccess').style.display=isSuperAdmin(currentUser)?'inline-block':'none';
   updateSugNotif();updateReportNotif();
-  // Dashboard stats rapides cloud
   const ds=document.getElementById('dashCloudStats');if(ds){
     const views=Object.values(STATS_CLOUD.views||{}).reduce((a,b)=>a+b,0);
     const plays=Object.values(STATS_CLOUD.plays||{}).reduce((a,b)=>a+b,0);
@@ -1576,9 +1540,6 @@ function delCat(i){if(!confirm('Supprimer ?'))return;CATS.splice(i,1);saveState(
 function aTab(n,btn){document.querySelectorAll('.apanel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.atab').forEach(t=>t.classList.remove('on'));document.getElementById('ap-'+n).classList.add('on');btn.classList.add('on');}
 function showNotice(id,msg){const el=document.getElementById(id);if(!el)return;el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',5000);}
 
-// ==============================
-// STATS CLOUD (vraies visites partagées)
-// ==============================
 function trackVisit(){
   STATS_CLOUD.pageVisits=(STATS_CLOUD.pageVisits||0)+1;
   pushCloudActivity('Visite du site');
@@ -1626,33 +1587,40 @@ function renderStats(){
     {val:s.logins||0,lbl:'Connexions',cls:'sv5 c5'},
     {val:s.registers||0,lbl:'Inscriptions',cls:'sv6 c6'},
   ];
-  document.getElementById('statsGlobal').innerHTML=cards.map(c=>`<div class="stat-card ${c.cls.split(' ')[0]}"><div class="stat-val ${c.cls.split(' ')[1]}">${c.val}</div><div class="stat-lbl">${c.lbl}</div></div>`).join('');
+  const statsGlobal=document.getElementById('statsGlobal');
+  if(statsGlobal)statsGlobal.innerHTML=cards.map(c=>`<div class="stat-card ${c.cls.split(' ')[0]}"><div class="stat-val ${c.cls.split(' ')[1]}">${c.val}</div><div class="stat-lbl">${c.lbl}</div></div>`).join('');
   function topList(dict,containerId){
     const entries=Object.entries(dict||{}).map(([id,cnt])=>({v:pub.find(x=>String(x.id)===id),cnt})).filter(e=>e.v).sort((a,b)=>b.cnt-a.cnt).slice(0,5);
     const el=document.getElementById(containerId);
+    if(!el)return;
     if(!entries.length){el.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune donnée.</p>';return;}
     const rankClass=i=>i===0?'gold':i===1?'silver':i===2?'bronze':'';
     el.innerHTML=`<ul class="top-list">${entries.map((e,i)=>`<li class="top-item"><div class="top-rank ${rankClass(i)}">${i+1}</div><div class="top-name">${e.v.title}</div><div class="top-count">${e.cnt} fois</div></li>`).join('')}</ul>`;
   }
   topList(s.views,'statsTopViews');topList(s.plays,'statsTopPlays');
   const searchEl=document.getElementById('statsSearches');
-  const searches=(s.searches||[]).slice(0,20);
-  if(!searches.length){searchEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune recherche.</p>';}
-  else{const freq={};searches.forEach(x=>{freq[x.q]=(freq[x.q]||0)+1;});const sorted=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8);searchEl.innerHTML=`<ul class="top-list">${sorted.map(([q,cnt])=>`<li class="top-item"><span style="font-size:.9rem">🔍</span><div class="top-name">${q}</div><div class="top-count">${cnt}×</div></li>`).join('')}</ul>`;}
+  if(searchEl){
+    const searches=(s.searches||[]).slice(0,20);
+    if(!searches.length){searchEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune recherche.</p>';}
+    else{const freq={};searches.forEach(x=>{freq[x.q]=(freq[x.q]||0)+1;});const sorted=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8);searchEl.innerHTML=`<ul class="top-list">${sorted.map(([q,cnt])=>`<li class="top-item"><span style="font-size:.9rem">🔍</span><div class="top-name">${q}</div><div class="top-count">${cnt}×</div></li>`).join('')}</ul>`;}
+  }
   const actEl=document.getElementById('statsActivity');
-  const acts=(s.activity||[]).slice(0,12);
-  if(!acts.length){actEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune activité.</p>';}
-  else{actEl.innerHTML=`<div class="recent-list">${acts.map(a=>`<div class="recent-item"><span>${a.msg}</span><span class="recent-time">${fmtTime(a.ts)}</span></div>`).join('')}</div>`;}
+  if(actEl){
+    const acts=(s.activity||[]).slice(0,12);
+    if(!acts.length){actEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune activité.</p>';}
+    else{actEl.innerHTML=`<div class="recent-list">${acts.map(a=>`<div class="recent-item"><span>${a.msg}</span><span class="recent-time">${fmtTime(a.ts)}</span></div>`).join('')}</div>`;}
+  }
   const genreEl=document.getElementById('statsGenreBar');
-  const genreViews={};
-  pub.forEach(v=>{const cnt=(s.views||{})[String(v.id)]||0;genreViews[v.genre]=(genreViews[v.genre]||0)+cnt;});
-  const genreEntries=Object.entries(genreViews).sort((a,b)=>b[1]-a[1]);
-  const maxVal=genreEntries.length?genreEntries[0][1]:1;
-  if(!genreEntries.length||maxVal===0){genreEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune vue par genre.</p>';}
-  else{genreEl.innerHTML=genreEntries.map(([g,cnt])=>`<div class="stat-bar-row"><div class="stat-bar-label">${g}</div><div class="stat-bar-wrap"><div class="stat-bar-fill" style="width:${Math.round(cnt/maxVal*100)}%"></div></div><div class="stat-bar-val">${cnt}</div></div>`).join('');}
+  if(genreEl){
+    const genreViews={};
+    pub.forEach(v=>{const cnt=(s.views||{})[String(v.id)]||0;genreViews[v.genre]=(genreViews[v.genre]||0)+cnt;});
+    const genreEntries=Object.entries(genreViews).sort((a,b)=>b[1]-a[1]);
+    const maxVal=genreEntries.length?genreEntries[0][1]:1;
+    if(!genreEntries.length||maxVal===0){genreEl.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune vue par genre.</p>';}
+    else{genreEl.innerHTML=genreEntries.map(([g,cnt])=>`<div class="stat-bar-row"><div class="stat-bar-label">${g}</div><div class="stat-bar-wrap"><div class="stat-bar-fill" style="width:${Math.round(cnt/maxVal*100)}%"></div></div><div class="stat-bar-val">${cnt}</div></div>`).join('');}
+  }
 }
 
-// ——— SUGGESTIONS ———
 let _sugFilter='all';
 function openSuggestModal(){if(!currentUser){goLogin();return;}document.getElementById('sugTitle').value='';document.getElementById('sugMsg').value='';document.getElementById('sugErr').style.display='none';document.getElementById('sugOk').style.display='none';document.getElementById('suggestModal').classList.add('open');}
 function closeSuggestModal(){document.getElementById('suggestModal').classList.remove('open');}
@@ -1689,9 +1657,6 @@ function deleteSug(id){if(!confirm('Supprimer ?'))return;SUGGESTIONS=SUGGESTIONS
 function clearDoneSuggestions(){if(!confirm('Supprimer les traitées ?'))return;SUGGESTIONS=SUGGESTIONS.filter(s=>s.status==='new');saveState();renderSuggestions();}
 function updateSugNotif(){const dot=document.getElementById('sugNotif');if(!dot)return;dot.style.display=SUGGESTIONS.some(s=>s.status==='new')?'block':'none';}
 
-// ==============================
-// ⚠️ SIGNALEMENTS
-// ==============================
 let _reportType='bug';
 let _reportFilter='all';
 
@@ -1719,16 +1684,7 @@ function submitReport(){
   err.style.display='none';ok.style.display='none';
   if(!desc){err.textContent='La description est requise.';err.style.display='block';return;}
   const user=currentUser?currentUser.user:'Anonyme';
-  REPORTS.unshift({
-    id:Date.now(),
-    user,
-    type:_reportType,
-    title,
-    desc,
-    status:'open',
-    ts:Date.now(),
-    reply:'',
-  });
+  REPORTS.unshift({id:Date.now(),user,type:_reportType,title,desc,status:'open',ts:Date.now(),reply:''});
   saveState();
   ok.textContent='✅ Signalement envoyé ! Merci.';ok.style.display='block';
   document.getElementById('rpDesc').value='';document.getElementById('rpTitle').value='';
@@ -1752,25 +1708,9 @@ function renderReports(){
     const card=document.createElement('div');
     card.className='report-card'+(r.status==='resolved'?' resolved':'');
     const badge=`<span class="report-type-badge ${REPORT_TYPE_CSS[r.type]||'rtype-other'}">${REPORT_TYPE_LABELS[r.type]||r.type}</span>`;
-    const statusBadge=r.status==='open'
-      ?'<span class="sug-status sug-new">Ouvert</span>'
-      :'<span class="sug-status sug-done">Résolu</span>';
+    const statusBadge=r.status==='open'?'<span class="sug-status sug-new">Ouvert</span>':'<span class="sug-status sug-done">Résolu</span>';
     const replyHtml=r.reply?`<div style="font-size:.75rem;color:var(--text3);padding:.4rem .75rem;border-left:2px solid var(--border2)">Réponse admin : ${r.reply}</div>`:'';
-    card.innerHTML=`
-      <div class="report-header">
-        ${badge}
-        <div class="sug-user" style="font-size:.8rem;font-weight:600;flex:1">${r.user}</div>
-        <div class="sug-date">${fmtTime(r.ts)}</div>
-      </div>
-      ${r.title?`<div class="report-title">📌 ${r.title}</div>`:''}
-      <div class="report-desc">${r.desc}</div>
-      ${replyHtml}
-      <div class="sug-actions">
-        ${statusBadge}
-        ${r.status!=='resolved'?`<button class="ab" onclick="resolveReport(${r.id})">✅ Résoudre</button>`:''}
-        <button class="ab" onclick="replyToReport(${r.id})">Répondre</button>
-        <button class="ab dl" onclick="deleteReport(${r.id})">Supprimer</button>
-      </div>`;
+    card.innerHTML=`<div class="report-header">${badge}<div class="sug-user" style="font-size:.8rem;font-weight:600;flex:1">${r.user}</div><div class="sug-date">${fmtTime(r.ts)}</div></div>${r.title?`<div class="report-title">📌 ${r.title}</div>`:''}<div class="report-desc">${r.desc}</div>${replyHtml}<div class="sug-actions">${statusBadge}${r.status!=='resolved'?`<button class="ab" onclick="resolveReport(${r.id})">✅ Résoudre</button>`:''}<button class="ab" onclick="replyToReport(${r.id})">Répondre</button><button class="ab dl" onclick="deleteReport(${r.id})">Supprimer</button></div>`;
     grid.appendChild(card);
   });
   updateReportNotif();
@@ -1779,12 +1719,8 @@ function resolveReport(id){const r=REPORTS.find(x=>x.id===id);if(!r)return;r.sta
 function replyToReport(id){const r=REPORTS.find(x=>x.id===id);if(!r)return;const reply=prompt('Répondre au signalement :',r.reply||'');if(reply===null)return;r.reply=reply.trim();saveState();renderReports();}
 function deleteReport(id){if(!confirm('Supprimer ce signalement ?'))return;REPORTS=REPORTS.filter(x=>x.id!==id);saveState();renderReports();}
 function clearResolvedReports(){if(!confirm('Supprimer tous les signalements résolus ?'))return;REPORTS=REPORTS.filter(r=>r.status==='open');saveState();renderReports();}
-function updateReportNotif(){
-  const dot=document.getElementById('reportNotif');if(!dot)return;
-  dot.style.display=REPORTS.some(r=>r.status==='open')?'block':'none';
-}
+function updateReportNotif(){const dot=document.getElementById('reportNotif');if(!dot)return;dot.style.display=REPORTS.some(r=>r.status==='open')?'block':'none';}
 
-// ——— HERO PICKER ———
 let _pickerSelection=[];
 function openHeroPicker(){
   _pickerSelection=[...heroIds];
@@ -1804,7 +1740,6 @@ function togglePickerItem(id,div){
 function saveHeroPicker(){heroIds=[..._pickerSelection];closeHeroPicker();saveState();renderHome();setCloudStatus('Affiches mises à jour','#f5c518');}
 function closeHeroPicker(){document.getElementById('heroPicker').classList.remove('open');}
 
-// ——— INIT ———
 (async()=>{
   try{
     const savedSize=localStorage.getItem(HERO_SIZE_STORAGE);
@@ -1812,7 +1747,7 @@ function closeHeroPicker(){document.getElementById('heroPicker').classList.remov
     else{applyHeroSize('normal');}
   }catch(e){}
   await loadState();
-  trackVisit();     // ← incrémente le compteur cloud partagé entre tous les visiteurs
+  trackVisit();
   updateNavAuth();
   renderHome();
 })();
