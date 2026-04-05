@@ -40,6 +40,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .btn-ghost:hover{background:rgba(255,255,255,.06)}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#c4070f}
 
+/* Discord nav link */
+.nl-discord{color:#7289da;border:1px solid rgba(114,137,218,.3);border-radius:5px;font-size:.78rem;padding:6px 13px;cursor:pointer;transition:all .15s;letter-spacing:.4px;text-transform:uppercase;display:flex;align-items:center;gap:5px;text-decoration:none}
+.nl-discord:hover{color:#fff;background:rgba(114,137,218,.2);border-color:rgba(114,137,218,.6)}
+.nl-discord svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+
 /* ====== HERO CAROUSEL ====== */
 .hero-section-wrap{position:relative}
 
@@ -212,7 +217,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .top10-num{position:absolute;bottom:-10px;left:-8px;font-family:var(--serif);font-size:7rem;font-weight:700;font-style:italic;line-height:1;color:var(--bg);-webkit-text-stroke:2px rgba(255,255,255,.18);z-index:3;user-select:none;transition:all .25s}
 .top10-card:hover .top10-num{-webkit-text-stroke-color:rgba(255,255,255,.35)}
 .top10-card:nth-child(1) .top10-num,.top10-card:nth-child(2) .top10-num,.top10-card:nth-child(3) .top10-num{-webkit-text-stroke:2px rgba(245,197,24,.5);color:rgba(245,197,24,.05)}
-.top10-img{height:310px;border-radius:7px;overflow:hidden;position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--border)}
+.top10-img{height:310px;border-radius:7px;overflow:hidden;position:relative;background:var(--bg2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
 .top10-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .top10-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);z-index:1}
 .top10-info{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1rem 1rem 3.8rem;z-index:2}
@@ -224,7 +229,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 /* ====== CARD ====== */
 .card{flex:0 0 168px;background:var(--bg2);border-radius:7px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;scroll-snap-align:start;border:1px solid var(--border);position:relative}
 .card:hover{transform:translateY(-7px) scale(1.025);box-shadow:0 22px 45px rgba(0,0,0,.7);border-color:rgba(255,255,255,.18);z-index:5}
-.c-thumb{height:248px;position:relative;display:flex;align-items:center;justify-content:center;font-size:3.8rem;overflow:hidden}
+.c-thumb{height:248px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .c-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 55%);z-index:1}
 .c0{background:linear-gradient(135deg,#1c0a38,#2e0a22,#0a0a28)}
@@ -247,6 +252,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:h
 .c-body{padding:10px 12px 13px}
 .c-title{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
 .c-sub{font-size:.7rem;color:var(--text3)}
+
+/* Placeholder quand pas d'image — fond coloré pur, sans emoji */
+.c-thumb-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.c-thumb-placeholder::after{content:'';position:absolute;inset:0}
 
 .empty-state{text-align:center;padding:5rem 2rem;color:var(--text3)}
 .empty-state .es-icon{font-size:4rem;margin-bottom:1.5rem;opacity:.4}
@@ -504,6 +513,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
     <div class="nl" onclick="filterNav('Série',this)">Séries</div>
     <div class="nl" id="navFavLink" style="display:none" onclick="goFavorites(this)">❤️ Favoris</div>
     <div class="nl" id="navSugLink" style="display:none" onclick="openSuggestModal()">💡 Suggérer</div>
+    <a class="nl-discord" href="https://discord.gg/zzFpvVqGYF" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963a.074.074 0 0 0-.041-.104 13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
+      Discord
+    </a>
   </div>
   <div class="nav-r">
     <div class="sw">
@@ -576,7 +589,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 <div id="detailPage" class="page">
   <div class="d-hero">
     <div class="d-bg-img" id="dBgImg"></div>
-    <div class="d-art" id="dArt">🎬</div>
+    <div class="d-art" id="dArt"></div>
     <div class="d-grad"></div>
     <div class="d-content">
       <div class="d-crumb" onclick="goHome()">← Accueil</div>
@@ -912,7 +925,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 <script>
 const BG = ['c0','c1','c2','c3','c4','c5','c6','c7'];
-const EMO = ['🎬','🔥','🌊','🌙','🧠','🚀','🎵','⚡','👁','🏔','🎭','🌟','🎪','🎨'];
 
 const HERO_SIZES = {
   compact: { h: '42vh', minH: '300px' },
@@ -1040,7 +1052,7 @@ function goHome() {
   document.getElementById('searchInput').value = '';
   renderHome();
   document.querySelectorAll('.nl').forEach((n,i) => {
-    if (n.id !== 'navFavLink' && n.id !== 'navSugLink') n.classList.toggle('on', i===0);
+    if (n.id !== 'navFavLink' && n.id !== 'navSugLink' && !n.classList.contains('nl-discord')) n.classList.toggle('on', i===0);
     else n.classList.remove('on');
   });
 }
@@ -1205,18 +1217,17 @@ function renderFavPage() {
 }
 
 // ——— CARDS ———
-function safeEmo(e) { return ['💀','🩸','🗡','🌑'].includes(e) ? '🎬' : (e || '🎬'); }
-
 function mkCard(v) {
   const d = document.createElement('div');
   d.className = 'card';
-  const tagHtml = v.tag === 'n' ? '<div class="c-tag tag-n">NOUVEAU</div>' : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>' : v.tag === 'hot' ? '<div class="c-tag tag-hot">🔥 HOT</div>' : '';
+  const tagHtml = v.tag === 'n' ? '<div class="c-tag tag-n">NOUVEAU</div>' : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>' : v.tag === 'hot' ? '<div class="c-tag tag-hot">HOT</div>' : '';
   const ico = v.type === 'Série' ? '📺 ' : '';
+  // Image uniquement, pas d'emoji dans la vignette
   const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
   const favActive = isFav(v.id);
   const favHtml = currentUser ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>` : '';
   d.innerHTML = `
-    <div class="c-thumb ${v.bg}">${imgHtml}<span style="position:relative;z-index:0">${safeEmo(v.emo)}</span></div>
+    <div class="c-thumb ${v.bg}">${imgHtml}</div>
     ${tagHtml}
     <div class="c-score">★ ${v.score || '?'}</div>
     ${favHtml}
@@ -1233,12 +1244,11 @@ function mkCard(v) {
 function mkTop10Card(v, rank) {
   const d = document.createElement('div');
   d.className = 'top10-card';
-  const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.parentElement.style.fontSize='4rem'">` : '';
+  const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
   d.innerHTML = `
     <div class="top10-num">${rank}</div>
     <div class="top10-img ${v.bg}">
       ${imgHtml}
-      <span style="position:relative;z-index:0">${safeEmo(v.emo)}</span>
       <div class="top10-play">▶</div>
       <div class="top10-info">
         <div class="top10-title">${v.title}</div>
@@ -1303,7 +1313,7 @@ function buildCarousel() {
   if (!featured.length) {
     const slide = document.createElement('div');
     slide.className = 'hero-slide active';
-    slide.innerHTML = `<div class="h-art">🎬</div><div class="h-grad"></div><div class="h-glow"></div>
+    slide.innerHTML = `<div class="h-grad"></div><div class="h-glow"></div>
       <div class="h-content">
         <div class="h-badge"><span class="h-dot"></span>À LA UNE</div>
         <h1 class="h-title">Bienvenue sur CINÉMAX</h1>
@@ -1327,7 +1337,6 @@ function buildCarousel() {
     const bgStyle = v.img ? `background-image:url('${v.img}')` : '';
     slide.innerHTML = `
       <div class="h-bg-img" style="${bgStyle}"></div>
-      <div class="h-art">${safeEmo(v.emo)}</div>
       <div class="h-grad"></div><div class="h-glow"></div>
       <div class="h-content">
         <div class="h-badge"><span class="h-dot"></span>À LA UNE</div>
@@ -1501,7 +1510,6 @@ function detailToggleFav() { if (!_detailCurrentId) return; toggleFav(_detailCur
 function detailSetHero() {
   if (!_detailCurrentId) return;
   if (!heroIds.includes(_detailCurrentId)) {
-    // ——— LIMITE 15 ———
     if (heroIds.length >= 15) heroIds.shift();
     heroIds.push(_detailCurrentId);
   }
@@ -1514,8 +1522,8 @@ function openDetail(v) {
   _detailCurrentId = v.id;
   const dBgImg = document.getElementById('dBgImg');
   if (v.img) { dBgImg.style.backgroundImage = `url('${v.img}')`; dBgImg.style.display = 'block'; } else { dBgImg.style.display = 'none'; }
-  document.getElementById('dArt').textContent = safeEmo(v.emo);
-  document.getElementById('dArt').style.opacity = v.img ? '0.05' : '0.12';
+  // Pas d'emoji dans la page détail non plus
+  document.getElementById('dArt').textContent = '';
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
   document.getElementById('dMeta').innerHTML = `
@@ -1726,9 +1734,8 @@ function saveContent(publish) {
     img: document.getElementById('vImg').value.trim() || '',
     pub: publish, eps: currentType === 'Série' ? eps : undefined,
     bg: BG[Math.floor(Math.random() * BG.length)],
-    emo: EMO[Math.floor(Math.random() * EMO.length)],
   };
-  if (isEdit) { const idx = DB.findIndex(x => x.id === v.id); if (idx >= 0) { v.bg = DB[idx].bg; v.emo = DB[idx].emo; DB[idx] = v; } } else { DB.unshift(v); }
+  if (isEdit) { const idx = DB.findIndex(x => x.id === v.id); if (idx >= 0) { v.bg = DB[idx].bg; DB[idx] = v; } } else { DB.unshift(v); }
   closeCreateModal(); saveState(); renderAdmin();
   showNotice('vNotice', publish ? `✅ "${v.title}" publié sur le site !` : `💾 "${v.title}" enregistré en brouillon.`);
 }
@@ -1861,12 +1868,12 @@ const STATS_KEY = 'cinemax_stats';
 function getStats() { try { const raw = localStorage.getItem(STATS_KEY); return raw ? JSON.parse(raw) : initStatsObj(); } catch(e) { return initStatsObj(); } }
 function initStatsObj() { return { pageVisits:0, views:{}, plays:{}, searches:[], logins:0, registers:0, activity:[] }; }
 function saveStats(s) { try { localStorage.setItem(STATS_KEY, JSON.stringify(s)); } catch(e) {} }
-function trackVisit() { const s=getStats(); s.pageVisits=(s.pageVisits||0)+1; pushActivity(s,'🏠 Visite du site'); saveStats(s); }
-function trackView(v) { const s=getStats(); const k=String(v.id); s.views[k]=(s.views[k]||0)+1; pushActivity(s,`👁 Vue : ${v.title}`); saveStats(s); }
-function trackPlay(v,ep) { const s=getStats(); const k=String(v.id); s.plays[k]=(s.plays[k]||0)+1; pushActivity(s,`▶ Lecture : ${v.title}${ep?' — '+ep.t:''}`); saveStats(s); }
+function trackVisit() { const s=getStats(); s.pageVisits=(s.pageVisits||0)+1; pushActivity(s,'Visite du site'); saveStats(s); }
+function trackView(v) { const s=getStats(); const k=String(v.id); s.views[k]=(s.views[k]||0)+1; pushActivity(s,`Vue : ${v.title}`); saveStats(s); }
+function trackPlay(v,ep) { const s=getStats(); const k=String(v.id); s.plays[k]=(s.plays[k]||0)+1; pushActivity(s,`Lecture : ${v.title}${ep?' — '+ep.t:''}`); saveStats(s); }
 function trackSearch(q) { if(!q||q.trim().length<2)return; const s=getStats(); if(!s.searches)s.searches=[]; s.searches.unshift({q:q.trim(),ts:Date.now()}); if(s.searches.length>20)s.searches=s.searches.slice(0,20); saveStats(s); }
-function trackLogin(user) { const s=getStats(); s.logins=(s.logins||0)+1; pushActivity(s,`🔑 Connexion : ${user}`); saveStats(s); }
-function trackRegister(user) { const s=getStats(); s.registers=(s.registers||0)+1; pushActivity(s,`✨ Inscription : ${user}`); saveStats(s); }
+function trackLogin(user) { const s=getStats(); s.logins=(s.logins||0)+1; pushActivity(s,`Connexion : ${user}`); saveStats(s); }
+function trackRegister(user) { const s=getStats(); s.registers=(s.registers||0)+1; pushActivity(s,`Inscription : ${user}`); saveStats(s); }
 function pushActivity(s,msg) { if(!s.activity)s.activity=[]; s.activity.unshift({msg,ts:Date.now()}); if(s.activity.length>30)s.activity=s.activity.slice(0,30); }
 function resetStats() { if(!confirm('Réinitialiser toutes les statistiques ?'))return; localStorage.removeItem(STATS_KEY); renderStats(); }
 function fmtTime(ts) { const d=new Date(ts); return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
@@ -1894,7 +1901,7 @@ function renderStats() {
     const el = document.getElementById(containerId);
     if (!entries.length) { el.innerHTML='<p style="font-size:.8rem;color:var(--text3)">Aucune donnée.</p>'; return; }
     const rankClass = i => i===0?'gold':i===1?'silver':i===2?'bronze':'';
-    el.innerHTML = `<ul class="top-list">${entries.map((e,i)=>`<li class="top-item"><div class="top-rank ${rankClass(i)}">${i+1}</div><div class="top-name">${e.v.emo} ${e.v.title}</div><div class="top-count">${e.cnt} fois</div></li>`).join('')}</ul>`;
+    el.innerHTML = `<ul class="top-list">${entries.map((e,i)=>`<li class="top-item"><div class="top-rank ${rankClass(i)}">${i+1}</div><div class="top-name">${e.v.title}</div><div class="top-count">${e.cnt} fois</div></li>`).join('')}</ul>`;
   }
   topList(s.views,'statsTopViews'); topList(s.plays,'statsTopPlays');
 
@@ -1950,22 +1957,22 @@ function renderSuggestions() {
   grid.innerHTML='';
   list.forEach(s=>{
     const card=document.createElement('div'); card.className='sug-card';
-    const statusBadge=s.status==='new'?'<span class="sug-status sug-new">🔵 Nouvelle</span>':s.status==='done'?'<span class="sug-status sug-done">✅ Acceptée</span>':'<span class="sug-status sug-rej">❌ Refusée</span>';
-    const replyHtml=s.reply?`<div style="font-size:.75rem;color:var(--text3);margin-top:.25rem;padding:.4rem .75rem;border-left:2px solid var(--border2)">💬 ${s.reply}</div>`:'';
+    const statusBadge=s.status==='new'?'<span class="sug-status sug-new">Nouvelle</span>':s.status==='done'?'<span class="sug-status sug-done">Acceptée</span>':'<span class="sug-status sug-rej">Refusée</span>';
+    const replyHtml=s.reply?`<div style="font-size:.75rem;color:var(--text3);margin-top:.25rem;padding:.4rem .75rem;border-left:2px solid var(--border2)">Réponse : ${s.reply}</div>`:'';
     card.innerHTML=`<div class="sug-header"><div class="sug-avatar">${s.user.charAt(0).toUpperCase()}</div><div class="sug-user">${s.user}</div><div class="sug-date">${fmtTime(s.ts)}</div></div>
       <div><div class="sug-title">${s.title}</div><div class="sug-type">${s.type}</div></div>
       ${s.msg?`<div class="sug-msg">${s.msg}</div>`:''}${replyHtml}
       <div class="sug-actions">${statusBadge}
-        ${s.status!=='done'?`<button class="ab" onclick="setSugStatus(${s.id},'done')">✅ Accepter</button>`:''}
-        ${s.status!=='rej'?`<button class="ab dl" onclick="setSugStatus(${s.id},'rej')">❌ Refuser</button>`:''}
-        <button class="ab" onclick="replyToSug(${s.id})">💬 Répondre</button>
-        <button class="ab dl" onclick="deleteSug(${s.id})">🗑</button>
+        ${s.status!=='done'?`<button class="ab" onclick="setSugStatus(${s.id},'done')">Accepter</button>`:''}
+        ${s.status!=='rej'?`<button class="ab dl" onclick="setSugStatus(${s.id},'rej')">Refuser</button>`:''}
+        <button class="ab" onclick="replyToSug(${s.id})">Répondre</button>
+        <button class="ab dl" onclick="deleteSug(${s.id})">Supprimer</button>
       </div>`;
     grid.appendChild(card);
   });
   updateSugNotif();
 }
-function setSugStatus(id,status){const s=SUGGESTIONS.find(x=>x.id===id);if(!s)return;s.status=status;saveState();renderSuggestions();showNotice('sugNotice',status==='done'?'✅ Suggestion acceptée.':'❌ Suggestion refusée.');}
+function setSugStatus(id,status){const s=SUGGESTIONS.find(x=>x.id===id);if(!s)return;s.status=status;saveState();renderSuggestions();showNotice('sugNotice',status==='done'?'Suggestion acceptée.':'Suggestion refusée.');}
 function replyToSug(id){const s=SUGGESTIONS.find(x=>x.id===id);if(!s)return;const reply=prompt('Répondre à cette suggestion :',s.reply||'');if(reply===null)return;s.reply=reply.trim();saveState();renderSuggestions();}
 function deleteSug(id){if(!confirm('Supprimer cette suggestion ?'))return;SUGGESTIONS=SUGGESTIONS.filter(x=>x.id!==id);saveState();renderSuggestions();}
 function clearDoneSuggestions(){if(!confirm('Supprimer toutes les suggestions acceptées et refusées ?'))return;SUGGESTIONS=SUGGESTIONS.filter(s=>s.status==='new');saveState();renderSuggestions();}
@@ -1986,7 +1993,7 @@ function openHeroPicker() {
       div.dataset.id = v.id;
       div.innerHTML = `
         <div class="hp-emo" style="width:36px;height:52px;border-radius:4px;overflow:hidden;flex-shrink:0;background:var(--bg3);display:flex;align-items:center;justify-content:center">
-          ${v.img ? `<img src="${v.img}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.textContent='${safeEmo(v.emo)}'">` : safeEmo(v.emo)}
+          ${v.img ? `<img src="${v.img}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML=''">` : ''}
         </div>
         <div class="hp-info">
           <div class="hp-name">${v.title}</div>
@@ -2005,14 +2012,13 @@ function togglePickerItem(id, div) {
     div.classList.remove('selected');
     div.querySelector('.hp-check').style.opacity = '0';
   } else {
-    // ——— LIMITE 15 ———
     if (_pickerSelection.length >= 15) { alert('Maximum 15 affiches à la une.'); return; }
     _pickerSelection.push(id);
     div.classList.add('selected');
     div.querySelector('.hp-check').style.opacity = '1';
   }
 }
-function saveHeroPicker() { heroIds = [..._pickerSelection]; closeHeroPicker(); saveState(); renderHome(); setCloudStatus('⭐ Affiches mises à jour', '#f5c518'); }
+function saveHeroPicker() { heroIds = [..._pickerSelection]; closeHeroPicker(); saveState(); renderHome(); setCloudStatus('Affiches mises à jour', '#f5c518'); }
 function closeHeroPicker() { document.getElementById('heroPicker').classList.remove('open'); }
 
 // ——— INIT ———
