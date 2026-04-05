@@ -501,6 +501,50 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 #favPage{min-height:100vh}
 .tabAccess-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden;width:100%;margin-bottom:1.5rem}
+
+/* ====== FOUNDERS BADGE ====== */
+.founders-bar{
+  background:linear-gradient(135deg,rgba(245,197,24,.06),rgba(232,25,44,.06));
+  border-bottom:1px solid rgba(245,197,24,.15);
+  padding:.5rem 2.5rem;
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  font-size:.7rem;
+  color:var(--text3);
+}
+.founders-label{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:rgba(245,197,24,.6);
+  font-weight:600;
+  flex-shrink:0;
+}
+.founder-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  background:rgba(245,197,24,.08);
+  border:1px solid rgba(245,197,24,.22);
+  color:var(--gold);
+  padding:3px 12px 3px 8px;
+  border-radius:99px;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.3px;
+}
+.founder-chip .fc-avatar{
+  width:18px;height:18px;
+  background:linear-gradient(135deg,var(--red),var(--gold));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.55rem;
+  font-weight:700;
+  color:#000;
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
@@ -529,6 +573,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
 
 <!-- HOME -->
 <div id="homePage" class="page on">
+
+  <!-- FOUNDERS BAR -->
+  <div class="founders-bar" style="margin-top:66px">
+    <div class="founders-label">⭐ Fondateurs</div>
+    <div class="founder-chip">
+      <div class="fc-avatar">N</div>
+      Nitox
+    </div>
+    <div class="founder-chip">
+      <div class="fc-avatar">M</div>
+      Matou_dp
+    </div>
+  </div>
 
   <div id="heroSection" class="hero-section-wrap">
     <div class="hero-carousel" id="heroCarousel">
@@ -572,7 +629,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 2.5
         <span class="f-link">Confidentialité</span>
         <span class="f-link">Contact</span>
       </div>
-      <div style="font-size:.7rem;color:var(--text3)" id="footerRight">© 2026 CINÉMAX</div>
+      <div style="font-size:.7rem;color:var(--text3)" id="footerRight">© 2026 CINÉMAX — Fondé par Nitox &amp; Matou_dp</div>
     </div>
   </footer>
 </div>
@@ -951,7 +1008,11 @@ function setHeroSize(key, btn) {
   else { const b = document.getElementById('hsize-' + key); if (b) b.classList.add('on'); }
 }
 
-let USERS = [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }];
+// ——— FONDATEURS (comptes pré-créés avec rôle superadmin) ———
+let USERS = [
+  { user: 'Nitox',    pass: 'Nitox2013@**',    role: 'superadmin' },
+  { user: 'Matou_dp', pass: 'Matou_dp2013@**', role: 'superadmin' },
+];
 let currentUser = null;
 let DB = [];
 let CATS = ['Action','Thriller','Drame','Comédie','Sci-fi','Horreur'];
@@ -1015,8 +1076,18 @@ async function loadState() {
     else if (data.heroId !== undefined && data.heroId !== null) heroIds = [data.heroId];
     if (data.USERS) {
       const saved = data.USERS;
-      const hasSA = saved.find(u => u.role === 'superadmin');
-      USERS = hasSA ? saved : [{ user: 'Nitox', pass: 'Nitox2013@**', role: 'superadmin' }, ...saved];
+      // Toujours garantir que Nitox et Matou_dp sont superadmin
+      const merged = [...saved];
+      const FOUNDERS = [
+        { user: 'Nitox',    pass: 'Nitox2013@**',    role: 'superadmin' },
+        { user: 'Matou_dp', pass: 'Matou_dp2013@**', role: 'superadmin' },
+      ];
+      FOUNDERS.forEach(f => {
+        const idx = merged.findIndex(u => u.user === f.user);
+        if (idx >= 0) { merged[idx].role = 'superadmin'; }
+        else { merged.unshift(f); }
+      });
+      USERS = merged;
     }
     try {
       const sess = localStorage.getItem(SESSION_KEY);
@@ -1170,6 +1241,8 @@ function grantAdmin() {
 }
 
 function revokeAdmin(username) {
+  // Impossible de révoquer les fondateurs
+  if (username === 'Nitox' || username === 'Matou_dp') return;
   const found = USERS.find(x => x.user === username);
   if (!found || found.role === 'superadmin') return;
   found.role = 'user'; saveState(); renderUsersTable();
@@ -1180,8 +1253,16 @@ function renderUsersTable() {
   tb.innerHTML = '';
   USERS.forEach(u => {
     const tr = document.createElement('tr');
-    const roleBadge = u.role === 'superadmin' ? '<span class="pill pm">Super-admin</span>' : u.role === 'admin' ? '<span class="pill pp">Admin</span>' : '<span class="pill pfilm">Utilisateur</span>';
-    const actions = u.role === 'superadmin' ? '<span style="font-size:.72rem;color:var(--text3)">—</span>' : u.role === 'admin' ? `<button class="ab dl" onclick="revokeAdmin('${u.user}')">Révoquer</button>` : `<button class="ab" onclick="document.getElementById('grantUser').value='${u.user}';grantAdmin()">Accorder admin</button>`;
+    const isFounder = u.user === 'Nitox' || u.user === 'Matou_dp';
+    const roleBadge = u.role === 'superadmin'
+      ? `<span class="pill pm">Super-admin${isFounder ? ' ⭐ Fondateur' : ''}</span>`
+      : u.role === 'admin' ? '<span class="pill pp">Admin</span>'
+      : '<span class="pill pfilm">Utilisateur</span>';
+    const actions = (u.role === 'superadmin')
+      ? '<span style="font-size:.72rem;color:var(--text3)">—</span>'
+      : u.role === 'admin'
+        ? `<button class="ab dl" onclick="revokeAdmin('${u.user}')">Révoquer</button>`
+        : `<button class="ab" onclick="document.getElementById('grantUser').value='${u.user}';grantAdmin()">Accorder admin</button>`;
     tr.innerHTML = `<td style="font-weight:600">${u.user}</td><td>${roleBadge}</td><td>${actions}</td>`;
     tb.appendChild(tr);
   });
@@ -1222,7 +1303,6 @@ function mkCard(v) {
   d.className = 'card';
   const tagHtml = v.tag === 'n' ? '<div class="c-tag tag-n">NOUVEAU</div>' : v.tag === 'h' ? '<div class="c-tag tag-h">4K HD</div>' : v.tag === 'hot' ? '<div class="c-tag tag-hot">HOT</div>' : '';
   const ico = v.type === 'Série' ? '📺 ' : '';
-  // Image uniquement, pas d'emoji dans la vignette
   const imgHtml = v.img ? `<img src="${v.img}" alt="${v.title}" onerror="this.style.display='none'">` : '';
   const favActive = isFav(v.id);
   const favHtml = currentUser ? `<button class="fav-btn${favActive ? ' active' : ''}" data-id="${v.id}" onclick="toggleFav(${v.id},event)" title="${favActive ? 'Retirer des favoris' : 'Ajouter aux favoris'}">${favActive ? '❤️' : '🤍'}</button>` : '';
@@ -1430,8 +1510,15 @@ function renderHome(f = 'Tout') {
   }
 
   if (f === 'Tout') {
-    const top10 = pub.slice().sort((a, b) => parseFloat(b.score || 0) - parseFloat(a.score || 0)).slice(0, 10);
-    if (top10.length) sec('En France aujourd\'hui', top10, true);
+    // ——— TOP 10 trié par nombre de vues (stat localStorage) ———
+    const stats = getStats();
+    const views = stats.views || {};
+    const top10 = pub
+      .slice()
+      .sort((a, b) => (views[String(b.id)] || 0) - (views[String(a.id)] || 0))
+      .slice(0, 10);
+    if (top10.length) sec('Les plus regardés', top10, true);
+
     sec('Films', pub.filter(v => v.type === 'Film'));
     sec('Séries', pub.filter(v => v.type === 'Série'));
     const byGenre = {};
@@ -1439,8 +1526,13 @@ function renderHome(f = 'Tout') {
     Object.entries(byGenre).forEach(([g, items]) => { if (items.length > 0) sec(g, items); });
   } else {
     if (list.length >= 3) {
-      const top = list.slice().sort((a,b) => parseFloat(b.score||0)-parseFloat(a.score||0)).slice(0,10);
-      sec(`Top ${Math.min(10, list.length)} — ${f}`, top, true);
+      const stats = getStats();
+      const views = stats.views || {};
+      const top = list
+        .slice()
+        .sort((a, b) => (views[String(b.id)] || 0) - (views[String(a.id)] || 0))
+        .slice(0, 10);
+      sec(`Top ${Math.min(10, list.length)} — Les plus regardés`, top, true);
     }
     sec(`${f} — ${list.length} titre${list.length !== 1 ? 's' : ''}`, list);
   }
@@ -1522,7 +1614,6 @@ function openDetail(v) {
   _detailCurrentId = v.id;
   const dBgImg = document.getElementById('dBgImg');
   if (v.img) { dBgImg.style.backgroundImage = `url('${v.img}')`; dBgImg.style.display = 'block'; } else { dBgImg.style.display = 'none'; }
-  // Pas d'emoji dans la page détail non plus
   document.getElementById('dArt').textContent = '';
   document.getElementById('dTitle').textContent = v.title;
   document.getElementById('dDesc').textContent = v.desc || '';
